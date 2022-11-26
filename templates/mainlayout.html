@@ -1,5 +1,5 @@
 {% spaceless %}
-    {% load render_partial %}
+{#    {% load render_partial %}#}
     {% load static %}
 
     <html lang="en">
@@ -11,7 +11,7 @@
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/revolution-slider.css' %}" rel="stylesheet">
         <link href="{% static 'css/slider-setting.css' %}" rel="stylesheet">
-        <link href="c{% static 'ss/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
         <!-- Responsive -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,11 +34,11 @@
     </head>
 
     <body class="home">
-    {% render_partial 'header_view' %}
+{#    {% render_partial 'header_view' %}#}
     <main>
         {% block content %}{% endblock content %}
     </main>
-    {% render_partial 'footer_view' %}
+{#    {% render_partial 'footer_view' %}#}
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>

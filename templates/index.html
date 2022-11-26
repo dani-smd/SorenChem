@@ -1,1280 +1,793 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'MainLayout.html' %}
+{#{% load render_partial %}#}
 
-<head>
-    <meta charset="utf-8">
-    <title>سورن شیمی SorenChem</title>
-    <!-- Stylesheets -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/revolution-slider.css" rel="stylesheet">
-    <link href="css/slider-setting.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+{% load static %}
 
-    <!-- Responsive -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]>
-    <script src="js/respond.js"></script><![endif]-->
+{% block title %}سورن شیمی{% endblock title %}
 
-    <meta name="theme-color" content="#5da73d">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16">
-</head>
+{% block description %}{{ about_us | truncatechars:247 }}{% endblock description %}
 
-<body class="home">
+{% block keywords %}{% for keyword in keywords %}{{ keyword }},{% endfor %}{% endblock keywords %}
 
-<div class="page-wrapper body_wrapper">
+{% block content %}
 
-    <!-- Preloader -->
-    <div class="preloader"></div>
+    <div class="page-wrapper body_wrapper">
 
-    <!-- Main Header / Header Style One-->
-    <header class="main-header header-style-three">
-        <!-- Header Top One-->
-        <div class="header-upper">
-            <div class="auto-container">
-                <div class="clearfix">
+        <!-- Preloader -->
+        <div class="preloader"></div>
 
-                    <div class="pull-right logo-outer">
-                        <!--Logo Box-->
-                        <div class="logo-box">
-                            <div class="logo">
-                                <a href="index.html" title="Factories">
-                                    <h1 class="logo-text">سورن شیمی</h1>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        <!--Main Slider-->
+        <section class="main-slider" data-start-height="600" data-slide-overlay="no">
 
-                    <div class="pull-left upper-right clearfix">
-                        <div class="upper-display">
-                            <!--Info Box-->
-                            <div class="upper-column info-box">
-                                <div class="icon-box">
-                                    <a href="tel:05138676767">
-                                        <span class="flaticon-telephone-1"></span>
-                                    </a>
-                                </div>
-                                <ul>
-                                    <li><strong>تلفن ما</strong></li>
-                                    <li>
-                                        <a href="tel:05138676767">
-                                            051-38676767
-                                        </a></li>
-                                </ul>
+            <div class="tp-banner-container">
+                <div class="tp-banner">
+                    <ul>
+
+
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                            data-thumb="{% static 'images/main-slider/b8.jpg' %}" data-saveperformance="off"
+                            data-title="عنوان اسلاید">
+
+                            <img src="{% static 'images/main-slider/b8.jpg' %}" alt="" data-bgposition="center top"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat">
+
+                            <!--Slide Overlay-->
+                            <div class="slide-overlay"></div>
+
+                            <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
+                                 data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <h2>
+                                    ارائه بهترین
+                                    <br> مواد اولیه
+                                </h2>
                             </div>
 
-                            <div class="upper-column info-box">
-                                <a href="#" style="margin-left:10px;"><img src="images/flag/uk.png"/></a>
-                                <a href="#" style="margin-left:10px;"><img src="images/flag/kw.png"/></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Header Lower -->
-        <div class="header-lower">
-            <div class="main-box">
-                <div class="auto-container">
-                    <div class="outer-container clearfix">
-                        <!--Nav Outer-->
-                        <div class="nav-outer clearfix">
-                            <!-- Main Menu -->
-                            <nav class="main-menu">
-                                <div class="navbar-header">
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                            data-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-
-                                <div class="navbar-collapse collapse clearfix">
-                                    <ul class="navigation clearfix">
-                                        <li class="current"><a href="index.html">خانه</a></li>
-                                        <li><a href="about-us.html">درباره ما</a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#">محصولات</a>
-                                            <ul>
-                                                <li><a href="product-groups.html">مشاهده همه محصولات</a></li>
-                                                <li><a href="products.html">اسانس</a></li>
-                                                <li><a href="#">صنایع غذایی</a></li>
-                                                <li>
-                                                    <a href="#">صنایع آرایشی و بهداشتی</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog.html">بلاگ</a>
-                                        </li>
-                                        <li class="dropdown"><a href="#">گالری</a>
-                                            <ul>
-                                                <li><a href="gallery.html">گالری عکس</a></li>
-                                                <li><a href="gallery-video.html">گالری ویدئو</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="sample-request.html">درخواست نمونه</a></li>
-                                        <li><a href="contact.html">تماس</a></li>
-
-                                    </ul>
-                                </div>
-                            </nav>
-                            <!-- Main Menu End-->
-
-                            <!--Search Box-->
-                            <div class="outer-box2">
-                                <!--Search form-->
-                                <div class="search-form">
-                                    <form method="post" action="contact.html">
-                                        <div class="form-group">
-                                            <input type="text" name="search" value="" placeholder="جستجو ..."
-                                                   required="">
-                                            <button type="submit" class="theme-btn"><span
-                                                    class="icon fa fa-search"></span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--Nav Outer End-->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Sticky Header-->
-        <div class="sticky-header">
-            <div class="auto-container clearfix">
-                <!--Logo-->
-                <div class="logo pull-right">
-                    <a href="index.html" title="Factories">
-                        <h2 class="logo-text">سورن شیمی</h2>
-                    </a>
-                </div>
-
-                <!--Right Col-->
-                <div class="right-col pull-left">
-                    <!-- Main Menu -->
-                    <nav class="main-menu">
-                        <div class="navbar-header">
-                            <!-- Toggle Button -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-
-                        <div class="navbar-collapse collapse clearfix">
-                            <ul class="navigation clearfix">
-                                <li class="current"><a href="index.html">خانه</a></li>
-                                <li><a href="about-us.html">درباره ما</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#">محصولات</a>
-                                    <ul>
-                                        <li><a href="product-groups.html">مشاهده همه محصولات</a></li>
-                                        <li><a href="products.html">اسانس</a></li>
-                                        <li><a href="#">صنایع غذایی</a></li>
-                                        <li>
-                                            <a href="#">صنایع آرایشی و بهداشتی</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog.html">بلاگ</a>
-                                </li>
-                                <li class="dropdown"><a href="#">گالری</a>
-                                    <ul>
-                                        <li><a href="gallery.html">گالری عکس</a></li>
-                                        <li><a href="gallery-video.html">گالری ویدئو</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="sample-request.html">درخواست نمونه</a></li>
-                                <li><a href="contact.html">تماس</a></li>
-
-                            </ul>
-                        </div>
-                    </nav>
-                    <!-- Main Menu End-->
-                </div>
-
-            </div>
-        </div>
-        <!--End Sticky Header-->
-    </header>
-    <!--End Main Header -->
-
-    <!--Main Slider-->
-    <section class="main-slider" data-start-height="600" data-slide-overlay="no">
-
-        <div class="tp-banner-container">
-            <div class="tp-banner">
-                <ul>
-
-
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
-                        data-thumb="images/main-slider/b8.jpg" data-saveperformance="off" data-title="عنوان اسلاید">
-
-                        <img src="images/main-slider/b8.jpg" alt="" data-bgposition="center top" data-bgfit="cover"
-                             data-bgrepeat="no-repeat">
-
-                        <!--Slide Overlay-->
-                        <div class="slide-overlay"></div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
-                             data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <h2>
-                                ارائه بهترین
-                                <br> مواد اولیه
-                            </h2>
-                        </div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
-                             data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <div class="text">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                            </div>
-                        </div>
-                    </li>
-
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
-                        data-thumb="images/main-slider/b7.jpg" data-saveperformance="off" data-title="عنوان اسلاید">
-
-                        <img src="images/main-slider/b7.jpg" alt="" data-bgposition="center top" data-bgfit="cover"
-                             data-bgrepeat="no-repeat">
-
-                        <!--Slide Overlay-->
-                        <div class="slide-overlay"></div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
-                             data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <h2>
-                                مواد شیمیایی
-                                <br> برای صنعت آب
-                            </h2>
-                        </div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
-                             data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <div class="text">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                            </div>
-                        </div>
-                    </li>
-
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
-                        data-thumb="images/main-slider/b6.jpg" data-saveperformance="off" data-title="عنوان اسلاید">
-
-                        <img src="images/main-slider/b6.jpg" alt="" data-bgposition="center top" data-bgfit="cover"
-                             data-bgrepeat="no-repeat">
-
-                        <!--Slide Overlay-->
-                        <div class="slide-overlay"></div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
-                             data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <h2>
-                                مواد شیمیایی
-                                <br> برای صنایع غذایی
-                            </h2>
-                        </div>
-
-                        <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
-                             data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
-                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                             data-endeasing="Power4.easeIn">
-                            <div class="text">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                            </div>
-                        </div>
-                    </li>
-
-
-                </ul>
-            </div>
-        </div>
-
-    </section>
-
-    <!--Services Section-->
-    <section class="welcome-section">
-        <div class="auto-container">
-            <!--Sec Title-->
-            <div class="sec-title centered">
-                <h2><span>اسانس ها</span></h2>
-                <div class="separator"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-                        <div class="carousel-inner">
-
-                            <div class="item active">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/24.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس آفتابگردان</h4>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/22.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس رازیانه</h4>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/23.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس آویشن</h4>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/21.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس آفتابگردان</h4>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/20.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس پونه</h4>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <a href="#"><img src="images/resource/23.jpg"
-                                                     class="img-responsive center-block"></a>
-                                    <h4 class="text-center">اسانس رازیانه</h4>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div id="slider-control">
-                            <a class="left carousel-control" style="margin-left: -1.2%;" href="#itemslider"
-                               data-slide="prev"><img src="images/fancybox/right.png" alt="Left" class="img-responsive"></a>
-                            <a class="right carousel-control" style="margin-right: -1.2%;" href="#itemslider"
-                               data-slide="next"><img src="images/fancybox/left.png" alt="Right" class="img-responsive"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-    <!--End Services Section-->
-
-    <section class="featured-area">
-        <div class="container">
-            <!--Title-->
-            <div class="sec-title centered">
-                <h2>محصولات <span>ما</span></h2>
-            </div>
-            <div class="row featured equal-height">
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-loader">
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع کشاورزی</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--End single featured item-->
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-flasks"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>اسانس</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--End single featured item-->
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="fa fa-envira"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع غذایی</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--End single featured item-->
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-bottle"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>حلال ها</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--End single featured item-->
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="fa fa-tint"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع تصفیه آب</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--End single featured item-->
-                <!--Start single featured item-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-featured-item">
-                        <a href="products.html">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-
-                                    <div class="productGroup-iconbefore">
-                                        <svg width="80px" height="70px" data-name="Layer 2" viewBox="0 0 250 250"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                    d="M205.37 207.83 185.78 162l-8.45-19.73a41 41 0 0 0-53.82-21.58l-3 1.29a20 20 0 0 0-11.92 15.71v-1.23a4 4 0 0 0-4-4h-3.44V95.07a4 4 0 0 0-4-4h-1.3V25.25a10.56 10.56 0 0 0-.24-2.1 3.93 3.93 0 0 0-.67-2.09A10.21 10.21 0 0 0 81.26 16 44 44 0 0 0 56 55.66v35.41h-.25a4 4 0 0 0-4 4v37.41h-3.44a4 4 0 0 0-4 4V231a4 4 0 0 0 4 4h56.27a4 4 0 0 0 4-4v-87.89a19.56 19.56 0 0 0 1.4 5.14l36.3 84.86a4 4 0 0 0 3.68 2.42 3.94 3.94 0 0 0 1.57-.32l51.74-22.13a4.06 4.06 0 0 0 2.14-2.19 4 4 0 0 0-.04-3.06ZM55.74 140.48h41.49L81.82 175l-29.51-19.84v-14.68Zm29.51 46.4 12.65 8.47L71.8 217Zm3.31-7.41 12-26.87v34.92ZM84.64 23.22a2.22 2.22 0 0 1 2.16.14 2.48 2.48 0 0 1 .57.52C84.51 34.55 73.89 45 64.65 49a35.91 35.91 0 0 1 19.99-25.78ZM64 57.67c8-2.32 17.32-8.94 23.84-17.49v50.89H64Zm-4.25 41.4h33.4v33.41H59.74Zm-7.43 65.72 26.2 17.57L58.57 227h-6.26Zm20 62.18 28.32-23.45V227Zm55.59-57.28 27.22 16.46-13.93 14.6Zm34.24 20.71 23.56 14.25-36.6-.6Zm5.65-5.93 13.08-13.7 12.46 29.15Zm-50.51-48.55a11.9 11.9 0 0 1 6.42-6.56l3-1.29A33 33 0 0 1 170 145.43l7.41 17.34-16.66 17.46-38.27-23.15-5.12-12a12 12 0 0 1-.13-9.16ZM146 212l38.05.62-31.94 13.66Z"
-                                                    fill="#5da73d" class="fill-000000"></path>
-                                            <path d="M82.81 114.43H70.07a4 4 0 0 0 0 8h12.74a4 4 0 0 0 0-8Z"
-                                                  fill="#5da73d" class="fill-000000"></path>
-                                        </svg>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </a>
-                        <div class="text-holder">
-                            <h3>صنایع آرایشی و بهداشتی</h3>
-                        </div>
-                    </div>
-                </div>
-                <!--End single featured item-->
-            </div>
-        </div>
-    </section>
-
-    <!--Two Default Section-->
-    <section class="default-section-two">
-        <div class="auto-container">
-
-            <div class="row clearfix">
-
-                <!--Accordion Column-->
-                <div class="accordion-block column col-md-6 col-sm-12 col-xs-12">
-                    <!--Title-->
-                    <div class="sec-title">
-                        <h2>سوالات <span>متداول</span></h2>
-                    </div>
-
-                    <!--Accordion Box-->
-                    <ul class="accordion-box">
-
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn active">
-                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                لورم ایپسوم
-                                متن ساختگی با تولید سادگی
-                            </div>
-                            <div class="acc-content current">
-                                <div class="content">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                        طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+                            <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
+                                 data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <div class="text">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
                                 </div>
                             </div>
                         </li>
 
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                لورم ایپسوم
-                                متن ساختگی با تولید سادگی
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                            data-thumb="images/main-slider/b7.jpg" data-saveperformance="off" data-title="عنوان اسلاید">
+
+                            <img src="images/main-slider/b7.jpg" alt="" data-bgposition="center top" data-bgfit="cover"
+                                 data-bgrepeat="no-repeat">
+
+                            <!--Slide Overlay-->
+                            <div class="slide-overlay"></div>
+
+                            <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
+                                 data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <h2>
+                                    مواد شیمیایی
+                                    <br> برای صنعت آب
+                                </h2>
                             </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                        طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+
+                            <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
+                                 data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <div class="text">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
                                 </div>
                             </div>
                         </li>
 
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                لورم ایپسوم
-                                متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                            data-thumb="images/main-slider/b6.jpg" data-saveperformance="off" data-title="عنوان اسلاید">
+
+                            <img src="images/main-slider/b6.jpg" alt="" data-bgposition="center top" data-bgfit="cover"
+                                 data-bgrepeat="no-repeat">
+
+                            <!--Slide Overlay-->
+                            <div class="slide-overlay"></div>
+
+                            <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
+                                 data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <h2>
+                                    مواد شیمیایی
+                                    <br> برای صنایع غذایی
+                                </h2>
                             </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                        طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+
+                            <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
+                                 data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500" data-start="500"
+                                 data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                                 data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                                 data-endeasing="Power4.easeIn">
+                                <div class="text">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    <br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
                                 </div>
                             </div>
                         </li>
 
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                لورم ایپسوم
-                                متن ساختگی با تولید سادگی
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                        طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--Block-->
-                        <li class="accordion block">
-                            <div class="acc-btn">
-                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                لورم ایپسوم
-                                متن ساختگی با تولید سادگی
-                            </div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                        طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                        لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
-                                </div>
-                            </div>
-                        </li>
 
                     </ul>
-                    <!--End Accordion Box-->
-
                 </div>
+            </div>
 
-                <div class="about-column column col-md-6 col-sm-12 col-xs-12">
-                    <div class="inner">
+        </section>
+
+        <!--Services Section-->
+        <section class="welcome-section">
+            <div class="auto-container">
+                <!--Sec Title-->
+                <div class="sec-title centered">
+                    <h2><span>اسانس ها</span></h2>
+                    <div class="separator"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+                            <div class="carousel-inner">
+
+                                <div class="item active">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/24.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس آفتابگردان</h4>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/22.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس رازیانه</h4>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/23.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس آویشن</h4>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/21.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس آفتابگردان</h4>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/20.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس پونه</h4>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-xs-12 col-sm-6 col-md-2">
+                                        <a href="#"><img src="images/resource/23.jpg"
+                                                         class="img-responsive center-block"></a>
+                                        <h4 class="text-center">اسانس رازیانه</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="slider-control">
+                                <a class="left carousel-control" style="margin-left: -1.2%;" href="#itemslider"
+                                   data-slide="prev"><img src="images/fancybox/right.png" alt="Left"
+                                                          class="img-responsive"></a>
+                                <a class="right carousel-control" style="margin-right: -1.2%;" href="#itemslider"
+                                   data-slide="next"><img src="images/fancybox/left.png" alt="Right"
+                                                          class="img-responsive"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Services Section-->
+
+        <section class="featured-area">
+            <div class="container">
+                <!--Title-->
+                <div class="sec-title centered">
+                    <h2>محصولات <span>ما</span></h2>
+                </div>
+                <div class="row featured equal-height">
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                    <span class="flaticon-loader">
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>صنایع کشاورزی</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                        <span class="flaticon-flasks"></span>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>اسانس</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                        <span class="fa fa-envira"></span>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>صنایع غذایی</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                        <span class="flaticon-bottle"></span>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>حلال ها</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                        <span class="fa fa-tint"></span>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>صنایع تصفیه آب</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                    <!--Start single featured item-->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-featured-item">
+                            <a href="products.html">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+
+                                        <div class="productGroup-iconbefore">
+                                            <svg width="80px" height="70px" data-name="Layer 2" viewBox="0 0 250 250"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M205.37 207.83 185.78 162l-8.45-19.73a41 41 0 0 0-53.82-21.58l-3 1.29a20 20 0 0 0-11.92 15.71v-1.23a4 4 0 0 0-4-4h-3.44V95.07a4 4 0 0 0-4-4h-1.3V25.25a10.56 10.56 0 0 0-.24-2.1 3.93 3.93 0 0 0-.67-2.09A10.21 10.21 0 0 0 81.26 16 44 44 0 0 0 56 55.66v35.41h-.25a4 4 0 0 0-4 4v37.41h-3.44a4 4 0 0 0-4 4V231a4 4 0 0 0 4 4h56.27a4 4 0 0 0 4-4v-87.89a19.56 19.56 0 0 0 1.4 5.14l36.3 84.86a4 4 0 0 0 3.68 2.42 3.94 3.94 0 0 0 1.57-.32l51.74-22.13a4.06 4.06 0 0 0 2.14-2.19 4 4 0 0 0-.04-3.06ZM55.74 140.48h41.49L81.82 175l-29.51-19.84v-14.68Zm29.51 46.4 12.65 8.47L71.8 217Zm3.31-7.41 12-26.87v34.92ZM84.64 23.22a2.22 2.22 0 0 1 2.16.14 2.48 2.48 0 0 1 .57.52C84.51 34.55 73.89 45 64.65 49a35.91 35.91 0 0 1 19.99-25.78ZM64 57.67c8-2.32 17.32-8.94 23.84-17.49v50.89H64Zm-4.25 41.4h33.4v33.41H59.74Zm-7.43 65.72 26.2 17.57L58.57 227h-6.26Zm20 62.18 28.32-23.45V227Zm55.59-57.28 27.22 16.46-13.93 14.6Zm34.24 20.71 23.56 14.25-36.6-.6Zm5.65-5.93 13.08-13.7 12.46 29.15Zm-50.51-48.55a11.9 11.9 0 0 1 6.42-6.56l3-1.29A33 33 0 0 1 170 145.43l7.41 17.34-16.66 17.46-38.27-23.15-5.12-12a12 12 0 0 1-.13-9.16ZM146 212l38.05.62-31.94 13.66Z"
+                                                        fill="#5da73d" class="fill-000000"></path>
+                                                <path d="M82.81 114.43H70.07a4 4 0 0 0 0 8h12.74a4 4 0 0 0 0-8Z"
+                                                      fill="#5da73d" class="fill-000000"></path>
+                                            </svg>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="text-holder">
+                                <h3>صنایع آرایشی و بهداشتی</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single featured item-->
+                </div>
+            </div>
+        </section>
+
+        <!--Two Default Section-->
+        <section class="default-section-two">
+            <div class="auto-container">
+
+                <div class="row clearfix">
+
+                    <!--Accordion Column-->
+                    <div class="accordion-block column col-md-6 col-sm-12 col-xs-12">
                         <!--Title-->
                         <div class="sec-title">
-                            <h2>درباره <span>ما</span></h2>
+                            <h2>سوالات <span>متداول</span></h2>
                         </div>
 
-                        <div class="image-box"><img src="images/resource/about.jpg" alt=""></div>
-                        <div class="row clearfix">
-                            <!--Text Column-->
-                            <div class="text-column col-md-6 col-sm-6 col-xs-12">
-                                <h3>ما کیستیم؟</h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است. چاپگرها و
-                                </div>
-                                <div class="btn-box"><a href="about-us.html" class="theme-btn btn-style-one">آشنایی
-                                    بیشتر</a></div>
-                            </div>
-                            <!--Text Column-->
-                            <div class="text-column col-md-6 col-sm-6 col-xs-12">
-                                <h3>ماموریت ما</h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است. چاپگرها و
-                                </div>
-                                <div class="signature text-left"><img src="images/resource/signature.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <!--Accordion Box-->
+                        <ul class="accordion-box">
 
-            </div>
-
-        </div>
-    </section>
-    <!--End Two Default Section-->
-
-    <div class="tow-column">
-        <div class="auto-container">
-            <!--Title-->
-            <div class="sec-title centered light">
-                <h2>ویژگی های <span>منحصر به فرد ما</span></h2>
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <div class="row equal-height">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="service-block">
-                                <div class="inner-box">
-                                    <!--icon-box-->
-                                    <div class="icon-box">
-                                        <span class="flaticon-tools"></span>
+                            <!--Block-->
+                            <li class="accordion block">
+                                <div class="acc-btn active">
+                                    <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                    لورم ایپسوم
+                                    متن ساختگی با تولید سادگی
+                                </div>
+                                <div class="acc-content current">
+                                    <div class="content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
                                     </div>
-                                    <h3>تضمین کیفیت</h3>
+                                </div>
+                            </li>
+
+                            <!--Block-->
+                            <li class="accordion block">
+                                <div class="acc-btn">
+                                    <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                    لورم ایپسوم
+                                    متن ساختگی با تولید سادگی
+                                </div>
+                                <div class="acc-content">
+                                    <div class="content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!--Block-->
+                            <li class="accordion block">
+                                <div class="acc-btn">
+                                    <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                    لورم ایپسوم
+                                    متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                </div>
+                                <div class="acc-content">
+                                    <div class="content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!--Block-->
+                            <li class="accordion block">
+                                <div class="acc-btn">
+                                    <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                    لورم ایپسوم
+                                    متن ساختگی با تولید سادگی
+                                </div>
+                                <div class="acc-content">
+                                    <div class="content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!--Block-->
+                            <li class="accordion block">
+                                <div class="acc-btn">
+                                    <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                    لورم ایپسوم
+                                    متن ساختگی با تولید سادگی
+                                </div>
+                                <div class="acc-content">
+                                    <div class="content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <!--End Accordion Box-->
+
+                    </div>
+
+                    <div class="about-column column col-md-6 col-sm-12 col-xs-12">
+                        <div class="inner">
+                            <!--Title-->
+                            <div class="sec-title">
+                                <h2>درباره <span>ما</span></h2>
+                            </div>
+
+                            <div class="image-box"><img src="images/resource/about.jpg" alt=""></div>
+                            <div class="row clearfix">
+                                <!--Text Column-->
+                                <div class="text-column col-md-6 col-sm-6 col-xs-12">
+                                    <h3>ما کیستیم؟</h3>
                                     <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        استفاده از طراحان گرافیک است. چاپگرها و
                                     </div>
-
+                                    <div class="btn-box"><a href="about-us.html" class="theme-btn btn-style-one">آشنایی
+                                        بیشتر</a></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="service-block">
-                                <div class="inner-box">
-                                    <!--icon-box-->
-                                    <div class="icon-box">
-                                        <span class="flaticon-people-1"></span>
-                                    </div>
-                                    <h3>قیمت رقابتی</h3>
+                                <!--Text Column-->
+                                <div class="text-column col-md-6 col-sm-6 col-xs-12">
+                                    <h3>ماموریت ما</h3>
                                     <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        استفاده از طراحان گرافیک است. چاپگرها و
                                     </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="service-block">
-                                <div class="inner-box">
-                                    <!--icon-box-->
-                                    <div class="icon-box">
-                                        <span class="flaticon-drawing"></span>
+                                    <div class="signature text-left"><img src="images/resource/signature.png" alt="">
                                     </div>
-                                    <h3>بسته بندی اصولی</h3>
-                                    <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="service-block">
-                                <div class="inner-box">
-                                    <!--icon-box-->
-                                    <div class="icon-box">
-                                        <span class="flaticon-light-bulb"></span>
-                                    </div>
-                                    <h3>استاندارد های به روز</h3>
-                                    <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="content-area">
-                        <h3>ما راه حل های کامل و منحصر به فرد ارائه می‌کنیم</h3>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است. چاپگرها و متون بلکه روزنامه و مجله </p>
 
-                        <div class="link"><a href="#" class="theme-btn btn-style-five">بیشتر بخوانید</a></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!--Gallery Section-->
-    <section class="gallery-section">
-        <div class="auto-container">
-            <!--Title-->
-            <div class="sec-title centered">
-                <h2>آخرین <span>محصولات ما</span></h2>
-            </div>
-            <div class="text-center">
-                <ul class="post-filter list-inline">
-                    <li class="active" data-filter=".default-portfolio-item">
-                        <span>مشاهده همه</span>
-                    </li>
-                    <li data-filter=".Essence">
-                        <span>اسانس</span>
-                    </li>
-                    <li data-filter=".Solver">
-                        <span>حلال</span>
-                    </li>
-                    <li data-filter=".FoodIndustry">
-                        <span>صنایع غذایی</span>
-                    </li>
-                    <li data-filter=".Growth">
-                        <span>صنایع کشاورزی</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="row-15 grid clearfix masonary-layout filter-layout">
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item FoodIndustry Solver col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/13.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>اسید استیک</h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/14.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>سوپر جاذب SAP
-                                        </h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item Essence FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/10.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>اسانس آفتابگردان</h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/15.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>اسید چرب نارگیل</h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item Essence col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/12.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>اسانس آووکادو
-                                        </h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Default Portfolio Item-->
-                <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="inner-box">
-                        <a href="product-detail.html">
-                            <figure class="effect-bubba">
-                                <img src="images/gallery/16.jpg" alt="image">
-                                <figcaption>
-                                    <div class="content">
-                                        <h2>گلیسیرین</h2>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="parallax" style="background-color: black;">
-        <div class="auto-container">
-            <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ <br> لورم ایپسوم متن ساختگی با تولید سادگی
-            </h2>
-            <div class="link">
-                <a href="#"><span class="fa fa-whatsapp"></span></a>
-                <a href="#"><span class="fa fa-twitter"></span></a>
-                <a href="#"><span class="fa fa-telegram"></span></a>
-                <a href="#"><span class="fa fa-instagram"></span></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="news-section gray-bg">
-        <div class="auto-container">
-            <!--Title-->
-            <div class="sec-title centered">
-                <h2>آخرین <span>مقالات</span></h2>
-            </div>
-
-            <div class="row clearfix equal-height">
-
-                <!--News Style One-->
-                <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms"
-                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/news-img-2.jpg" alt=""></figure>
-                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                    class="fa fa-link"></span></a></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="post-meta">
-                                <ul class="clearfix">
-                                    <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور 1401</a></li>
-                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                </ul>
-                            </div>
-                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
-                            </h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!--News Style One-->
-                <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="inner-box wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms"
-                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
-                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                    class="fa fa-link"></span></a></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="post-meta">
-                                <ul class="clearfix">
-                                    <li><a href="#"><span class="fa fa-calendar"></span> 2 شهریور 1401</a></li>
-                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                </ul>
-                            </div>
-                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                و با استفاده</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--News Style One-->
-                <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="inner-box wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms"
-                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
-                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                    class="fa fa-link"></span></a></div>
-                        </div>
-                        <div class="lower-box">
-                            <div class="post-meta">
-                                <ul class="clearfix">
-                                    <li><a href="#"><span class="fa fa-calendar"></span> 16 مرداد 1401</a></li>
-                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                </ul>
-                            </div>
-                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                چاپ</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
+        </section>
+        <!--End Two Default Section-->
 
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <!--Footer Upper-->
-        <div class="footer-upper">
+        <div class="tow-column">
             <div class="auto-container">
+                <!--Title-->
+                <div class="sec-title centered light">
+                    <h2>ویژگی های <span>منحصر به فرد ما</span></h2>
+                </div>
                 <div class="row clearfix">
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <div class="row equal-height">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="service-block">
+                                    <div class="inner-box">
+                                        <!--icon-box-->
+                                        <div class="icon-box">
+                                            <span class="flaticon-tools"></span>
+                                        </div>
+                                        <h3>تضمین کیفیت</h3>
+                                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        </div>
 
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                            <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget about-widget">
-                                    <h3>راه های ارتباط با ما</h3>
-                                    <div class="text margin-bott-30">
-                                        <ul>
-                                            <li><i class="fa fa-map-marker"></i> آدرس : مشهد، بلوار وکیل آباد، بین
-                                                وکیل آباد 35و37، پلاک 847 طبقه اول
-                                            </li>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                <span>38676767-051</span>
-                                            </li>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                <span>38693859-051</span>
-                                            </li>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                <span>38915692-051</span>
-                                            </li>
-                                            <li><i class="fa fa-mobile" aria-hidden="true"></i> موبایل :
-                                                <span>09033222110</span>
-                                            </li>
-                                            <li><i class="fa fa-whatsapp" aria-hidden="true"></i> واتس اپ :
-                                                <span>09033222110</span>
-                                            </li>
-                                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> ایمیل :
-                                                info@sorenchem.com
-                                            </li>
-                                        </ul>
                                     </div>
-
-                                    <div class="social-links">
-                                        <a href="#"><span class="fa fa-whatsapp"></span></a>
-                                        <a href="#"><span class="fa fa-telegram"></span></a>
-                                        <a href="#"><span class="fa fa-instagram"></span></a>
-                                    </div>
-
                                 </div>
                             </div>
-
-                            <!--Footer Column-->
-                            <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget links-widget">
-                                    <h3>خدمات</h3>
-                                    <div class="row clearfix">
-
-                                        <div class="col-lg-6 col-sm-6 col-xs-6">
-                                            <ul>
-                                                <li><i class="fa fa-angle-left"></i><a href="#">خرید اسانس</a></li>
-                                                <li><i class="fa fa-angle-left"></i><a href="#">خرید مواد اولیه</a>
-                                                </li>
-                                                <li><i class="fa fa-angle-left"></i><a href="/faq.html">سوالات
-                                                    متداول</a></li>
-                                                <li><i class="fa fa-angle-left"></i>
-                                                    <a href="#">قوانین و مقررات</a>
-                                                </li>
-                                                <li><i class="fa fa-angle-left"></i><a href="#">فرم ثبت شکایت</a>
-                                                </li>
-                                            </ul>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="service-block">
+                                    <div class="inner-box">
+                                        <!--icon-box-->
+                                        <div class="icon-box">
+                                            <span class="flaticon-people-1"></span>
                                         </div>
+                                        <h3>قیمت رقابتی</h3>
+                                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        </div>
+
                                     </div>
-
                                 </div>
                             </div>
-
-                        </div>
-                    </div>
-                    <!--Two 4th column End-->
-
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-
-                            <!--Footer Column-->
-                            <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget popular-posts">
-                                    <h3>آخرین مقالات</h3>
-                                    <article class="post">
-                                        <figure class="post-thumb">
-                                            <a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg"
-                                                                            alt=""></a>
-                                        </figure>
-                                        <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی
-                                            نامفهوم</a></div>
-                                        <ul class="post-meta clearfix">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>30 مرداد 1398 </a></li>
-                                        </ul>
-                                    </article>
-                                    <article class="post">
-                                        <figure class="post-thumb">
-                                            <a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg"
-                                                                            alt=""></a>
-                                        </figure>
-                                        <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="service-block">
+                                    <div class="inner-box">
+                                        <!--icon-box-->
+                                        <div class="icon-box">
+                                            <span class="flaticon-drawing"></span>
                                         </div>
-                                        <ul class="post-meta clearfix">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>18 مرداد 1398 </a></li>
-                                        </ul>
-                                    </article>
+                                        <h3>بسته بندی اصولی</h3>
+                                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-
-                            <!--Footer Column-->
-                            <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget newsletter-widget">
-                                    <h3>اشتراک خبرنامه</h3>
-
-                                    <div class="newsletter-form">
-                                        <div class="text padd-bott-20">
-                                            <p>برای دریافت جدیدترین اخبار و به روز رسانی ها در لیست ایمیل ما مشترک
-                                                شوید.</p>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="service-block">
+                                    <div class="inner-box">
+                                        <!--icon-box-->
+                                        <div class="icon-box">
+                                            <span class="flaticon-light-bulb"></span>
                                         </div>
-                                        <form method="post" action="index.html">
-                                            <div class="form-group">
-                                                <input type="email" name="useremail" value=""
-                                                       placeholder="آدرس ایمیل" required="">
-                                                <button type="submit" class="theme-btn btn-submit"><span
-                                                        class="fa fa-envelope-o"></span></button>
-                                            </div>
-                                            <div class="confid"><em>ما به شما اسپم نخواهیم فرستاد <br>و آدرس ایمیل
-                                                شما منتشر نخواهد شد.</em></div>
-                                        </form>
+                                        <h3>استاندارد های به روز</h3>
+                                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--Two 4th column End-->
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="content-area">
+                            <h3>ما راه حل های کامل و منحصر به فرد ارائه می‌کنیم</h3>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله </p>
 
+                            <div class="link"><a href="#" class="theme-btn btn-style-five">بیشتر بخوانید</a></div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-        <!--Footer Bottom-->
-        <div class="footer-bottom">
+        <!--Gallery Section-->
+        <section class="gallery-section">
             <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="copyright-text">تمام حقوق این سایت برای <a href="https://sorenchem.com/"
-                                                                               target="_blank">سورن شیمی</a> محفوظ است
+                <!--Title-->
+                <div class="sec-title centered">
+                    <h2>آخرین <span>محصولات ما</span></h2>
+                </div>
+                <div class="text-center">
+                    <ul class="post-filter list-inline">
+                        <li class="active" data-filter=".default-portfolio-item">
+                            <span>مشاهده همه</span>
+                        </li>
+                        <li data-filter=".Essence">
+                            <span>اسانس</span>
+                        </li>
+                        <li data-filter=".Solver">
+                            <span>حلال</span>
+                        </li>
+                        <li data-filter=".FoodIndustry">
+                            <span>صنایع غذایی</span>
+                        </li>
+                        <li data-filter=".Growth">
+                            <span>صنایع کشاورزی</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row-15 grid clearfix masonary-layout filter-layout">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item FoodIndustry Solver col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/13.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>اسید استیک</h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/14.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>سوپر جاذب SAP
+                                            </h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item Essence FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/10.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>اسانس آفتابگردان</h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/15.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>اسید چرب نارگیل</h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item Essence col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/12.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>اسانس آووکادو
+                                            </h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="product-detail.html">
+                                <figure class="effect-bubba">
+                                    <img src="images/gallery/16.jpg" alt="image">
+                                    <figcaption>
+                                        <div class="content">
+                                            <h2>گلیسیرین</h2>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+        </section>
 
-    </footer>
+        <section class="parallax" style="background-color: black;">
+            <div class="auto-container">
+                <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ <br> لورم ایپسوم متن ساختگی با تولید سادگی
+                </h2>
+                <div class="link">
+                    <a href="#"><span class="fa fa-whatsapp"></span></a>
+                    <a href="#"><span class="fa fa-twitter"></span></a>
+                    <a href="#"><span class="fa fa-telegram"></span></a>
+                    <a href="#"><span class="fa fa-instagram"></span></a>
+                </div>
+            </div>
+        </section>
 
-</div>
-<!--End pagewrapper-->
+        <section class="news-section gray-bg">
+            <div class="auto-container">
+                <!--Title-->
+                <div class="sec-title centered">
+                    <h2>آخرین <span>مقالات</span></h2>
+                </div>
 
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+                <div class="row clearfix equal-height">
 
-<!--whatsapp-->
-<div class="cresta-whatsapp-chat-box onBoth">
-    <svg id="whatsapp-msng-icon" data-name="whatsapp icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-        <path
-                d="M519 454c4 2 7 10-1 31-6 16-33 29-49 29-96 0-189-113-189-167 0-26 9-39 18-48 8-9 14-10 18-10h12c4 0 9 0 13 10l19 44c5 11-9 25-15 31-3 3-6 7-2 13 25 39 41 51 81 71 6 3 10 1 13-2l19-24c5-6 9-4 13-2zM401 200c-110 0-199 90-199 199 0 68 35 113 35 113l-20 74 76-20s42 32 108 32c110 0 199-89 199-199 0-111-89-199-199-199zm0-40c133 0 239 108 239 239 0 132-108 239-239 239-67 0-114-29-114-29l-127 33 34-124s-32-49-32-119c0-131 108-239 239-239z"
-                transform="scale(1.2, 1.2), translate(-65 -65)" style="fill:#ffffff"></path>
-    </svg>
-    <svg id="close-icon" data-name="close icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.98 39.99">
-        <path
-                d="M48.88,11.14a3.87,3.87,0,0,0-5.44,0L30,24.58,16.58,11.14a3.84,3.84,0,1,0-5.44,5.44L24.58,30,11.14,43.45a3.87,3.87,0,0,0,0,5.44,3.84,3.84,0,0,0,5.44,0L30,35.45,43.45,48.88a3.84,3.84,0,0,0,5.44,0,3.87,3.87,0,0,0,0-5.44L35.45,30,48.88,16.58A3.87,3.87,0,0,0,48.88,11.14Z"
-                transform="translate(-10.02 -10.02)" style="fill:#ffffff"></path>
-    </svg>
-</div>
-<div class="cresta-whatsapp-chat-container">
-    <div class="cresta-whatsapp-chat-top-header"><span>Cresta Help Chat</span></div>
-    <div class="cresta-whatsapp-inner">
-            <textarea class="cresta-whatsapp-textarea"
-                      placeholder="Hi there! Use this box to send me a message via WhatsApp..."></textarea>
+                    <!--News Style One-->
+                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms"
+                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                            <div class="image-box">
+                                <figure class="image"><img src="images/resource/news-img-2.jpg" alt=""></figure>
+                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
+                                        class="fa fa-link"></span></a></div>
+                            </div>
+                            <div class="lower-box">
+                                <div class="post-meta">
+                                    <ul class="clearfix">
+                                        <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور 1401</a></li>
+                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
+                                    </ul>
+                                </div>
+                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                </h3>
+                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--News Style One-->
+                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner-box wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms"
+                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                            <div class="image-box">
+                                <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
+                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
+                                        class="fa fa-link"></span></a></div>
+                            </div>
+                            <div class="lower-box">
+                                <div class="post-meta">
+                                    <ul class="clearfix">
+                                        <li><a href="#"><span class="fa fa-calendar"></span> 2 شهریور 1401</a></li>
+                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
+                                    </ul>
+                                </div>
+                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                    و با استفاده</a></h3>
+                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--News Style One-->
+                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner-box wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms"
+                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
+                            <div class="image-box">
+                                <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
+                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
+                                        class="fa fa-link"></span></a></div>
+                            </div>
+                            <div class="lower-box">
+                                <div class="post-meta">
+                                    <ul class="clearfix">
+                                        <li><a href="#"><span class="fa fa-calendar"></span> 16 مرداد 1401</a></li>
+                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
+                                    </ul>
+                                </div>
+                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                    چاپ</a></h3>
+                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
     </div>
-    <div class="cresta-whatsapp-to-send">
-        <div class="cresta-whatsapp-send">Send via WhatsApp
-            <svg version="1.1" id="whatsapp-msng-icon-send"
-                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 width="20px" height="12px" viewBox="0 0 14 26" enable-background="new 0 0 14 26"
-                 xml:space="preserve">
-                    <path
-                            d="M1,0c0.256,0,0.512,0.098,0.707,0.293l12,12c0.391,0.391,0.391,1.023,0,1.414l-12,12c-0.391,0.391-1.023,0.391-1.414,0s-0.391-1.023,0-1.414L11.586,13L0.293,1.707c-0.391-0.391-0.391-1.023,0-1.414C0.488,0.098,0.744,0,1,0z"
-                            style="fill: none; stroke-width:3; stroke:#ffffff"></path>
-                </svg>
-        </div>
-    </div>
-</div>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        var mobileDetect = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-            crestaContainer = document.querySelector('.cresta-whatsapp-chat-container'),
-            crestaBox = document.querySelector('.cresta-whatsapp-chat-box'),
-            crestaOverlay = document.querySelector('.cresta-whatsapp-chat-overlay');
-        if (mobileDetect) {
-            crestaContainer.style.display = 'none';
-            crestaBox.addEventListener('click', () => {
-                window.location = 'whatsapp://send?text=&phone=+989033222110&abid=+989033222110';
-            })
-        } else {
-            if (crestaOverlay) {
-                [crestaBox, crestaOverlay].forEach(item => {
-                    item.addEventListener('click', () => {
-                        if (crestaBox.classList.contains('open')) {
-                            crestaBox.classList.remove('open');
-                            crestaContainer.classList.remove('open');
-                            crestaOverlay?.classList.remove('open');
-                        } else {
-                            crestaBox.classList.add('open');
-                            crestaContainer.classList.add('open');
-                            crestaOverlay?.classList.add('open');
-                            setTimeout(function () {
-                                document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-inner textarea.cresta-whatsapp-textarea').focus();
-                            }, 100);
-                        }
-                    })
-                })
-            } else {
-                crestaBox.addEventListener('click', () => {
-                    if (crestaBox.classList.contains('open')) {
-                        crestaBox.classList.remove('open');
-                        crestaContainer.classList.remove('open');
-                    } else {
-                        crestaBox.classList.add('open');
-                        crestaContainer.classList.add('open');
-                        setTimeout(function () {
-                            document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-inner textarea.cresta-whatsapp-textarea').focus();
-                        }, 100);
-                    }
-                })
-            }
-            document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-send').addEventListener('click', () => {
-                var baseUrl = 'https://web.whatsapp.com/send?phone=+989033222110&text=',
-                    textEncode = encodeURIComponent(document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-textarea').value);
-                window.open(baseUrl + textEncode, '_blank');
-            })
-        }
-    })
-</script>
-<!--End whatsapp-->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/revolution.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/script.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function () {
-
-        $('#itemslider').carousel({interval: 3000});
-
-        $('.carousel-showmanymoveone .item').each(function () {
-            var itemToClone = $(this);
-
-            for (var i = 1; i < 6; i++) {
-                itemToClone = itemToClone.next();
-
-                if (!itemToClone.length) {
-                    itemToClone = $(this).siblings(':first');
-                }
-
-                itemToClone.children(':first-child').clone()
-                    .addClass("cloneditem-" + (i))
-                    .appendTo($(this));
-            }
-        });
-    });
-
-</script>
-<!--[if lt IE 10]>
-<script src="js/jquery.placeholder.min.js" type="text/javascript"></script>
-<script type="text/javascript">$('input, textarea').placeholder();</script>
-<![endif]-->
-
-</body>
-
-</html>
+    <!--End pagewrapper-->
+{% endblock content %}
