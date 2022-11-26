@@ -1,0 +1,516 @@
+<html>
+  <head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0c101b;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@mixin width-float {
+    width: 100%;
+    float: left;
+}
+
+@mixin bg-img-property {
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.block {
+    width: 840px;
+    margin: 10% auto;
+    overflow: hidden;
+}
+
+.box {
+
+    position: relative;
+    height: 130px;
+    line-height: 150px;
+    overflow: hidden;
+    @include bg-img-property;
+}
+
+%box__dir {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+
+    text-align: center;
+    line-height: inherit;
+
+    transition: transform .4s ease;
+
+    &:before {
+        position: absolute;
+
+        content: '';
+
+        width: 100%;
+        height: 100%;
+        transform: rotate(45deg);
+    }
+
+    &:hover {
+        transform: translateX(0);
+        z-index: 1;
+    }
+
+    &:hover:before {
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+}
+
+.box__right {
+    @extend %box__dir;
+    background: rgba(0,0,0,0.43);;
+    transform: translateX(100%);
+
+    &:before {
+        right: 100%;
+        bottom: 0;
+        transform-origin: 100% 100%;
+    }
+
+    &:hover~.box__center {
+        transform: translateX(-100%);
+    }
+}
+
+.box__left {
+    @extend %box__dir;
+    background: rgba(0,0,0,0.43);;
+    transform: translateX(-100%);
+
+    &:before {
+        left: 100%;
+        transform-origin: 0 0;
+    }
+
+    &:hover~.box__center {
+        transform: translateX(100%);
+    }
+}
+
+.box__top {
+    @extend %box__dir;
+    background:rgba(0,0,0,0.43);;
+    transform: translateY(-100%);
+
+    &:before {
+        top: 100%;
+        right: 0;
+        transform-origin: 100% 0;
+    }
+
+    &:hover~.box__center {
+        transform: translateY(100%);
+    }
+}
+
+
+.box__bottom {
+    background: rgba(0,0,0,0.43);;
+    transform: translateY(100%);
+
+    &:before {
+        bottom: 100%;
+        left: 0;
+        transform-origin: 0 100%;
+    }
+
+    &:hover~.box__center {
+        transform: translateY(-100%);
+    }
+}
+
+
+.film-container {
+    position: relative;
+    .row {
+        height: 445px;
+        position: relative;
+        .single-film {
+            width: 280px;
+            height: auto;
+            float: left;
+            padding: 0px 15px;
+            position: absolute;
+            z-index: 4;
+            background: #0c101b;
+       
+                &:nth-child(#{1}) {
+                    top: nth(0%,0%,0%,55%,55%,55%, 1);
+                    left: nth(0%,33%,66%,0%,33%,66%, 1);
+                    transition: all ease .8s;
+                }
+            
+            .play-video {
+                transition: all ease .8s;
+                opacity: 0;
+                background: #0c101b;
+                video {
+                    width: 100%;
+                    height: 100%;
+                    transition: all ease .8s;
+                }
+            }
+            .box-pay-icon {
+                display: block;
+                opacity: 1;
+                z-index: 9;
+            }
+            .video-tag-close {
+                    transition: all ease .5s;
+                    position: absolute;
+                    top: 0px;
+                    right: 9px;
+                    font-size: 28px;
+                    color: #fff;
+                    cursor: pointer;
+                    opacity: 0;
+                    background: #0c101b;
+                    width: 35px;
+                    height: 35px;
+                    text-align: center;
+                    line-height: 36px;
+            }
+            .box {
+                width: 100%;
+                transition: all ease .8s;
+               
+            }
+            .play-movie-icon {
+                    color: #fff;
+                    font-size: 45px;
+                    line-height: 0;
+                    font-weight: bold;
+                }
+            .film-information {
+                margin-top: 6%;
+                transition: all ease .8s;
+                p {
+                    @include width-float;
+                    color: #fff;
+                    font-size: 13px;
+                    margin: 0;
+                    line-height: 14 + 3;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+        .single-film.single-film-animate {
+            left: 33% !important;
+            top: 33% !important;
+            transition: all ease .8s;
+            bottom: 33%;
+            right: 33%;
+            transition: all ease .8s;
+            .film-information {
+                opacity: 0;
+                transition: all ease .8s;
+            }
+            .box-pay-icon {
+                transition: all ease .8s;
+                display: none !important;
+            }
+        }
+
+        .single-film.single-film-active {
+            z-index: 6;
+        }
+        .single-film.video-min {
+            transition: all ease .8s;
+            display: block;
+            opacity: 1;
+            video {
+                margin: 0 auto !important;
+                height: 0% !important;
+                width: 0% !important;
+                margin-left: 40% !important;
+                margin-top: 20% !important;
+                overflow: hidden !important;
+            }
+        }
+        .single-film.single-film-in {
+            z-index: 6;
+            transition: all ease .8s;
+            right: 0 !important;
+            left: 0 !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            height: auto !important;
+            width: 100% !important;
+            .box {
+                height: 100% !important;
+                transition: all ease .8s;
+                width: 100% !important;
+                overflow: visible;
+            }
+            .play-video {
+                transition: all ease .8s;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: 0 auto;
+                text-align: center;
+
+                opacity: 1 !important;
+                video {
+                    transition: all ease .8s;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &:hover {
+                .video-tag-close {
+                    transition: all ease .8s;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+</style>
+  </head>
+  <body>
+<div class="block">
+  <div class="film-container">
+      <div class="row">
+          <!-- single Film 1 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".1s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo1">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+
+                      </video>
+                  </div>
+                  <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid1()"></i>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 1</p>
+              </div>
+          </div>
+          <!-- single Film 1 end -->
+          <!-- single Film 2 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".2s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo2">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+                      </video>
+                  </div>
+                  <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid2()"></i>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 2</p>
+              </div>
+          </div>
+          <!-- single Film 2 end -->
+          <!-- single Film 3 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".3s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo3">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+                      </video>
+                      <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid3()"></i>
+                  </div>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 3</p>
+              </div>
+          </div>
+          <!-- single Film 3 end -->
+          <!-- </div> -->
+          <!-- <div class="row"> -->
+          <!-- single Film 4 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".4s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo4">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+                      </video>
+                      <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid4()"></i>
+                  </div>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 4</p>
+              </div>
+          </div>
+          <!-- single Film 4 end -->
+          <!-- single Film 5 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".5s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo5">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+                      </video>
+                      <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid5()"></i>
+                  </div>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 5</p>
+              </div>
+          </div>
+          <!-- single Film 5 end -->
+          <!-- single Film 6 start -->
+          <div class="single-film wow fadeInDown" data-wow-delay=".6s">
+              <div class="box" style="background: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Big.Buck.Bunny.-.Opening.Screen.png);">
+                  <div class="box__right box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__left box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__top box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="box__bottom box-pay-icon">
+                      <a href="javascript:;">
+                          <i class="play-movie-icon ion-ios-play-outline"></i>
+                      </a>
+                  </div>
+                  <div class="play-video">
+                      <video width="320" height="240" controls id="PlayVideo6">
+                          <source src="https://www.rmp-streaming.com/media/bbb-360p.mp4" type="video/mp4">
+                      </video>
+                      <i class="video-tag-close ion-ios-close-outline" onclick="pauseVid6()"></i>
+                  </div>
+              </div>
+              <div class="film-information">
+                  <p>Big Buck Bunny</p>
+                  <p>Video Gallery 6</p>
+              </div>
+          </div>
+          <!-- single Film 6 end -->
+      </div>
+  </div>
+</div>
+</body>
+</html>
