@@ -1,224 +1,18 @@
-<!DOCTYPE html>
-<html>
+{% extends 'mainlayout.html' %}
+{#{% load render_partial %}#}
 
-<head>
-    <meta charset="utf-8">
-    <title>سورن شیمی Soren Chem</title>
-    <!-- Stylesheets -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/revolution-slider.css" rel="stylesheet">
-    <link href="css/slider-setting.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+{% load static %}
 
-    <!-- Responsive -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+{% block title %}محصولات - جزئیات{% endblock title %}
 
-    <meta name="theme-color" content="#5da73d">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16">
-</head>
-
-<body class="home">
-
+{% block content %}
     <div class="page-wrapper body_wrapper">
 
         <!-- Preloader -->
         <div class="preloader"></div>
 
-
-  <!-- Main Header / Header Style One-->
-  <header class="main-header header-style-three">
-	<!-- Header Top One-->
-	<div class="header-upper">
-		<div class="auto-container">
-			<div class="clearfix">
-
-				<div class="pull-right logo-outer">
-					<!--Logo Box-->
-					<div class="logo-box">
-						<div class="logo">
-							<a href="index.html" title="Factories">
-								<h1 class="logo-text">سورن شیمی</h1>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="pull-left upper-right clearfix">
-					 <div class="upper-display">  
-					<!--Info Box-->
-					<div class="upper-column info-box">
-						<div class="icon-box">
-							<a href="tel:05138676767">
-							  <span class="flaticon-telephone-1"></span>
-							</a>
-						</div>
-						<ul>
-							<li><strong>تلفن ما</strong></li>
-							<li>
-								<a href="tel:05138676767">
-								 051-38676767
-								</a></li>
-						</ul>
-					</div>
-
-					<div class="upper-column info-box">
-						<a href="#" style="margin-left:10px;"><img src="images/flag/uk.png" /></a>
-						<a href="#" style="margin-left:10px;"><img src="images/flag/kw.png" /></a>
-					</div>
-				</div> 
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Header Lower -->
-	<div class="header-lower">
-		<div class="main-box">
-			<div class="auto-container">
-				<div class="outer-container clearfix">
-					<!--Nav Outer-->
-					<div class="nav-outer clearfix">
-						<!-- Main Menu -->
-						<nav class="main-menu">
-							<div class="navbar-header">
-								<!-- Toggle Button -->
-								<button type="button" class="navbar-toggle" data-toggle="collapse"
-									data-target=".navbar-collapse">
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-							</div>
-
-							<div class="navbar-collapse collapse clearfix">
-								<ul class="navigation clearfix">
-									<li><a href="index.html">خانه</a></li>
-									<li><a href="about-us.html">درباره ما</a>
-									</li>
-									<li class="current dropdown">
-										<a href="#">محصولات</a>
-										<ul>
-											<li><a href="product-groups.html">مشاهده همه محصولات</a></li>
-											<li><a href="products.html">اسانس</a></li>
-											<li><a href="#">صنایع غذایی</a></li>
-											<li>
-												<a href="#">صنایع آرایشی و بهداشتی</a>
-											</li>
-										</ul>
-									</li>
-									<li><a href="blog.html">بلاگ</a>
-									</li>
-									<li class="dropdown"><a href="#">گالری</a>
-										<ul>
-											<li><a href="gallery.html">گالری عکس</a></li>
-											<li><a href="gallery-video.html">گالری ویدئو</a></li>
-										</ul>
-									</li>
-									<li><a href="sample-request.html">درخواست نمونه</a></li>
-									<li><a href="contact.html">تماس</a></li>
-
-								</ul>
-							</div>
-						</nav>
-						<!-- Main Menu End-->
-
-						<!--Search Box-->
-						<div class="outer-box2">
-							<!--Search form-->
-							<div class="search-form">
-								<form method="post" action="contact.html">
-									<div class="form-group">
-										<input type="text" name="search" value="" placeholder="جستجو ..."
-											required="">
-										<button type="submit" class="theme-btn"><span
-												class="icon fa fa-search"></span></button>
-									</div>
-								</form>
-							</div>
-						</div>
-
-					</div>
-					<!--Nav Outer End-->
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--Sticky Header-->
-	<div class="sticky-header">
-		<div class="auto-container clearfix">
-			<!--Logo-->
-			<div class="logo pull-right">
-				<a href="index.html" title="Factories">
-					<h2 class="logo-text">سورن شیمی</h2>
-				</a>
-			</div>
-
-			<!--Right Col-->
-			<div class="right-col pull-left">
-				<!-- Main Menu -->
-				<nav class="main-menu">
-					<div class="navbar-header">
-						<!-- Toggle Button -->
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-
-					<div class="navbar-collapse collapse clearfix">
-						<ul class="navigation clearfix">
-							<li><a href="index.html">خانه</a></li>
-							<li><a href="about-us.html">درباره ما</a>
-							</li>
-							<li class="current dropdown">
-								<a href="#">محصولات</a>
-								<ul>
-									<li><a href="product-groups.html">مشاهده همه محصولات</a></li>
-									<li><a href="products.html">اسانس</a></li>
-									<li><a href="#">صنایع غذایی</a></li>
-									<li>
-										<a href="#">صنایع آرایشی و بهداشتی</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="blog.html">بلاگ</a>
-							</li>
-							<li class="dropdown"><a href="#">گالری</a>
-								<ul>
-									<li><a href="gallery.html">گالری عکس</a></li>
-									<li><a href="gallery-video.html">گالری ویدئو</a></li>
-								</ul>
-							</li>
-							<li><a href="sample-request.html">درخواست نمونه</a></li>
-							<li><a href="contact.html">تماس</a></li>
-
-						</ul>
-					</div>
-				</nav>
-				<!-- Main Menu End-->
-			</div>
-
-		</div>
-	</div>
-	<!--End Sticky Header-->
-</header>
-<!--End Main Header -->
-
-
         <!--Page Title-->
-        <section class="page-title" style="background-image:url(images/background/bg-page-title-1.jpg);">
+        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
             <div class="auto-container">
                 <h1>جزئیات محصول</h1>
                 <div class="bread-crumb-outer">
@@ -232,380 +26,263 @@
             </div>
         </section>
 
-
         <!--Sidebar Page-->
         <div class="sidebar-page-container with-left-sidebar">
             <div class="auto-container">
                 <div class="row clearfix">
 
-                   
 
                     <!--Content Side-->
-					<div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
 
-						<!--Shop Single-->
-						<div class="shop-single">
-							<div class="auto-container">
+                        <!--Shop Single-->
+                        <div class="shop-single">
+                            <div class="auto-container">
 
-								<!--Product Details Section-->
-								<section class="product-details">
-									<!--Basic Details-->
-									<div class="basic-details">
-										<div class="row clearfix">
+                                <!--Product Details Section-->
+                                <section class="product-details">
+                                    <!--Basic Details-->
+                                    <div class="basic-details">
+                                        <div class="row clearfix">
                                             <div class="image-column col-md-6 col-sm-6 col-xs-12">
-												<figure class="image-box">
-													<a href="images/resource/22.jpg" class="lightbox-image"><img src="images/resource/22.jpg" alt=""></a>
-												</figure>
-											</div>
-											<div class="info-column col-md-6 col-sm-6 col-xs-12">
-												<div class="details-header">
-													<h3>اسانس رازیانه</h3>
-												</div>
-												<div class="text">
+                                                <figure class="image-box">
+                                                    <a href="images/resource/22.jpg" class="lightbox-image"><img
+                                                            src="images/resource/22.jpg" alt=""></a>
+                                                </figure>
+                                            </div>
+                                            <div class="info-column col-md-6 col-sm-6 col-xs-12">
+                                                <div class="details-header">
+                                                    <h3>اسانس رازیانه</h3>
+                                                </div>
+                                                <div class="text">
                                                     <ul class="detail-products">
                                                         <li>نام فارسی: <span>اسانس رازیانه</span></li>
-                                                        <li>نام لاتین:  <span>Fennel essential oil</span></li>
-                                                        <li>فرمول شیمیایی:  <span>C30H40O3</span></li>
-                                                        <li>نوع بسته بندی:  <span>کارتون</span></li>
-                                                        <li>کشور سازنده:   <span>اسپانیا</span></li>
-                                                        <li>کاربرد:   <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                                        <li>نام لاتین: <span>Fennel essential oil</span></li>
+                                                        <li>فرمول شیمیایی: <span>C30H40O3</span></li>
+                                                        <li>نوع بسته بندی: <span>کارتون</span></li>
+                                                        <li>کشور سازنده: <span>اسپانیا</span></li>
+                                                        <li>کاربرد: <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
                                                         </span></li>
                                                     </ul>
-                                                    <div class="stock"><a href="#"><i class="fa fa-download" style="margin-left: 5px;" aria-hidden="true"></i>دانلود آنالیز اسانس رازیانه</a></div>
-												<div class="other-options clearfix mt-30">
-													<button type="button" class="theme-btn btn-style-one add-to-cart">تماس با مدیر فروش</button>
-                                                    <button type="button" class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر فروش</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!--Basic Details-->
+                                                    <div class="stock"><a href="#"><i class="fa fa-download"
+                                                                                      style="margin-left: 5px;"
+                                                                                      aria-hidden="true"></i>دانلود
+                                                        آنالیز اسانس رازیانه</a></div>
+                                                    <div class="other-options clearfix mt-30">
+                                                        <button type="button"
+                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر
+                                                            فروش
+                                                        </button>
+                                                        <button type="button"
+                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر
+                                                            فروش
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Basic Details-->
 
-									<!--Product Info Tabs-->
-									<div class="product-info-tabs">
+                                        <!--Product Info Tabs-->
+                                        <div class="product-info-tabs">
 
-										<!--Product Tabs-->
-										<div class="prod-tabs" id="product-tabs">
+                                            <!--Product Tabs-->
+                                            <div class="prod-tabs" id="product-tabs">
 
-											<!--Tab Btns-->
-											<div class="tab-btns clearfix">
-												<a href="#prod-description" class="tab-btn active-btn">توضیحات</a>
-                                                <a href="#prod-reviews" class="tab-btn">نقد و بررسی ها</a>
-											</div>
+                                                <!--Tab Btns-->
+                                                <div class="tab-btns clearfix">
+                                                    <a href="#prod-description" class="tab-btn active-btn">توضیحات</a>
+                                                    <a href="#prod-reviews" class="tab-btn">نقد و بررسی ها</a>
+                                                </div>
 
-											<!--Tabs Container-->
-											<div class="tabs-container">
+                                                <!--Tabs Container-->
+                                                <div class="tabs-container">
 
-												<!--Tab / Active Tab-->
-												<div class="tab active-tab" id="prod-description">
-													<h3>توضیحات محصول</h3>
-													<div class="content">
-														<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف</p>
-														<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای</p>
-													</div>
-												</div>
+                                                    <!--Tab / Active Tab-->
+                                                    <div class="tab active-tab" id="prod-description">
+                                                        <h3>توضیحات محصول</h3>
+                                                        <div class="content">
+                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                                                                روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                                                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
+                                                                هدف</p>
+                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+                                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
+                                                                روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
+                                                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف
+                                                                بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و
+                                                                سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
+                                                                را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان
+                                                                رایانه ای</p>
+                                                        </div>
+                                                    </div>
 
-												<!--Tab-->
-												<div class="tab" id="prod-reviews">
-													<h3>3 نقد و بررسی</h3>
+                                                    <!--Tab-->
+                                                    <div class="tab" id="prod-reviews">
+                                                        <h3>3 نقد و بررسی</h3>
 
-													<!--Reviews Container-->
-													<div class="reviews-container">
+                                                        <!--Reviews Container-->
+                                                        <div class="reviews-container">
 
-														<!--Reviews-->
-														<article class="review-box clearfix">
-															<figure class="rev-thumb"><img src="images/shop/author-1.png" alt=""></figure>
-															<div class="rev-content">
-																<div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-o"></span></div>
-																<div class="rev-info">تونی استارک - 3 شهریور 1398</div>
-																<div class="rev-text">
-																	<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-																</div>
-															</div>
-														</article>
+                                                            <!--Reviews-->
+                                                            <article class="review-box clearfix">
+                                                                <figure class="rev-thumb"><img
+                                                                        src="images/shop/author-1.png" alt=""></figure>
+                                                                <div class="rev-content">
+                                                                    <div class="rating"><span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span> <span
+                                                                                class="fa fa-star-o"></span></div>
+                                                                    <div class="rev-info">تونی استارک - 3 شهریور 1398
+                                                                    </div>
+                                                                    <div class="rev-text">
+                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
+                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
+                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
+                                                                    </div>
+                                                                </div>
+                                                            </article>
 
-														<article class="review-box clearfix">
-															<figure class="rev-thumb"><img src="images/shop/author-3.jpg" alt=""></figure>
-															<div class="rev-content">
-																<div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-o"></span> <span class="fa fa-star-o"></span></div>
-																<div class="rev-info">استیو راجرز - 30 مرداد 1398</div>
-																<div class="rev-text">
-																	<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-																</div>
-															</div>
-														</article>
+                                                            <article class="review-box clearfix">
+                                                                <figure class="rev-thumb"><img
+                                                                        src="images/shop/author-3.jpg" alt=""></figure>
+                                                                <div class="rev-content">
+                                                                    <div class="rating"><span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span> <span
+                                                                                class="fa fa-star-o"></span> <span
+                                                                                class="fa fa-star-o"></span></div>
+                                                                    <div class="rev-info">استیو راجرز - 30 مرداد 1398
+                                                                    </div>
+                                                                    <div class="rev-text">
+                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
+                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
+                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
+                                                                    </div>
+                                                                </div>
+                                                            </article>
 
-														<article class="review-box clearfix">
-															<figure class="rev-thumb"><img src="images/shop/author-4.jpg" alt=""></figure>
-															<div class="rev-content">
-																<div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
-																<div class="rev-info">پیتر پارکر - 23 مرداد 1398</div>
-																<div class="rev-text">
-																	<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-																</div>
-															</div>
-														</article>
+                                                            <article class="review-box clearfix">
+                                                                <figure class="rev-thumb"><img
+                                                                        src="images/shop/author-4.jpg" alt=""></figure>
+                                                                <div class="rev-content">
+                                                                    <div class="rating"><span class="fa fa-star"></span>
+                                                                        <span class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span> <span
+                                                                                class="fa fa-star"></span></div>
+                                                                    <div class="rev-info">پیتر پارکر - 23 مرداد 1398
+                                                                    </div>
+                                                                    <div class="rev-text">
+                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
+                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
+                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
+                                                                    </div>
+                                                                </div>
+                                                            </article>
 
-													</div>
+                                                        </div>
 
-													<!--Add Review-->
-													<div class="add-review">
-														<h3>یک نقد و بررسی بنویسید</h3>
+                                                        <!--Add Review-->
+                                                        <div class="add-review">
+                                                            <h3>یک نقد و بررسی بنویسید</h3>
 
-														<form method="post" action="shop-single.html">
-															<div class="row clearfix">
-                                                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
-																	<label>امتیاز </label>
-																	<div class="rating">
-																		<a href="#" class="rate-box" title="1 از 5"><span class="fa fa-star"></span></a>
-																		<a href="#" class="rate-box" title="2 از 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-																		<a href="#" class="rate-box" title="3 از 5"><span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span></a>
-																		<a href="#" class="rate-box" title="4 از 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-																		<a href="#" class="rate-box" title="5 از 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-																	</div>
-																</div>
-																<div class="form-group col-md-6 col-sm-12 col-xs-12">
-																	<label>نام *</label>
-																	<input type="text" name="name" value="" placeholder="" required>
-																</div>
-																<div class="form-group col-md-6 col-sm-12 col-xs-12">
-																	<label>ایمیل *</label>
-																	<input type="email" name="email" value="" placeholder="" required>
-																</div>
-																<div class="form-group col-md-12 col-sm-12 col-xs-12">
-																	<label>نقد و بررسی شما</label>
-																	<textarea name="review-message"></textarea>
-																</div>
-																<div class="form-group text-left col-md-12 col-sm-12 col-xs-12">
-																	<button type="button" class="theme-btn btn-style-one">افزودن نقد و بررسی</button>
-																</div>
-															</div>
-														</form>
-													</div>
+                                                            <form method="post" action="shop-single.html">
+                                                                <div class="row clearfix">
+                                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                                        <label>امتیاز </label>
+                                                                        <div class="rating">
+                                                                            <a href="#" class="rate-box" title="1 از 5"><span
+                                                                                    class="fa fa-star"></span></a>
+                                                                            <a href="#" class="rate-box" title="2 از 5"><span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span></a>
+                                                                            <a href="#" class="rate-box" title="3 از 5"><span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"> </span> <span
+                                                                                    class="fa fa-star"></span></a>
+                                                                            <a href="#" class="rate-box" title="4 از 5"><span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span></a>
+                                                                            <a href="#" class="rate-box" title="5 از 5"><span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                                                        <label>نام *</label>
+                                                                        <input type="text" name="name" value=""
+                                                                               placeholder="" required>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                                                        <label>ایمیل *</label>
+                                                                        <input type="email" name="email" value=""
+                                                                               placeholder="" required>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                                        <label>نقد و بررسی شما</label>
+                                                                        <textarea name="review-message"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group text-left col-md-12 col-sm-12 col-xs-12">
+                                                                        <button type="button"
+                                                                                class="theme-btn btn-style-one">افزودن
+                                                                            نقد و بررسی
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Content Side-->
 
-
-												</div>
-
-											</div>
-										</div>
-
-									</div>
-								</section>
-
-							</div>
-						</div>
-
-					</div>
-					<!--Content Side-->
-
-                        <!--Sidebar-->
-                        <div class="sidebar-side pull-right col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding:25px 50px 0 0;">
-                            <h3>راه های ارتباط با ما</h3>
-                            <ul class="mt-20 contact-us">
-                                <li>
-                                    <a href="tel:+985138676767">
+                    <!--Sidebar-->
+                    <div class="sidebar-side pull-right col-lg-3 col-md-4 col-sm-12 col-xs-12"
+                         style="padding:25px 50px 0 0;">
+                        <h3>راه های ارتباط با ما</h3>
+                        <ul class="mt-20 contact-us">
+                            <li>
+                                <a href="tel:+985138676767">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <span>051-38676767</span>
                                 </a>
-                                </li>
-                                <li>
-                                    <a href="tel:+989033222110">
-                                        <i class="fa fa-mobile" style="font-size: 24px;" aria-hidden="true"></i>
+                            </li>
+                            <li>
+                                <a href="tel:+989033222110">
+                                    <i class="fa fa-mobile" style="font-size: 24px;" aria-hidden="true"></i>
                                     <span>09033222110</span>
                                 </a>
-                                </li>
-                                <li>
-                                    <a href="tel:+989033222110"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                            </li>
+                            <li>
+                                <a href="tel:+989033222110"><i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     <span>09033222110</span>
                                 </a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>
                                     info@sorenchem.com</li>
-                                </a>
-                            </ul>
-                        </div>
-                        <!--Sidebar-->
+                            </a>
+                        </ul>
+                    </div>
+                    <!--Sidebar-->
                 </div>
             </div>
         </div>
 
-        <footer class="main-footer">
-            <!--Footer Upper-->
-            <div class="footer-upper">
-                <div class="auto-container">
-                    <div class="row clearfix">
-
-                        <!--Two 4th column-->
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
-                                <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                    <div class="footer-widget about-widget">
-                                        <h3>راه های ارتباط با ما</h3>
-                                        <div class="text margin-bott-30">
-                                            <ul>
-                                                <li><i class="fa fa-map-marker"></i> آدرس : مشهد، بلوار وکیل آباد، بین
-                                                    وکیل آباد 35و37، پلاک 847 طبقه اول</li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                    <span>38676767-051</span>
-                                                </li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                    <span>38693859-051</span>
-                                                </li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                                    <span>38915692-051</span>
-                                                </li>
-                                                <li><i class="fa fa-mobile" aria-hidden="true"></i> موبایل :
-                                                    <span>09033222110</span>
-                                                </li>
-                                                <li><i class="fa fa-whatsapp" aria-hidden="true"></i> واتس اپ :
-                                                    <span>09033222110</span>
-                                                </li>
-                                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> ایمیل :
-                                                    info@sorenchem.com</li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="social-links">
-                                            <a href="#"><span class="fa fa-whatsapp"></span></a>
-                                            <a href="#"><span class="fa fa-telegram"></span></a>
-                                            <a href="#"><span class="fa fa-instagram"></span></a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <!--Footer Column-->
-                                <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                    <div class="footer-widget links-widget">
-                                        <h3>خدمات</h3>
-                                        <div class="row clearfix">
-
-                                            <div class="col-lg-6 col-sm-6 col-xs-6">
-                                                <ul>
-                                                    <li><i class="fa fa-angle-left"></i><a href="#">خرید اسانس</a></li>
-                                                    <li><i class="fa fa-angle-left"></i><a href="#">خرید مواد اولیه</a>
-                                                    </li>
-                                                    <li><i class="fa fa-angle-left"></i><a href="/faq.html">سوالات
-                                                            متداول</a></li>
-                                                    <li><i class="fa fa-angle-left"></i>
-                                                        <a href="#">قوانین و مقررات</a>
-                                                    </li>
-                                                    <li><i class="fa fa-angle-left"></i><a href="#">فرم ثبت شکایت</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!--Two 4th column End-->
-
-                        <!--Two 4th column-->
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
-
-                                <!--Footer Column-->
-                                <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                    <div class="footer-widget popular-posts">
-                                        <h3>آخرین مقالات</h3>
-                                        <article class="post">
-                                            <figure class="post-thumb">
-                                                <a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg"
-                                                        alt=""></a>
-                                            </figure>
-                                            <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی
-                                                    نامفهوم</a></div>
-                                            <ul class="post-meta clearfix">
-                                                <li><a href="#"><i class="fa fa-calendar"></i>30 مرداد 1398 </a></li>
-                                            </ul>
-                                        </article>
-                                        <article class="post">
-                                            <figure class="post-thumb">
-                                                <a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg"
-                                                        alt=""></a>
-                                            </figure>
-                                            <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                            </div>
-                                            <ul class="post-meta clearfix">
-                                                <li><a href="#"><i class="fa fa-calendar"></i>18 مرداد 1398 </a></li>
-                                            </ul>
-                                        </article>
-                                    </div>
-                                </div>
-
-                                <!--Footer Column-->
-                                <div class="col-lg-6 col-sm-6 col-xs-12 column">
-                                    <div class="footer-widget newsletter-widget">
-                                        <h3>اشتراک خبرنامه</h3>
-
-                                        <div class="newsletter-form">
-                                            <div class="text padd-bott-20">
-                                                <p>برای دریافت جدیدترین اخبار و به روز رسانی ها در لیست ایمیل ما مشترک
-                                                    شوید.</p>
-                                            </div>
-                                            <form method="post" action="index.html">
-                                                <div class="form-group">
-                                                    <input type="email" name="useremail" value=""
-                                                        placeholder="آدرس ایمیل" required="">
-                                                    <button type="submit" class="theme-btn btn-submit"><span
-                                                            class="fa fa-envelope-o"></span></button>
-                                                </div>
-                                                <div class="confid"><em>ما به شما اسپم نخواهیم فرستاد <br>و آدرس ایمیل
-                                                        شما منتشر نخواهد شد.</em></div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Two 4th column End-->
-
-                    </div>
-
-                </div>
-            </div>
-
-            <!--Footer Bottom-->
-            <div class="footer-bottom">
-                <div class="auto-container">
-                    <div class="row clearfix">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="copyright-text">تمام حقوق این سایت برای <a href="https://sorenchem.com/"
-                                    target="_blank">سورن شیمی</a> محفوظ است </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </footer>
-
     </div>
     <!--End pagewrapper-->
-
-    <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/revolution.min.js"></script>
-	<script src="js/jquery.fancybox.pack.js"></script>
-	<script src="js/jquery.fancybox-media.js"></script>
-	<script src="js/owl.js"></script>
-	<script src="js/wow.js"></script>
-	<script src="js/appear.js"></script>
-	<script src="js/nouislider.js"></script>
-	<script src="js/jquery.bootstrap-touchspin.js"></script>
-	<script src="js/script.js"></script>
-    <!--[if lt IE 10]>
-	<script src="js/jquery.placeholder.min.js" type="text/javascript"></script>
-	<script type="text/javascript">$('input, textarea').placeholder();</script>
-	<![endif]-->
-</body>
-
-</html>
+{% endblock content %}

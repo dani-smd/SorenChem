@@ -20,3 +20,59 @@ def index_view(request):
     #     "banner_mobile": BannerMobile.objects.all(),
     # }
     return render(request, "index.html", context=None)
+
+
+def not_found(request):
+    return render(request, "404.html", context=None)
+
+
+def contact_us(request):
+    return render(request, "contact.html", context=None)
+
+
+def about_us(request):
+    return render(request, "about-us.html", context=None)
+
+
+def blogs(request):
+    return render(request, "blog.html", context=None)
+
+
+def blog_detail(request):
+    return render(request, "blog-single.html", context=None)
+
+
+def faq(request):
+    return render(request, "faq.html", context=None)
+
+
+def gallery_image(request):
+    return render(request, "gallery.html", context=None)
+
+
+def gallery_video(request):
+    return render(request, "gallery-video.html", context=None)
+
+
+def product_detail(request):
+    return render(request, "product-detail.html", context=None)
+
+
+def product_group(request):
+    return render(request, "product-groups.html", context=None)
+
+
+def products(request):
+    return render(request, "products.html", context=None)
+
+
+def sample_request(request):
+    return render(request, "sample-request.html", context=None)
+
+
+def header_view(request):
+    return render(request, "index.html", context=None)
+
+
+def footer_view(request):
+    return render(request, "index.html", context=None)
