@@ -1,8 +1,17 @@
 from django.db import models
 
-
 # from image_optimizer.fields import OptimizedImageField
 # Create your models here.
+
+CATEGORY = (
+    ("AI", "Agriculture Industry"),  # صنایع کشاورزی
+    ("ES", "Essence"),  # اسانس‌ها
+    ('FI', "Food Industry"),  # صنایع غذایی
+    ('SO', "solvers"),  # حلال‌ها
+    ('WI', "Water Treatment Industries"),  # صنایع تصفیه آب
+    ('CI', "Cosmetics Industry")  # صنایع آرایشی و بهداشتی
+)
+
 
 class GeneralInfo(models.Model):
     company_name = models.CharField(max_length=500, verbose_name="نام شرکت")
@@ -60,6 +69,7 @@ class MainBanner(models.Model):
 
 class ProductGroup(models.Model):
     name = models.CharField(max_length=500, verbose_name="نام گروه")
+    type = models.CharField(max_length=20, choices=CATEGORY, default=None)
     description = models.TextField(verbose_name="توضیحات")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
@@ -69,6 +79,28 @@ class ProductGroup(models.Model):
     class Meta:
         verbose_name = "دسته محصول"
         verbose_name_plural = "دسته محصولات"
+
+
+class Tags(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام تگ")
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "تگ"
+        verbose_name_plural = "تگ‌ها"
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام دسته")
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "دسته"
+        verbose_name_plural = "دسته‌ها"
 
 
 class ProductDetail(models.Model):
@@ -84,6 +116,9 @@ class ProductDetail(models.Model):
     image_2 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True, verbose_name="تصویر دو محصول")
     image_3 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True, verbose_name="تصویر سه محصول")
     description = models.TextField(verbose_name="توضیحات")
+    product_group = models.ForeignKey(ProductGroup, on_delete=models.CASCADE, verbose_name="دسته محصول")
+    tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با محصول")
+    category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با محصول")
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
@@ -96,10 +131,11 @@ class ProductDetail(models.Model):
 
 
 class ChatProductDetail(models.Model):
-    username = models.CharField(max_length=500, verbose_name="عنوان")
-    email = models.CharField(max_length=500, verbose_name="عنوان")
+    username = models.CharField(max_length=500, verbose_name="نام و نشان")
+    email = models.CharField(max_length=50, verbose_name="ایمیل")
+    phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
     text = models.TextField(verbose_name="توضیحات")
-    score = models.IntegerField(max_length=10, default=0, verbose_name="امتیاز")
+    score = models.IntegerField(default=0, verbose_name="امتیاز")
     product_detail = models.ForeignKey(ProductDetail, on_delete=models.CASCADE, null=True, blank=True,
                                        verbose_name="جزيیات محصول")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
@@ -187,36 +223,104 @@ class FrequentlyAskedQuestion(models.Model):
 
 
 class Blog(models.Model):
-    pass
+    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    text = models.TextField(null=True, blank=True, verbose_name="متن مقاله")
+    tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با مقاله")
+    category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با محصول")
+    image_1 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر یک مقاله")
+    image_2 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر دو مقاله")
+    image_3 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر سه مقاله")
+    views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
+    def __str__(self) -> str:
+        return self.title
 
-class Tags(models.Model):
-    pass
-
-
-class Category(models.Model):
-    pass
+    class Meta:
+        verbose_name = "مقاله"
+        verbose_name_plural = "مقالات"
 
 
 class ChatBlog(models.Model):
-    pass
+    username = models.CharField(max_length=500, verbose_name="نام")
+    email = models.CharField(max_length=50, verbose_name="ایمیل")
+    phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
+    text = models.TextField(verbose_name="توضیحات")
+    score = models.IntegerField(default=0, verbose_name="امتیاز")
+    Blog = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True, blank=True,
+                             verbose_name="مقاله")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+
+    def __str__(self) -> str:
+        return self.username
+
+    class Meta:
+        verbose_name = "چت مقاله"
+        verbose_name_plural = "چت مقالات"
 
 
 class ImageGallery(models.Model):
-    pass
+    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    text = models.TextField(null=True, blank=True, verbose_name="متن مرتبط با تصویر")
+    image = models.ImageField(upload_to="imageGallery/%Y/%m", null=True, blank=True, verbose_name="تصویر")
+
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name = "تصویر"
+        verbose_name_plural = "گالری تصاویر"
 
 
 class VideoGallery(models.Model):
-    pass
+    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    text = models.TextField(null=True, blank=True, verbose_name="متن مرتبط با ویدئو")
+    video = models.ImageField(upload_to="videoGallery/%Y/%m", null=True, blank=True, verbose_name="ویدئو")
+
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name = "ویدئو"
+        verbose_name_plural = "گالری ویدئو"
 
 
 class SampleRequierment(models.Model):
-    pass
+    name = models.CharField(max_length=500, verbose_name="نام")
+    company_name = models.CharField(max_length=500, verbose_name="نام شرکت")
+    email = models.CharField(max_length=50, verbose_name="ایمیل")
+    phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
+    description = models.TextField(null=True, blank=True, verbose_name="توضیحات")
+    sample = models.TextField(null=True, blank=True, verbose_name="نمونه درخواستی")
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "نمونه درخواستی"
+        verbose_name_plural = "نمونه‌های درخواستی"
 
 
 class ContactUs(models.Model):
-    pass
+    name = models.CharField(max_length=500, verbose_name="نام")
+    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    email = models.CharField(max_length=50, verbose_name="ایمیل")
+    text = models.TextField(null=True, blank=True, verbose_name="متن تماس با ما")
+
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name = "ارتباط با ما"
+        verbose_name_plural = "ارتباط با ما"
 
 
 class UserEmailBank(models.Model):
-    pass
+    email = models.CharField(max_length=50, verbose_name="ایمیل")
+
+    def __str__(self) -> str:
+        return self.email
+
+    class Meta:
+        verbose_name = "ایمیل"
+        verbose_name_plural = "بانک ایمیل"
