@@ -1,44 +1,46 @@
 from django.db import models
 
+
 # from image_optimizer.fields import OptimizedImageField
 # Create your models here.
-
-CATEGORY = (
-    ("AI", "Agriculture Industry"),  # صنایع کشاورزی
-    ("ES", "Essence"),  # اسانس‌ها
-    ('FI', "Food Industry"),  # صنایع غذایی
-    ('SO', "solvers"),  # حلال‌ها
-    ('WI', "Water Treatment Industries"),  # صنایع تصفیه آب
-    ('CI', "Cosmetics Industry")  # صنایع آرایشی و بهداشتی
-)
+#
+# CATEGORY = (
+#     ("AI", "Agriculture Industry"),  # صنایع کشاورزی
+#     ("ES", "Essence"),  # اسانس‌ها
+#     ('FI', "Food Industry"),  # صنایع غذایی
+#     ('SO', "solvers"),  # حلال‌ها
+#     ('WI', "Water Treatment Industries"),  # صنایع تصفیه آب
+#     ('CI', "Cosmetics Industry")  # صنایع آرایشی و بهداشتی
+# )
 
 
 class GeneralInfo(models.Model):
-    company_name = models.CharField(max_length=500, verbose_name="نام شرکت")
-    company_logo = models.ImageField(upload_to="logo/%Y/%m", default="logo/default_avatar.png",
-                                     verbose_name="لوگو شرکت")
-    address = models.CharField(max_length=5000, verbose_name="آدرس")
-    telephone_1 = models.CharField(max_length=500, verbose_name="شماره تماس اول")
-    telephone_2 = models.CharField(max_length=500, verbose_name="شماره تماس دوم")
-    telephone_3 = models.CharField(max_length=500, verbose_name="شماره تماس سوم")
-    telephone_4 = models.CharField(max_length=500, verbose_name="شماره تماس چهارم")
-    mobile = models.CharField(max_length=500, verbose_name="موبایل")
-    whatsapp_number = models.CharField(max_length=500, verbose_name="شماره تماس واتس‌اپ")
-    twitter = models.CharField(max_length=500, verbose_name="آدرس توییتر")
-    telegram = models.CharField(max_length=500, verbose_name="آدرس تلگرام")
-    instagram = models.CharField(max_length=500, verbose_name="آدرس اینستاگرام")
-    social_network_description = models.TextField(verbose_name="توضیحات شبکه‌ اجتماعی")
-    feature_title_1 = models.CharField(max_length=500, verbose_name="عنوان ویژگی اول")
-    feature_text_1 = models.TextField(verbose_name="محتوا ویژگی اول")
-    feature_title_2 = models.CharField(max_length=500, verbose_name="عنوان ویژگی دوم")
-    feature_text_2 = models.TextField(verbose_name="محتوا ویژگی دوم")
-    feature_title_3 = models.CharField(max_length=500, verbose_name="عنوان ویژگی سوم")
-    feature_text_3 = models.TextField(verbose_name="محتوا ویژگی سوم")
-    feature_title_4 = models.CharField(max_length=500, verbose_name="عنوان ویژگی چهارم")
-    feature_text_4 = models.TextField(verbose_name="محتوا ویژگی چهارم")
-    general_feature_title = models.CharField(max_length=500, verbose_name="عنوان ویژگی عمومی")
-    general_feature_text = models.TextField(verbose_name="محتوا ویژگی عمومی")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+    company_name = models.CharField(max_length=500, verbose_name="نام شرکت", null=True, blank=True)
+    company_logo = models.ImageField(upload_to="logo/%Y/%m", default="logo/default_avatar.png", verbose_name="لوگو",
+                                     null=True, blank=True)
+    address = models.CharField(max_length=5000, verbose_name="آدرس", null=True, blank=True)
+    email = models.CharField(max_length=5000, verbose_name="ایمیل", null=True, blank=True)
+    telephone_1 = models.CharField(max_length=11, verbose_name="شماره تماس اول", null=True, blank=True)
+    telephone_2 = models.CharField(max_length=11, verbose_name="شماره تماس دوم", null=True, blank=True)
+    telephone_3 = models.CharField(max_length=11, verbose_name="شماره تماس سوم", null=True, blank=True)
+    telephone_4 = models.CharField(max_length=11, verbose_name="شماره تماس چهارم", null=True, blank=True)
+    mobile = models.CharField(max_length=11, verbose_name="موبایل", null=True, blank=True)
+    whatsapp_number = models.CharField(max_length=20, verbose_name="شماره تماس واتس‌اپ", null=True, blank=True)
+    twitter = models.CharField(max_length=100, verbose_name="آدرس توییتر", null=True, blank=True)
+    telegram = models.CharField(max_length=100, verbose_name="آدرس تلگرام", null=True, blank=True)
+    instagram = models.CharField(max_length=100, verbose_name="آدرس اینستاگرام", null=True, blank=True)
+    social_network_description = models.TextField(verbose_name="توضیحات شبکه‌ اجتماعی", null=True, blank=True)
+    feature_title_1 = models.CharField(max_length=300, verbose_name="عنوان ویژگی اول", null=True, blank=True)
+    feature_text_1 = models.TextField(verbose_name="محتوا ویژگی اول", null=True, blank=True)
+    feature_title_2 = models.CharField(max_length=300, verbose_name="عنوان ویژگی دوم", null=True, blank=True)
+    feature_text_2 = models.TextField(verbose_name="محتوا ویژگی دوم", null=True, blank=True)
+    feature_title_3 = models.CharField(max_length=300, verbose_name="عنوان ویژگی سوم", null=True, blank=True)
+    feature_text_3 = models.TextField(verbose_name="محتوا ویژگی سوم", null=True, blank=True)
+    feature_title_4 = models.CharField(max_length=300, verbose_name="عنوان ویژگی چهارم", null=True, blank=True)
+    feature_text_4 = models.TextField(verbose_name="محتوا ویژگی چهارم", null=True, blank=True)
+    general_feature_title = models.CharField(max_length=300, verbose_name="عنوان ویژگی عمومی", null=True, blank=True)
+    general_feature_text = models.TextField(verbose_name="محتوا ویژگی عمومی", null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
 
     def __str__(self) -> str:
         return "اطلاعات کلی سایت"
@@ -49,14 +51,14 @@ class GeneralInfo(models.Model):
 
 
 class MainBanner(models.Model):
-    title = models.CharField(max_length=500, verbose_name="عنوان بنر")
-    text = models.TextField(verbose_name="محتوا عنوان")
+    title = models.CharField(max_length=300, verbose_name="عنوان بنر", null=True, blank=True)
+    text = models.TextField(verbose_name="محتوا عنوان", null=True, blank=True)
     image_1 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره یک")
+                                verbose_name="تصویر شماره یک", null=True, blank=True)
     image_2 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره دو")
+                                verbose_name="تصویر شماره دو", null=True, blank=True)
     image_3 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره سه")
+                                verbose_name="تصویر شماره سه", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -68,9 +70,9 @@ class MainBanner(models.Model):
 
 
 class ProductGroup(models.Model):
-    name = models.CharField(max_length=500, verbose_name="نام گروه")
-    type = models.CharField(max_length=20, choices=CATEGORY, default=None)
-    description = models.TextField(verbose_name="توضیحات")
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, verbose_name="والد")
+    name = models.CharField(max_length=300, verbose_name="نام گروه", null=True, blank=True)
+    description = models.TextField(verbose_name="توضیحات", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -104,19 +106,19 @@ class Category(models.Model):
 
 
 class ProductDetail(models.Model):
-    title = models.CharField(max_length=500, verbose_name="عنوان")
-    farsi_name = models.CharField(max_length=500, verbose_name="نام فارسی")
-    english_name = models.CharField(max_length=500, verbose_name="نام لاتین")
-    formula = models.CharField(max_length=500, verbose_name="فرمول")
-    package_type = models.CharField(max_length=500, verbose_name="نوع بسته‌بندی")
-    made_by = models.CharField(max_length=500, verbose_name="ساخت کشور")
-    application = models.CharField(max_length=500, verbose_name="کاربرد")
+    product_group = models.ManyToManyField(ProductGroup, verbose_name="دسته محصول", null=True, blank=True)
+    title = models.CharField(max_length=300, verbose_name="عنوان")
+    farsi_name = models.CharField(max_length=300, verbose_name="نام فارسی")
+    english_name = models.CharField(max_length=300, verbose_name="نام لاتین")
+    formula = models.CharField(max_length=300, verbose_name="فرمول")
+    package_type = models.CharField(max_length=300, verbose_name="نوع بسته‌بندی")
+    made_by = models.CharField(max_length=300, verbose_name="ساخت کشور")
+    application = models.CharField(max_length=300, verbose_name="کاربرد")
     file = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True, verbose_name="فایل")
     image_1 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True, verbose_name="تصویر یک محصول")
     image_2 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True, verbose_name="تصویر دو محصول")
     image_3 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True, verbose_name="تصویر سه محصول")
     description = models.TextField(verbose_name="توضیحات")
-    product_group = models.ForeignKey(ProductGroup, on_delete=models.CASCADE, verbose_name="دسته محصول")
     tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با محصول")
     category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با محصول")
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
@@ -131,7 +133,7 @@ class ProductDetail(models.Model):
 
 
 class ChatProductDetail(models.Model):
-    username = models.CharField(max_length=500, verbose_name="نام و نشان")
+    username = models.CharField(max_length=300, verbose_name="نام و نشان")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
     phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
     text = models.TextField(verbose_name="توضیحات")
@@ -150,53 +152,54 @@ class ChatProductDetail(models.Model):
 
 class AboutUs(models.Model):
     introduction_text = models.TextField(verbose_name="توضیحات معرفی", null=True, blank=True)
-    first_feature = models.CharField(max_length=500, null=True, blank=True, verbose_name="ویژگی اول")
+    first_feature = models.CharField(max_length=300, null=True, blank=True, verbose_name="ویژگی اول")
     first_feature_text = models.TextField(verbose_name="توضیحات ویژگی اول", null=True, blank=True)
-    second_feature = models.CharField(max_length=500, null=True, blank=True, verbose_name="ویژگی دوم")
+    second_feature = models.CharField(max_length=300, null=True, blank=True, verbose_name="ویژگی دوم")
     second_feature_text = models.TextField(verbose_name="توضیحات ویژگی دوم", null=True, blank=True)
-    title_employee_1 = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان کاری کارمند اول")
-    name_employee_1 = models.CharField(max_length=500, null=True, blank=True, verbose_name="نام کارمند اول")
-    image_employee_1 = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True,
+    title_employee_1 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند اول")
+    name_employee_1 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند اول")
+    image_employee_1 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
                                          verbose_name="تصویر کارمند اول")
-    telegram_employee_1 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس تلگرام کارمند اول")
-    whatsapp_employee_1 = models.CharField(max_length=500, null=True, blank=True,
+    telegram_employee_1 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس تلگرام کارمند اول")
+    whatsapp_employee_1 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس واتس‌اپ کارمند اول")
-    twitter_employee_1 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس توییتر کارمند اول")
-    title_employee_2 = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان کاری کارمند دوم")
-    name_employee_2 = models.CharField(max_length=500, null=True, blank=True, verbose_name="نام کارمند دوم")
-    image_employee_2 = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True,
+    twitter_employee_1 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس توییتر کارمند اول")
+    title_employee_2 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند دوم")
+    name_employee_2 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند دوم")
+    image_employee_2 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
                                          verbose_name="تصویر کارمند دوم")
-    telegram_employee_2 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس تلگرام کارمند دوم")
-    whatsapp_employee_2 = models.CharField(max_length=500, null=True, blank=True,
+    telegram_employee_2 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس تلگرام کارمند دوم")
+    whatsapp_employee_2 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس واتس‌اپ کارمند دوم")
-    twitter_employee_2 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس توییتر کارمند دوم")
-    title_employee_3 = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان کاری کارمند سوم")
-    name_employee_3 = models.CharField(max_length=500, null=True, blank=True, verbose_name="نام کارمند سوم")
-    image_employee_3 = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True,
+    twitter_employee_2 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس توییتر کارمند دوم")
+    title_employee_3 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند سوم")
+    name_employee_3 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند سوم")
+    image_employee_3 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
                                          verbose_name="تصویر کارمند سوم")
-    telegram_employee_3 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس تلگرام کارمند سوم")
-    whatsapp_employee_3 = models.CharField(max_length=500, null=True, blank=True,
+    telegram_employee_3 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس تلگرام کارمند سوم")
+    whatsapp_employee_3 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس واتس‌اپ کارمند سوم")
-    twitter_employee_3 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس توییتر کارمند سوم")
-    title_employee_4 = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان کاری کارمند چهارم")
-    name_employee_4 = models.CharField(max_length=500, null=True, blank=True, verbose_name="نام کارمند چهارم")
-    image_employee_4 = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True,
+    twitter_employee_3 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس توییتر کارمند سوم")
+    title_employee_4 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند چهارم")
+    name_employee_4 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند چهارم")
+    image_employee_4 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
                                          verbose_name="تصویر کارمند چهارم")
-    telegram_employee_4 = models.CharField(max_length=500, null=True, blank=True,
+    telegram_employee_4 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس تلگرام کارمند چهارم")
-    whatsapp_employee_4 = models.CharField(max_length=500, null=True, blank=True,
+    whatsapp_employee_4 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس واتس‌اپ کارمند چهارم")
-    twitter_employee_4 = models.CharField(max_length=500, null=True, blank=True,
+    twitter_employee_4 = models.CharField(max_length=300, null=True, blank=True,
                                           verbose_name="آدرس توییتر کارمند چهارم")
-    title_employee_5 = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان کاری کارمند پنجم")
-    name_employee_5 = models.CharField(max_length=500, verbose_name="نام کارمند پنجم")
-    image_employee_5 = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True,
+    title_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند پنجم")
+    name_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند پنجم")
+    image_employee_5 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
                                          verbose_name="تصویر کارمند پنجم")
-    telegram_employee_5 = models.CharField(max_length=500, null=True, blank=True,
+    telegram_employee_5 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس تلگرام کارمند پنجم")
-    whatsapp_employee_5 = models.CharField(max_length=500, null=True, blank=True,
+    whatsapp_employee_5 = models.CharField(max_length=300, null=True, blank=True,
                                            verbose_name="آدرس واتس‌اپ کارمند پنجم")
-    twitter_employee_5 = models.CharField(max_length=500, null=True, blank=True, verbose_name="آدرس توییتر کارمند پنجم")
+    twitter_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس توییتر کارمند پنجم")
+    image = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True, verbose_name="تصویر بالای ما کیستیم")
     who_we_are = models.TextField(null=True, blank=True, verbose_name="ما کیستیم؟")
     our_mission = models.TextField(null=True, blank=True, verbose_name="ماموریت ما")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
@@ -210,7 +213,7 @@ class AboutUs(models.Model):
 
 
 class FrequentlyAskedQuestion(models.Model):
-    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="سوال")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="سوال")
     answer = models.TextField(null=True, blank=True, verbose_name="پاسخ")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
@@ -223,7 +226,7 @@ class FrequentlyAskedQuestion(models.Model):
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = models.TextField(null=True, blank=True, verbose_name="متن مقاله")
     tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با مقاله")
     category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با محصول")
@@ -242,7 +245,7 @@ class Blog(models.Model):
 
 
 class ChatBlog(models.Model):
-    username = models.CharField(max_length=500, verbose_name="نام")
+    username = models.CharField(max_length=300, verbose_name="نام")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
     phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
     text = models.TextField(verbose_name="توضیحات")
@@ -260,7 +263,7 @@ class ChatBlog(models.Model):
 
 
 class ImageGallery(models.Model):
-    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = models.TextField(null=True, blank=True, verbose_name="متن مرتبط با تصویر")
     image = models.ImageField(upload_to="imageGallery/%Y/%m", null=True, blank=True, verbose_name="تصویر")
 
@@ -273,7 +276,7 @@ class ImageGallery(models.Model):
 
 
 class VideoGallery(models.Model):
-    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = models.TextField(null=True, blank=True, verbose_name="متن مرتبط با ویدئو")
     video = models.ImageField(upload_to="videoGallery/%Y/%m", null=True, blank=True, verbose_name="ویدئو")
 
@@ -286,8 +289,8 @@ class VideoGallery(models.Model):
 
 
 class SampleRequierment(models.Model):
-    name = models.CharField(max_length=500, verbose_name="نام")
-    company_name = models.CharField(max_length=500, verbose_name="نام شرکت")
+    name = models.CharField(max_length=300, verbose_name="نام")
+    company_name = models.CharField(max_length=300, verbose_name="نام شرکت")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
     phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
     description = models.TextField(null=True, blank=True, verbose_name="توضیحات")
@@ -302,8 +305,8 @@ class SampleRequierment(models.Model):
 
 
 class ContactUs(models.Model):
-    name = models.CharField(max_length=500, verbose_name="نام")
-    title = models.CharField(max_length=500, null=True, blank=True, verbose_name="عنوان")
+    name = models.CharField(max_length=300, verbose_name="نام")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
     text = models.TextField(null=True, blank=True, verbose_name="متن تماس با ما")
 

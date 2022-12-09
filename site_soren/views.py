@@ -6,18 +6,13 @@ def index_view(request):
     qs_generalinfo = GeneralInfo.objects.first()
     context = {
         "mainbanner": MainBanner.objects.all(),
-        "essences": ProductDetail.objects.filter(product_group__type="ES"),
-        "products": ProductGroup.objects.all(),
+        "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id")[:9],
+        "products_group": ProductGroup.objects.all(),
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:5],
-        # "aboutus": qs_GI.feature_2,
-        # "customers": Customers.objects.all().order_by("-id"),
-        # "honors": Honors.objects.all().order_by("-id"),
-        # "products": PriorityProduct.objects.all().order_by("-id"),
-        # "blogs": Blogs.objects.all().order_by("-id")[:5],
-        # "sliders": Slider.objects.all(),
-        # "phone":qs_GI.phone,
-        # "banner_desktop": BannerDesktop.objects.all(),
-        # "banner_mobile": BannerMobile.objects.all(),
+        "aboutus": AboutUs.objects.all(),
+        "general_info": GeneralInfo.objects.all(),
+        "products": ProductDetail.objects.all().order_by("-id")[:6],
+        "blogs": Blog.objects.all().order_by("-id")[:3]
     }
     return render(request, "index.html", context=None)
 
