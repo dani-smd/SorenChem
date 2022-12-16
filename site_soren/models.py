@@ -190,15 +190,6 @@ class AboutUs(models.Model):
                                            verbose_name="آدرس واتس‌اپ کارمند چهارم")
     twitter_employee_4 = models.CharField(max_length=300, null=True, blank=True,
                                           verbose_name="آدرس توییتر کارمند چهارم")
-    title_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان کاری کارمند پنجم")
-    name_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام کارمند پنجم")
-    image_employee_5 = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True,
-                                         verbose_name="تصویر کارمند پنجم")
-    telegram_employee_5 = models.CharField(max_length=300, null=True, blank=True,
-                                           verbose_name="آدرس تلگرام کارمند پنجم")
-    whatsapp_employee_5 = models.CharField(max_length=300, null=True, blank=True,
-                                           verbose_name="آدرس واتس‌اپ کارمند پنجم")
-    twitter_employee_5 = models.CharField(max_length=300, null=True, blank=True, verbose_name="آدرس توییتر کارمند پنجم")
     image = models.ImageField(upload_to="aboutus/%Y/%m", null=True, blank=True, verbose_name="تصویر بالای ما کیستیم")
     who_we_are = models.TextField(null=True, blank=True, verbose_name="ما کیستیم؟")
     our_mission = models.TextField(null=True, blank=True, verbose_name="ماموریت ما")

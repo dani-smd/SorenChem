@@ -13,12 +13,12 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>درباره ما</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">درباره ما</li>
                     </ul>
                 </div>
@@ -38,12 +38,7 @@
                                 <h2>خوش آمدید به <span>سورن شیمی</span></h2>
                             </div>
                             <div class="text">
-                                <p class="dark-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                    سطرآنچنان </p>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                    برای شرایط فعلی</p>
+                                <p class="dark-text" style="text-align: justify">{{ aboutus.introduction_text | safe }}</p>
                             </div>
                         </div>
                     </div>
@@ -56,9 +51,8 @@
                                 <div class="icon-box">
                                     <span class="icon flaticon-target"></span>
                                 </div>
-                                <h3><a href="product-detail.html">صداقت در اعتبار</a></h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                <h3><a>{{ aboutus.first_feature }}</a></h3>
+                                <div class="text" style="text-align: justify">{{ aboutus.first_feature_text }}
                                 </div>
                             </div>
                         </div>
@@ -69,9 +63,8 @@
                                 <div class="icon-box">
                                     <span class="icon flaticon-speedometer"></span>
                                 </div>
-                                <h3><a href="product-detail.html">ضمانت کیفیت</a></h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                <h3><a>{{ aboutus.second_feature }}</a></h3>
+                                <div class="text" style="text-align: justify">{{ aboutus.second_feature_text }}
                                 </div>
                             </div>
                         </div>
@@ -82,7 +75,7 @@
             </div>
         </section>
 
-        <section class="call-to-action" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="call-to-action" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="column col-md-8 col-sm-12 col-xs-12">
@@ -103,80 +96,88 @@
                     <!--Member Style Two-->
                     <div class="member-style-two col-md-3 col-sm-6 col-xs-12">
                         <div class="inner-box">
+                            {% if aboutus.name_employee_1 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="images/team/1.jpg" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_1.url }}" alt=""></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
-                                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-telegram"></span></a></li>
+                                        <li><a href="{{ aboutus.whatsapp_employee_1 }}"><span class="fa fa-whatsapp"></span></a></li>
+                                        <li><a href="{{ aboutus.twitter_employee_1 }}"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="{{ aboutus.telegram_employee_1 }}"><span class="fa fa-telegram"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="lower-box">
-                                <h4><a href="team-single.html">بیل گیتس</a></h4>
-                                <div class="designation">بنیان گذار</div>
+                                <h4><a href="team-single.html">{{ aboutus.name_employee_1 }}</a></h4>
+                                <div class="designation">{{ aboutus.title_employee_1 }}</div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
 
                     <!--Team Member-->
                     <div class="member-style-two col-md-3 col-sm-6 col-xs-12">
                         <div class="inner-box">
+                            {% if aboutus.name_employee_2 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="images/team/2.jpg" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_2.url }}" alt=""></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
-                                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-telegram"></span></a></li>
+                                        <li><a href="{{ aboutus.whatsapp_employee_2 }}"><span class="fa fa-whatsapp"></span></a></li>
+                                        <li><a href="{{ aboutus.twitter_employee_2 }}"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="{{ aboutus.telegram_employee_2 }}"><span class="fa fa-telegram"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="lower-box">
-                                <h4><a href="team-single.html">تام کروز</a></h4>
-                                <div class="designation">مهندس</div>
+                                <h4><a href="team-single.html">{{ aboutus.name_employee_2 }}</a></h4>
+                                <div class="designation">{{ aboutus.title_employee_2 }}</div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
 
                     <!--Team Member-->
                     <div class="member-style-two col-md-3 col-sm-6 col-xs-12">
                         <div class="inner-box">
+                            {% if aboutus.name_employee_3 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="images/team/3.jpg" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_3.url }}" alt=""></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
-                                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-telegram"></span></a></li>
+                                       <li><a href="{{ aboutus.whatsapp_employee_3 }}"><span class="fa fa-whatsapp"></span></a></li>
+                                        <li><a href="{{ aboutus.twitter_employee_3 }}"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="{{ aboutus.telegram_employee_3 }}"><span class="fa fa-telegram"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="lower-box">
-                                <h4><a href="team-single.html">استیو جابز</a></h4>
-                                <div class="designation">بنیان گذار</div>
+                                <h4><a href="team-single.html">{{ aboutus.name_employee_3 }}</a></h4>
+                                <div class="designation">{{ aboutus.title_employee_3 }}</div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
 
                     <!--Member Style Two-->
                     <div class="member-style-two col-md-3 col-sm-6 col-xs-12">
                         <div class="inner-box">
+                            {% if aboutus.name_employee_4 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="images/team/4.jpg" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_4.url }}" alt=""></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
-                                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-telegram"></span></a></li>
+                                        <li><a href="{{ aboutus.whatsapp_employee_4 }}"><span class="fa fa-whatsapp"></span></a></li>
+                                        <li><a href="{{ aboutus.twitter_employee_4 }}"><span class="fa fa-twitter"></span></a></li>
+                                        <li><a href="{{ aboutus.telegram_employee_4 }}"><span class="fa fa-telegram"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="lower-box">
-                                <h4><a href="team-single.html">تونی استارک</a></h4>
-                                <div class="designation">مهندس</div>
+                                <h4><a href="team-single.html">{{ aboutus.name_employee_4 }}</a></h4>
+                                <div class="designation">{{ aboutus.title_employee_4 }}</div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
 

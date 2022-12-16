@@ -3,7 +3,6 @@ from .models import *
 
 
 def index_view(request):
-    qs_generalinfo = GeneralInfo.objects.first()
     context = {
         "mainbanner": MainBanner.objects.all(),
         "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id").distinct()[:6],
@@ -26,7 +25,10 @@ def contact_us(request):
 
 
 def about_us(request):
-    return render(request, "about-us.html", context=None)
+    context = {
+        "aboutus": AboutUs.objects.first(),
+    }
+    return render(request, "about-us.html", context=context)
 
 
 def blogs(request):
