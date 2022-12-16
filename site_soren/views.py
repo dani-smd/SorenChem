@@ -11,7 +11,7 @@ def index_view(request):
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:5],
         "aboutus": AboutUs.objects.first(),
         "general_info": GeneralInfo.objects.first(),
-        "products": ProductDetail.objects.all().order_by("-id")[:6],
+        "products": ProductDetail.objects.all().order_by("-id")[:9],
         "blogs": Blog.objects.all().order_by("-id")[:3]
     }
     return render(request, "index.html", context=context)

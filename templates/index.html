@@ -75,17 +75,24 @@
                         <div class="carousel carousel-showmanymoveone slide" id="itemslider">
                             <div class="carousel-inner">
                                 {% for essence in essences %}
-                                    <ul>
-                                        <li>
-                                            <div class="item active">
-                                                <div class="col-xs-12 col-sm-6 col-md-2">
-                                                    <a href="#"><img src="{{ essence.image_1.url }}"
-                                                                     class="img-responsive center-block"></a>
-                                                    <h4 class="text-center">{{ essence.title }}</h4>
-                                                </div>
+                                    {% if forloop.counter == 1 %}
+                                        <div class="item active">
+                                            <div class="col-xs-12 col-sm-6 col-md-2">
+                                                <a href="#"><img src="{{ essence.image_1.url }}"
+                                                                 class="img-responsive center-block"></a>
+                                                <h4 class="text-center">{{ essence.title }}</h4>
                                             </div>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    {% endif %}
+                                    {% if forloop.counter != 1 %}
+                                        <div class="item">
+                                            <div class="col-xs-12 col-sm-6 col-md-2">
+                                                <a href="#"><img src="{{ essence.image_1.url }}"
+                                                                 class="img-responsive center-block"></a>
+                                                <h4 class="text-center">{{ essence.title }}</h4>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
 
@@ -326,70 +333,76 @@
                 <div class="row-15 grid clearfix masonary-layout filter-layout">
                     <!--Default Portfolio Item-->
                     {% for product in products %}
-                        <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <a href="product-detail.html">
-                                    <figure class="effect-bubba">
-                                        <img src="images/gallery/13.jpg" alt="image">
-                                        <figcaption>
-                                            <div class="content">
-                                                <h2>اسید استیک</h2>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <!--Default Portfolio Item-->
-                        <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <a href="product-detail.html">
-                                    <figure class="effect-bubba">
-                                        <img src="images/gallery/14.jpg" alt="image">
-                                        <figcaption>
-                                            <div class="content">
-                                                <h2>سوپر جاذب SAP
-                                                </h2>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <!--Default Portfolio Item-->
-                        <div class="default-portfolio-item Essence col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <a href="product-detail.html">
-                                    <figure class="effect-bubba">
-                                        <img src="images/gallery/10.jpg" alt="image">
-                                        <figcaption>
-                                            <div class="content">
-                                                <h2>اسانس آفتابگردان</h2>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
-                        <!--Default Portfolio Item-->
-                        <div class="default-portfolio-item Solver col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <a href="product-detail.html">
-                                    <figure class="effect-bubba">
-                                        <img src="images/gallery/15.jpg" alt="image">
-                                        <figcaption>
-                                            <div class="content">
-                                                <h2>اسید چرب نارگیل</h2>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </div>
+                        {% for product_gp in product.product_group.all %}
+                            {% if product_gp.type == "AI" and forloop.counter == 1 %}
+                                <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <a href="{% url 'product_detail' id=product.id %}">
+                                            <figure class="effect-bubba">
+                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <figcaption>
+                                                    <div class="content">
+                                                        <h2>{{ product.title }}</h2>
+                                                        <p>{{ product.description | truncatechars:100}}</p>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if product_gp.type == "ES" and forloop.counter == 1 %}
+                                <div class="default-portfolio-item Essence col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <a href="{% url 'product_detail' id=product.id %}">
+                                            <figure class="effect-bubba">
+                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <figcaption>
+                                                    <div class="content">
+                                                        <h2>{{ product.title }}</h2>
+                                                        <p>{{ product.description | truncatechars:100}}</p>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if product_gp.type == "FI" and forloop.counter == 1 %}
+                                <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <a href="{% url 'product_detail' id=product.id %}">
+                                            <figure class="effect-bubba">
+                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <figcaption>
+                                                    <div class="content">
+                                                        <h2>{{ product.title }}</h2>
+                                                        <p>{{ product.description | truncatechars:100}}</p>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if product_gp.type == "SO" and forloop.counter == 1 %}
+                                <div class="default-portfolio-item Solver col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="inner-box">
+                                        <a href="{% url 'product_detail' id=product.id %}">
+                                            <figure class="effect-bubba">
+                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <figcaption>
+                                                    <div class="content">
+                                                        <h2>{{ product.title }}</h2>
+                                                        <p>{{ product.description | truncatechars:100}}</p>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                 </div>
 
@@ -398,13 +411,12 @@
 
         <section class="parallax" style="background-color: black;">
             <div class="auto-container">
-                <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ <br> لورم ایپسوم متن ساختگی با تولید سادگی
-                </h2>
+                <h2>{{ general_info.social_network_description }}</h2>
                 <div class="link">
-                    <a href="#"><span class="fa fa-whatsapp"></span></a>
-                    <a href="#"><span class="fa fa-twitter"></span></a>
-                    <a href="#"><span class="fa fa-telegram"></span></a>
-                    <a href="#"><span class="fa fa-instagram"></span></a>
+                    <a href="{{ general_info.whatsapp }}"><span class="fa fa-whatsapp"></span></a>
+                    <a href="{{ general_info.twitter }}"><span class="fa fa-twitter"></span></a>
+                    <a href="{{ general_info.telegram }}"><span class="fa fa-telegram"></span></a>
+                    <a href="{{ general_info.instagram }}"><span class="fa fa-instagram"></span></a>
                 </div>
             </div>
         </section>
@@ -417,88 +429,33 @@
                 </div>
 
                 <div class="row clearfix equal-height">
-
-                    <!--News Style One-->
-                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms"
-                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                            <div class="image-box">
-                                <figure class="image"><img src="images/resource/news-img-2.jpg" alt=""></figure>
-                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                        class="fa fa-link"></span></a></div>
-                            </div>
-                            <div class="lower-box">
-                                <div class="post-meta">
-                                    <ul class="clearfix">
-                                        <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور 1401</a></li>
-                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                    </ul>
+                    {% for blog in blogs %}
+                        <!--News Style One-->
+                        <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms"
+                                 style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                                <div class="image-box">
+                                    <figure class="image"><img src="{{ blog.image_1.url }}" alt=""></figure>
+                                    <div class="overlay-box"><a class="link-box" href="{% url 'blog-detail' id=blog.id %}"><span
+                                            class="fa fa-link"></span></a></div>
                                 </div>
-                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
-                                </h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--News Style One-->
-                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms"
-                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <div class="image-box">
-                                <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
-                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                        class="fa fa-link"></span></a></div>
-                            </div>
-                            <div class="lower-box">
-                                <div class="post-meta">
-                                    <ul class="clearfix">
-                                        <li><a href="#"><span class="fa fa-calendar"></span> 2 شهریور 1401</a></li>
-                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                    </ul>
-                                </div>
-                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                    و با استفاده</a></h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                                <div class="lower-box">
+                                    <div class="post-meta">
+                                        <ul class="clearfix">
+                                            <li><a href="{% url 'blog-detail' id=blog.id %}"><span class="fa fa-calendar"></span>{{ blog.created }}</a></li>
+                                            <li><a href="{% url 'blog-detail' id=blog.id %}"><span class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <h3><a href="{% url 'blog-detail' id=blog.id %}">{{ blog.title }}</a>
+                                    </h3>
+                                    <div class="text">{{ blog.text | truncatechars:388 | safe }}</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!--News Style One-->
-                    <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms"
-                             style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
-                            <div class="image-box">
-                                <figure class="image"><img src="images/resource/news-img-5.jpg" alt=""></figure>
-                                <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                        class="fa fa-link"></span></a></div>
-                            </div>
-                            <div class="lower-box">
-                                <div class="post-meta">
-                                    <ul class="clearfix">
-                                        <li><a href="#"><span class="fa fa-calendar"></span> 16 مرداد 1401</a></li>
-                                        <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a></li>
-                                    </ul>
-                                </div>
-                                <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                    چاپ</a></h3>
-                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                    از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
-
             </div>
         </section>
-
     </div>
     <!--End pagewrapper-->
 

@@ -27,6 +27,7 @@ class GeneralInfo(models.Model):
     mobile = models.CharField(max_length=11, verbose_name="موبایل", null=True, blank=True)
     whatsapp_number = models.CharField(max_length=20, verbose_name="شماره تماس واتس‌اپ", null=True, blank=True)
     twitter = models.CharField(max_length=100, verbose_name="آدرس توییتر", null=True, blank=True)
+    whatsapp = models.CharField(max_length=100, verbose_name="آدرس واتس اپ", null=True, blank=True)
     telegram = models.CharField(max_length=100, verbose_name="آدرس تلگرام", null=True, blank=True)
     instagram = models.CharField(max_length=100, verbose_name="آدرس اینستاگرام", null=True, blank=True)
     social_network_description = models.TextField(verbose_name="توضیحات شبکه‌ اجتماعی", null=True, blank=True)
