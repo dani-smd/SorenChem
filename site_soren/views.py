@@ -6,15 +6,15 @@ def index_view(request):
     qs_generalinfo = GeneralInfo.objects.first()
     context = {
         "mainbanner": MainBanner.objects.all(),
-        "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id")[:9],
-        "products_group": ProductGroup.objects.all(),
+        "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id").distinct()[:6],
+        "products_group": ProductGroup.objects.filter(parent__isnull=True).order_by("id")[:6],
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:5],
-        "aboutus": AboutUs.objects.all(),
-        "general_info": GeneralInfo.objects.all(),
+        "aboutus": AboutUs.objects.first(),
+        "general_info": GeneralInfo.objects.first(),
         "products": ProductDetail.objects.all().order_by("-id")[:6],
         "blogs": Blog.objects.all().order_by("-id")[:3]
     }
-    return render(request, "index.html", context=None)
+    return render(request, "index.html", context=context)
 
 
 def not_found(request):

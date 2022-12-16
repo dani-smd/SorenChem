@@ -4,14 +4,14 @@ from django.db import models
 # from image_optimizer.fields import OptimizedImageField
 # Create your models here.
 #
-# CATEGORY = (
-#     ("AI", "Agriculture Industry"),  # صنایع کشاورزی
-#     ("ES", "Essence"),  # اسانس‌ها
-#     ('FI', "Food Industry"),  # صنایع غذایی
-#     ('SO', "solvers"),  # حلال‌ها
-#     ('WI', "Water Treatment Industries"),  # صنایع تصفیه آب
-#     ('CI', "Cosmetics Industry")  # صنایع آرایشی و بهداشتی
-# )
+CATEGORY = (
+    ("AI", "Agriculture Industry"),  # صنایع کشاورزی
+    ("ES", "Essence"),  # اسانس‌ها
+    ('FI', "Food Industry"),  # صنایع غذایی
+    ('SO', "solvers"),  # حلال‌ها
+    ('WI', "Water Treatment Industries"),  # صنایع تصفیه آب
+    ('CI', "Cosmetics Industry")  # صنایع آرایشی و بهداشتی
+)
 
 
 class GeneralInfo(models.Model):
@@ -53,12 +53,9 @@ class GeneralInfo(models.Model):
 class MainBanner(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان بنر", null=True, blank=True)
     text = models.TextField(verbose_name="محتوا عنوان", null=True, blank=True)
-    image_1 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره یک", null=True, blank=True)
-    image_2 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره دو", null=True, blank=True)
-    image_3 = models.ImageField(upload_to="banner/%Y/%m", default="banner/default_avatar.png",
-                                verbose_name="تصویر شماره سه", null=True, blank=True)
+    image_1 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره یک", null=True, blank=True)
+    image_2 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره دو", null=True, blank=True)
+    image_3 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره سه", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -71,7 +68,9 @@ class MainBanner(models.Model):
 
 class ProductGroup(models.Model):
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, verbose_name="والد")
+    type = models.CharField(max_length=5, choices=CATEGORY, null=True, blank=True, verbose_name="نوع محصول")
     name = models.CharField(max_length=300, verbose_name="نام گروه", null=True, blank=True)
+    flat_name = models.CharField(max_length=300, verbose_name="نام آیکون", null=True, blank=True)
     description = models.TextField(verbose_name="توضیحات", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
