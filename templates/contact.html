@@ -1,7 +1,8 @@
 {% extends 'mainlayout.html' %}
-{#{% load render_partial %}#}
 
 {% load static %}
+
+{% load render_partial %}
 
 {% block title %}مقاله{% endblock title %}
 
@@ -13,12 +14,12 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>تماس با ما</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">تماس با ما</li>
                     </ul>
                 </div>
@@ -36,21 +37,21 @@
                     <!--Info Column-->
                     <div class="contact-info-column col-md-6 col-sm-12 col-xs-12">
                         <h2>با ما در ارتباط باشید</h2>
-                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک</div>
+                        <div class="text">{{ general_info.contactus_text }}</div>
 
                         <ul class="contact-info">
                             <li>
-                                <div class="icon-box"><span class="fa fa-map-marker"></span></div>مشهد، وکیل آباد، بین وکیل آباد 35و37 پلاک 847 طبقه اول</li>
+                                <div class="icon-box"><span class="fa fa-map-marker"></span></div>{{ general_info.address }}</li>
                             <li>
-                                <div class="icon-box"><span class="fa fa-phone"></span></div> <span class="ltr_text">(051) 38 67 67 67</span></li>
+                                <div class="icon-box"><span class="fa fa-phone"></span></div> <span class="ltr_text">{{ general_info.mobile }}</span></li>
                                 <li>
-                                    <div class="icon-box"><span class="fa fa-phone"></span></div> <span class="ltr_text">09033222110</span></li>
+                                    <div class="icon-box"><span class="fa fa-phone"></span></div> <span class="ltr_text">{{ general_info.telephone_1 }}</span></li>
                                     <li>
-                                        <div class="icon-box"><span class="fa fa-phone"></span></div>  <span class="ltr_text">09033222110</span></li>
+                                        <div class="icon-box"><span class="fa fa-phone"></span></div>  <span class="ltr_text">{{ general_info.telephone_2 }}</span></li>
                                         <li>
-                                            <div class="icon-box"><span class="fa fa-phone"></span></div>  <span class="ltr_text">09033222110</span></li>
+                                            <div class="icon-box"><span class="fa fa-phone"></span></div>  <span class="ltr_text">{{ general_info.telephone_3 }}</span></li>
                             <li>
-                                <div class="icon-box"><span class="fa fa-envelope-o"></span></div>info@sorenchem.com</li>
+                                <div class="icon-box"><span class="fa fa-envelope-o"></span></div>{{ general_info.email }}</li>
 
                         </ul>
 
@@ -63,34 +64,7 @@
 
                         <!--Contact Form-->
                         <div class="default-form contact-form">
-                            <form method="post" action="php/mail.php" id="contact-form">
-                                <div class="row clearfix">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                            <input type="text" name="name" value="" placeholder="نام *" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" name="email" value="" placeholder="* ایمیل" required dir="ltr">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" name="subject" value="" placeholder="موضوع">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                            <textarea name="message" placeholder="متن پیام *" required></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <button type="submit" class="theme-btn btn-style-one">ارسال پیام</button>
-                                    </div>
-
-                                </div>
-                            </form>
+                            {% render_partial 'recordcontactus_view' %}
                         </div>
                         <!--End Contact Form-->
                     </div>

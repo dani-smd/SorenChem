@@ -1,0 +1,33 @@
+<form method="post" action="" id="contact-form">
+    {% csrf_token %}
+    <div class="row clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <input type="text" name="name" value="" placeholder="نام *" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" value="" placeholder="* ایمیل" required dir="ltr">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="subject" value="" placeholder="موضوع">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <textarea name="message" placeholder="متن پیام *" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <button type="submit" class="theme-btn btn-style-one">ارسال پیام</button>
+        </div>
+        {% if message %}
+            <div class="p-3 mt-3 text-center contact-message {% if success %}success-message {% else %} error-message {% endif %}" id="contact_alert" style="transform: translateX(120%);">
+                <p class="h4">{{message}}</p>
+            </div>
+        {% endif %}
+    </div>
+</form>

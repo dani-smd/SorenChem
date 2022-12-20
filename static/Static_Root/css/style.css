@@ -9606,6 +9606,19 @@ body.rtl .cresta-whatsapp-chat-button svg#whatsapp-msng-icon-button {
 	display: block
 }
 
+.contact-message.success-message {
+    background: rgba(90, 196, 35, .5);
+}
+
+.contact-message {
+    position: fixed !important;
+    top: 100px;
+    right: 5px;
+    z-index: 9999;
+    border-radius: 10px;
+    transition: all .3s;
+}
+
 @media all and (max-width:769px) {
 
 	.cresta-whatsapp-chat-box.onDesktop,

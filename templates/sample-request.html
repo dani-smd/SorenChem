@@ -1,10 +1,7 @@
 {% extends 'mainlayout.html' %}
-{#{% load render_partial %}#}
-
+{% load render_partial %}
 {% load static %}
-
 {% block title %}مقاله{% endblock title %}
-
 {% block content %}
     <div class="page-wrapper body_wrapper">
 
@@ -12,7 +9,7 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>درخواست نمونه</h1>
                 <div class="bread-crumb-outer">
@@ -28,70 +25,12 @@
         <div class="checkout-page cart-section">
             <div class="auto-container">
 
-                <div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7;">
-                    شرکت سورن شیمی جهت سهولت مشتریان و متقاضیان گرامی بخشی را اختصاص به نمونه های درخواستی شما نیز داده
-                    است. کافیست که نام محصول و مقدار نمونه درخواستی خود را نیز برای ما ارسال کنید تا نمونه را برای شما
-                    ارسال نماییم. شما میتوانید اگر برند یا آنالیز خاصی را مد نظر دارید از طریق فرم زیر اقدام به ارسال
-                    آنالیز درخواستی نمایید. سورن شیمی این امکان را به مشتریان داده تا بتوانند قبل از خرید مواد اولیه
-                    شیمیایی ابتدا آن ها را تست کرده و آزمایش کنند سپس خریداری کنند. با این کار مشتریان رضایت بیشتری
-                    داشته و محصولات بهتری را تولید میکنند.
-
-
-                </div>
+                <div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7;">{{ SampleRequierment.description | safe}}</div>
 
                 <!--Billing Details-->
                 <div class="billing-details">
                     <div class="shop-form">
-                        <form method="post" action="checkout.html">
-                            <div class="row clearfix">
-                                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-
-                                    <div class="default-title">
-                                        <h2>درخواست نمونه</h2>
-                                    </div>
-
-                                    <div class="row clearfix">
-
-                                        <!--Form Group-->
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                            <div class="field-label">نام و نام خانوادگی <sup>*</sup></div>
-                                            <input type="text" name="field-name" value="" placeholder="">
-                                        </div>
-
-                                        <!--Form Group-->
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-6">
-                                            <div class="field-label">نام شرکت</div>
-                                            <input type="text" name="field-name" value="" placeholder="">
-                                        </div>
-                                        <!--Form Group-->
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                            <div class="field-label">ایمیل <sup>*</sup></div>
-                                            <input type="email" name="field-name" value="" placeholder="">
-                                        </div>
-
-                                        <!--Form Group-->
-                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                            <div class="field-label">تلفن <sup>*</sup></div>
-                                            <input type="text" name="field-name" value="" placeholder="">
-                                        </div>
-
-
-                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <div class="field-label">نمونه های درخواستی</div>
-                                            <textarea placeholder="نمونه های درخواستی"></textarea>
-                                        </div>
-                                        <div class="form-group text-left col-md-12 col-sm-12 col-xs-12">
-                                            <button type="button" class="theme-btn btn-style-one">ارسال درخواست</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 additional-info">
-                                    <img src="images/resource/formImage.png" alt=""/>
-                                </div>
-                            </div>
-                        </form>
-
+                        {% render_partial 'record_sample' %}
                     </div>
 
                 </div>

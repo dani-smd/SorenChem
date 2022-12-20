@@ -1,6 +1,8 @@
 {% extends 'mainlayout.html' %}
 {#{% load render_partial %}#}
 
+{% load jalali_tags %}
+
 {% load static %}
 
 {% block title %}سورن شیمی{% endblock title %}
@@ -442,7 +444,7 @@
                                 <div class="lower-box">
                                     <div class="post-meta">
                                         <ul class="clearfix">
-                                            <li><a href="{% url 'blog-detail' id=blog.id %}"><span class="fa fa-calendar"></span>{{ blog.created }}</a></li>
+                                            <li><a href="{% url 'blog-detail' id=blog.id %}"><span class="fa fa-calendar"></span>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
                                             <li><a href="{% url 'blog-detail' id=blog.id %}"><span class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
                                         </ul>
                                     </div>

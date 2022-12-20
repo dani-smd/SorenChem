@@ -1,5 +1,6 @@
 {% extends 'mainlayout.html' %}
-{#{% load render_partial %}#}
+
+{% load jalali_tags %}
 
 {% load static %}
 
@@ -13,12 +14,12 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>بلاگ</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">بلاگ</li>
                     </ul>
                 </div>
@@ -37,198 +38,51 @@
                         <section class="news-section no-padd">
 
                             <div class="row clearfix equal-height">
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
+                                {% for blog in pages %}
+                                    <!--News Style One-->
+                                    <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
                                     <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms"
                                          data-wow-duration="1500ms"
                                          style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
                                         <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-2.jpg" alt="">
+                                            <figure class="image"><img src="{{blog.image_1.url}}" alt="">
                                             </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
+                                            <div class="overlay-box"><a class="link-box" href="{% url 'blog-detail' id=blog.id %}"><span
                                                     class="fa fa-link"></span></a></div>
                                         </div>
                                         <div class="lower-box">
                                             <div class="post-meta">
                                                 <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
+                                                    <li><a><span class="fa fa-calendar"></span>{{ blog.created|to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
+                                                    <li><a><span class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
                                                 </ul>
                                             </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از صنعت</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
+                                            <h3><a href="{% url 'blog-detail' id=blog.id %}">{{ blog.title | truncatechars:100 | safe}}</a></h3>
+                                            <div class="text">{{ blog.text | truncatechars:300 | safe }}
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
-                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="300ms"
-                                         data-wow-duration="1500ms"
-                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-3.jpg" alt="">
-                                            </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                                    class="fa fa-link"></span></a></div>
-                                        </div>
-                                        <div class="lower-box">
-                                            <div class="post-meta">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 2 شهریور
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از صنعت چاپ و با استفاده</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
-                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="600ms"
-                                         data-wow-duration="1500ms"
-                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-5.jpg" alt="">
-                                            </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                                    class="fa fa-link"></span></a></div>
-                                        </div>
-                                        <div class="lower-box">
-                                            <div class="post-meta">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 31 مرداد
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
-                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms"
-                                         data-wow-duration="1500ms"
-                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-2.jpg" alt="">
-                                            </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                                    class="fa fa-link"></span></a></div>
-                                        </div>
-                                        <div class="lower-box">
-                                            <div class="post-meta">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از صنعت</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
-                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="300ms"
-                                         data-wow-duration="1500ms"
-                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-3.jpg" alt="">
-                                            </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                                    class="fa fa-link"></span></a></div>
-                                        </div>
-                                        <div class="lower-box">
-                                            <div class="post-meta">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 2 شهریور
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از صنعت چاپ و با استفاده</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--News Style One-->
-                                <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
-                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="600ms"
-                                         data-wow-duration="1500ms"
-                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/news-img-5.jpg" alt="">
-                                            </figure>
-                                            <div class="overlay-box"><a class="link-box" href="blog-single.html"><span
-                                                    class="fa fa-link"></span></a></div>
-                                        </div>
-                                        <div class="lower-box">
-                                            <div class="post-meta">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-calendar"></span> 31 مرداد
-                                                        1398</a></li>
-                                                    <li><a href="#"><span class="fa fa-commenting-o"></span> 23
-                                                        بازدید</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                از</a></h3>
-                                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-                                                ستون و سطرآنچنان که لازم
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                                {% endfor %}
                             </div>
 
                             <!-- Styled Pagination -->
                             <div class="styled-pagination text-center">
                                 <ul class="clearfix">
-                                    <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#" class="active">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+
+                                    <li><a href="{% url 'blogs' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+
+                                    {% for num_page in page_number %}
+                                        {% if forloop.counter == active_page %}
+                                            <li><a href="{% url 'blogs' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                        {% if forloop.counter != active_page %}
+                                            <li><a href="{% url 'blogs' id=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li><a href="{% url 'blogs' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
                                 </ul>
                             </div>
 
@@ -246,44 +100,20 @@
                             <!-- Recent Posts -->
                             <div class="sidebar-widget popular-posts">
                                 <div class="sidebar-title">
-                                    <h3>مقالات جدید</h3>
+                                    <h3>محصولات جدید</h3>
                                 </div>
-
-                                <article class="post">
+                                {% for product in products %}
+                                    <article class="post">
                                     <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg"
-                                                                        alt=""></a>
+                                        <a href="{% url 'product_detail' id=product.id %}"><img src="{{ product.image_1.url }}" alt=""></a>
                                     </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
+                                    <div class="text"><a href="{% url 'product_detail' id=product.id %}">{{ product.title}}</a>
                                     </div>
                                     <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>30 مرداد 1398 </a></li>
+                                        <li><a><i class="fa fa-calendar"></i>{{ product.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
                                     </ul>
                                 </article>
-
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg"
-                                                                        alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a></div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>27 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
-
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg"
-                                                                        alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                    </div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>21 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
-
+                                {% endfor %}
                             </div>
 
                         </aside>
