@@ -12,12 +12,12 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url(images/background/bg-page-title-1.jpg);">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>گالری تصاویر</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">گالری تصاویر</li>
                     </ul>
                 </div>
@@ -51,179 +51,41 @@
                 </div> -->
 
                 <div class="row-15 grid clearfix masonary-layout filter-layout">
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    {% for image in pages %}
+                        <!--Default Portfolio Item-->
+                        <div class="default-portfolio-item Consulting Finance Marketing col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="inner-box">
-                            <a href="images/gallery/14.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
+                            <a href="{{ image.image.url }}" class="lightbox-image option-btn" title="{{ image.title }}"
                                data-fancybox-group="example-gallery">
                                 <figure class="effect-bubba">
-                                    <img src="images/gallery/14.jpg" alt="image">
+                                    <img src="{{ image.image.url }}" alt="image">
                                     <figcaption>
                                         <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
+                                            <h2>{{ image.title }}</h2>
+                                            <p>{{ image.text | truncatechars:50 | safe }}</p>
                                         </div>
                                     </figcaption>
                                 </figure>
                             </a>
                         </div>
                     </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Consulting Marketing col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/12.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/12.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Finance col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/10.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/10.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Marketing Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/16.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/16.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Marketing Finance col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/13.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/13.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/14.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/14.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Consulting Finance Marketing col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/15.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/15.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Marketing Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/12.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/12.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item Growth Finance col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box">
-                            <a href="images/gallery/13.jpg" class="lightbox-image option-btn" title="توضیحات تصویر"
-                               data-fancybox-group="example-gallery">
-                                <figure class="effect-bubba">
-                                    <img src="images/gallery/13.jpg" alt="image">
-                                    <figcaption>
-                                        <div class="content">
-                                            <h2>لورم ایپسوم متن ساختگی با</h2>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</p>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
 
                 <br>
                 <!-- Styled Pagination -->
                 <div class="styled-pagination text-center">
                     <ul class="clearfix">
-                        <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#" class="active">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+                        <li><a href="{% url 'gallery-image' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+                            {% for num_page in page_number %}
+                                {% if forloop.counter == active_page %}
+                                    <li><a href="{% url 'gallery-image' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                {% endif %}
+                                {% if forloop.counter != active_page %}
+                                    <li><a href="{% url 'gallery-image' id=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        <li><a href="{% url 'gallery-image' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
                     </ul>
                 </div>
 

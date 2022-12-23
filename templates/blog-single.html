@@ -1,6 +1,10 @@
 {% extends 'mainlayout.html' %}
 {#{% load render_partial %}#}
 
+{% load social_share %}
+
+{% load jalali_tags %}
+
 {% load static %}
 
 {% block title %}مقاله{% endblock title %}
@@ -13,13 +17,13 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>جزئیات بلاگ</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
-                        <li><a href="blog.html">بلاگ</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li><a href="{% url 'blogs' id=1 %}">بلاگ</a></li>
                         <li class="active">جزئیات بلاگ</li>
                     </ul>
                 </div>
@@ -38,111 +42,48 @@
                             <div class="news-style-two">
                                 <div class="inner-box">
                                     <div class="image-box">
-                                        <figure class="image"><img src="images/resource/single-news.jpg" alt="">
+                                        <figure class="image"><img src="{{ blog_detail.image_2.url }}" alt="">
                                         </figure>
                                     </div>
                                     <div class="lower-box">
-                                        <h3>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</h3>
+                                        <h3>{{ blog_detail.title }}</h3>
                                         <div class="post-meta">
                                             <ul class="clearfix">
-                                                <li><a href="#"><span class="fa fa-calendar"></span> 5 شهریور 1398</a>
+                                                <li><a href="#"><span
+                                                        class="fa fa-calendar"></span>{{ blog_detail.created | to_jalali:'%y/%m/%d _ %H:%M' }}
+                                                </a>
                                                 </li>
-                                                <li><a href="#"><span class="fa fa-commenting-o"></span> 23 بازدید</a>
+                                                <li><a href="#"><span
+                                                        class="fa fa-commenting-o"></span>{{ blog_detail.views }}</a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="text">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                                سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                                                متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-                                                درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان</p>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                                سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                                                متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-                                                درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-                                                نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-                                                خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
-                                                داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان
-                                                رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای</p>
-                                            <blockquote>
-                                                <div class="txt">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                                    چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                                                    مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                                                    نیاز و کاربردهای
-                                                    متنوع با هدف بهبود ابزارهای کاربردی
-                                                </div>
-                                                <div class="info">لورم ایپسوم متن</div>
-                                            </blockquote>
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                                سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                                                متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-                                                درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان</p>
-
-                                            <div class="row clearfix">
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <ul class="list-style-one">
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                        </li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <ul class="list-style-one">
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                        </li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</li>
-                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <div class="row clearfix">
-                                                <div class="image-column col-md-6 col-sm-6 col-xs-12">
-                                                    <figure><img src="images/resource/featured-image-8.jpg" alt="">
-                                                    </figure>
-                                                </div>
-                                                <div class="content-column col-md-6 col-sm-6 col-xs-12">
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                                        در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                                                        نیاز و
-                                                        کاربردهای
-                                                    </p>
-                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                                        در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                                                        نیاز و
-                                                        کاربردهای
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                                سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-                                                متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-                                                درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان</p>
+                                        <div class="text">{{ blog_detail.text | safe}}
                                         </div>
 
                                     </div>
 
                                     <div class="post-options">
-                                        <div class="tags"><strong>برچسب ها :</strong> <a href="#">کسب و کار</a> , <a
-                                                href="#">ما بهترین شرکت مشاوره هستیم!!</a></div>
-                                        <div class="categories"><strong>دسته ها :</strong> <a href="#">حساب ها</a> , <a
-                                                href="#">نمونه‌کارها</a></div>
-                                        <div class="share-options">
+                                        <div class="tags"><strong>برچسب ها :</strong>
+                                            <a>
+                                                {% for tag in blog_detail.tags.all %}
+                                                    {{ tag.name }}،
+                                                {% endfor %}
+                                            </a>
+                                        </div>
+                                        <div class="categories"><strong>دسته ها :</strong>
+                                            <a>
+                                                {% for category in blog_detail.category.all %}
+                                                    {{ category.name }}،
+                                                {% endfor %}
+                                            </a>
+                                        </div>
+                                        <div class="share-options" style="margin-top: -25px">
                                             <!--Social Links-->
                                             <ul class="social-links">
-                                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fa fa-telegram"></span></a></li>
-                                                <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                                {% post_to_facebook object_or_url "Post to Facebook" %}
+                                                {% post_to_whatsapp  object_or_url "Post to Whatsapp" %}
+                                                {% post_to_telegram  object_or_url "باز نشر در Whatsapp" %}
                                             </ul>
                                         </div>
                                     </div>
@@ -157,48 +98,11 @@
                                 </div>
 
                                 <div class="comment-box">
-
                                     <!--Comment-->
                                     <div class="comment">
                                         <div class="comment-inner">
                                             <div class="author-thumb img-circle"><img class="img-circle"
-                                                                                      src="images/resource/author-thumb-1.jpg"
-                                                                                      alt=""></div>
-                                            <!--comment-content-->
-                                            <div class="comment-content">
-                                                <div class="comment-info">
-                                                    <h4>تونی استارک</h4>
-                                                    <div class="date">5 شهریور 1398</div>
-                                                </div>
-                                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                                    چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                                                    مجله در ستون و سطرآنچنان که لازم است و برای شرایط
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment">
-                                        <div class="comment-inner">
-                                            <div class="author-thumb img-circle"><img class="img-circle"
-                                                                                      src="images/resource/author-thumb-1.jpg"
-                                                                                      alt=""></div>
-                                            <!--comment-content-->
-                                            <div class="comment-content">
-                                                <div class="comment-info">
-                                                    <h4>استیو جابز</h4>
-                                                    <div class="date">5 شهریور 1398</div>
-                                                </div>
-                                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                                    چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                                                    مجله در ستون و سطرآنچنان که لازم است و برای شرایط
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment">
-                                        <div class="comment-inner">
-                                            <div class="author-thumb img-circle"><img class="img-circle"
-                                                                                      src="images/resource/author-thumb-1.jpg"
+                                                                                      src="{% static 'images/images.png' %}"
                                                                                       alt=""></div>
                                             <!--comment-content-->
                                             <div class="comment-content">
@@ -227,13 +131,41 @@
                                 <form method="post" action="blog.html">
                                     <div class="row clearfix">
                                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <label>امتیاز </label>
-                                            <div class="rating">
-                                                <a class="rate-box" title="1 از 5"> <span class="fa fa-star"></span> </a>
-                                                <a class="rate-box" title="2 از 5"> <span class="fa fa-star"></span> <span class="fa fa-star"> </span> </a>
-                                                <a class="rate-box" title="3 از 5"> <span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span> </a>
-                                                <a class="rate-box" title="4 از 5"> <span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> </a>
-                                                <a class="rate-box" title="5 از 5"> <span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"> </span> </a>
+                                            <label>امتیاز دهید: </label>
+                                            <div style="display: flex">
+                                                <input type="radio" id="contactChoice1" name="contact" value="email"/>
+                                                <label style="padding-top: 7px" for="contactChoice1"><span
+                                                        class="fa fa-star"></span></label>
+
+                                                <input style="margin-right: 15px" type="radio" id="contactChoice2"
+                                                       name="contact" value="phone"/>
+                                                <label style="padding-top: 7px" for="contactChoice2"><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span></label>
+
+                                                <input style="margin-right: 10px" type="radio" id="contactChoice3"
+                                                       name="contact" value="mail"/>
+                                                <label style="padding-top: 7px" for="contactChoice3"><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span></label>
+
+                                                <input style="margin-right: 10px" type="radio" id="contactChoice4"
+                                                       name="contact" value="mail"/>
+                                                <label style="padding-top: 7px" for="contactChoice4"><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span></label>
+
+                                                <input style="margin-right: 10px" type="radio" id="contactChoice5"
+                                                       name="contact" value="mail"/>
+                                                <label style="padding-top: 7px" for="contactChoice5"><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span><span
+                                                        class="fa fa-star"></span></label>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">

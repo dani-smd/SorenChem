@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_render_partial',
     'jalali_date',
     'tinymce',
+    'django_social_share'
 ]
 
 MIDDLEWARE = [

@@ -107,7 +107,7 @@ class Category(models.Model):
 
 
 class ProductDetail(models.Model):
-    product_group = models.ManyToManyField(ProductGroup, verbose_name="دسته محصول", null=True, blank=True)
+    product_group = models.ManyToManyField(ProductGroup, verbose_name="دسته محصول")
     title = models.CharField(max_length=300, verbose_name="عنوان")
     farsi_name = models.CharField(max_length=300, verbose_name="نام فارسی")
     english_name = models.CharField(max_length=300, verbose_name="نام لاتین")
@@ -271,7 +271,9 @@ class ImageGallery(models.Model):
 class VideoGallery(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = HTMLField(null=True, blank=True, verbose_name="متن مرتبط با ویدئو")
-    video = models.ImageField(upload_to="videoGallery/%Y/%m", null=True, blank=True, verbose_name="ویدئو")
+    image = models.ImageField(upload_to="videoGallery/background/image/%Y/%m", null=True, blank=True,
+                              verbose_name="تصویر بک‌گراند ویدئو")
+    video = models.FileField(upload_to="videoGallery/%Y/%m", null=True, blank=True, verbose_name="ویدئو")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
 
     def __str__(self) -> str:

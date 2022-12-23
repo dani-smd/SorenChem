@@ -27,7 +27,7 @@
         </section>
 
         <!--Sidebar Page-->
-        <div class="sidebar-page-container with-left-sidebar">
+        <div class="sidebar-page-container with-left-sidebar gray-bg">
             <div class="auto-container">
                 <div class="row clearfix">
 
@@ -73,7 +73,7 @@
                                                                 class="theme-btn btn-style-one add-to-cart">تماس با مدیر
                                                             فروش
                                                         </button>
-                                                        <button type="button"
+                                                        <button type="button" style="margin-right: 20px"
                                                                 class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر
                                                             فروش
                                                         </button>
@@ -186,54 +186,67 @@
                                                         </div>
 
                                                         <!--Add Review-->
-                                                        <div class="add-review">
-                                                            <h3>یک نقد و بررسی بنویسید</h3>
+                                                        <div class="comment-form">
+                                                             <div class="group-title">
+                                                                 <h2>دیدگاه خود را بیان کنید</h2>
+                                                             </div>
 
                                                             <form method="post" action="shop-single.html">
                                                                 <div class="row clearfix">
                                                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                                                        <label>امتیاز </label>
-                                                                        <div class="rating">
-                                                                            <a href="#" class="rate-box" title="1 از 5"><span
-                                                                                    class="fa fa-star"></span></a>
-                                                                            <a href="#" class="rate-box" title="2 از 5"><span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span></a>
-                                                                            <a href="#" class="rate-box" title="3 از 5"><span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"> </span> <span
-                                                                                    class="fa fa-star"></span></a>
-                                                                            <a href="#" class="rate-box" title="4 از 5"><span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span></a>
-                                                                            <a href="#" class="rate-box" title="5 از 5"><span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span> <span
-                                                                                    class="fa fa-star"></span></a>
+                                                                        <label>امتیاز دهید: </label>
+                                                                        <div style="display: flex">
+                                                                          <input type="radio" id="contactChoice1" name="contact" value="email" />
+                                                                          <label style="padding-top: 7px" for="contactChoice1"><span
+                                                                                    class="fa fa-star"></span></label>
+
+                                                                          <input style="margin-right: 15px" type="radio" id="contactChoice2" name="contact" value="phone" />
+                                                                          <label style="padding-top: 7px" for="contactChoice2"><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span></label>
+
+                                                                          <input style="margin-right: 10px" type="radio" id="contactChoice3" name="contact" value="mail" />
+                                                                          <label style="padding-top: 7px" for="contactChoice3"><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span></label>
+
+                                                                          <input style="margin-right: 10px" type="radio" id="contactChoice4" name="contact" value="mail" />
+                                                                          <label style="padding-top: 7px" for="contactChoice4"><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span></label>
+
+                                                                          <input style="margin-right: 10px" type="radio" id="contactChoice5" name="contact" value="mail" />
+                                                                          <label style="padding-top: 7px" for="contactChoice5"><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span><span
+                                                                                    class="fa fa-star"></span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
-                                                                        <label>نام *</label>
-                                                                        <input type="text" name="name" value=""
-                                                                               placeholder="" required>
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                        <input type="text" name="username" placeholder="نام *" required>
                                                                     </div>
-                                                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
-                                                                        <label>ایمیل *</label>
-                                                                        <input type="email" name="email" value=""
-                                                                               placeholder="" required>
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                        <input type="text" name="username" placeholder="نام خانوادگی *" required>
                                                                     </div>
-                                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                                                        <label>نقد و بررسی شما</label>
-                                                                        <textarea name="review-message"></textarea>
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                        <input type="email" name="email" placeholder="* ایمیل" required dir="ltr">
                                                                     </div>
-                                                                    <div class="form-group text-left col-md-12 col-sm-12 col-xs-12">
-                                                                        <button type="button"
-                                                                                class="theme-btn btn-style-one">افزودن
-                                                                            نقد و بررسی
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                                                        <input type="text" name="username" placeholder="تلفن تماس" dir="ltr">
+                                                                    </div>
+
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                                                        <textarea name="message" placeholder="متن دیدگاه *" required></textarea>
+                                                                    </div>
+
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">
+                                                                            ارسال دیدگاه
                                                                         </button>
                                                                     </div>
                                                                 </div>

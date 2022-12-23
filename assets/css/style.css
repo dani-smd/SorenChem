@@ -101,7 +101,7 @@ body {
 	margin-top: -1px;
 }
 
-a {
+a, label {
 	text-decoration: none;
 	cursor: pointer;
 	color: #5da73d;

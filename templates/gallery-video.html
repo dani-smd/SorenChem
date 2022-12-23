@@ -13,12 +13,12 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>گالری ویدئو</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">گالری ویدئو</li>
                     </ul>
                 </div>
@@ -28,240 +28,79 @@
         <section class="gallery-block">
             <div class="film-container">
                 <div class="row">
-                    <!-- single Film 1 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".1s">
-                        <div class="box" style="background: url({% static 'images/gallery/16.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
+                    {% for video in pages %}
+                        <div class="single-film wow fadeInDown" data-wow-delay=".1s">
+                            <div class="box" style="background: url({{ video.image.url }});">
+                                <div class="box__right box-pay-icon">
+                                    <a href="{{ video.video.url }}">
+                                        <i class="play-movie-icon fa fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="box__left box-pay-icon">
+                                    <a href="{{ video.video.url }}">
+                                        <i class="play-movie-icon fa fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="box__top box-pay-icon">
+                                    <a href="{{ video.video.url }}">
+                                        <i class="play-movie-icon fa fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="box__bottom box-pay-icon">
+                                    <a href="{{ video.video.url }}">
+                                        <i class="play-movie-icon fa fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="play-video">
+                                    <video width="320" height="240" controls id="PlayVideo1">
+                                        <source src="{{ video.video.url }}" type="video/mp4">
+                                    </video>
+                                    <i class="video-tag-close fa fa-close" onclick="pauseVid6()"></i>
+                                </div>
                             </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo1">
-                                    <source src="http://sorenchem.com/wp-content/uploads/DIY-Makeup-Setting-Spray-Young-Living-Essential-Oils1.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                            <i class="video-tag-close fa fa-close" onclick="pauseVid1()"></i>
-                        </div>
-                        <div class="film-information">
-                            <p>عنوان ویدئو</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 1 end -->
-                    <!-- single Film 2 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".2s">
-                        <div class="box" style="background: url({% static 'images/gallery/15.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo2">
-                                    <source src="https://sorenchem.com/wp-content/uploads/My-Video-1.mp4?_=1" type="video/mp4">
-                                </video>
-                            </div>
-                            <i class="video-tag-close fa fa-close" onclick="pauseVid2()"></i>
-                        </div>
-                        <div class="film-information">
-                            <p>عنوان ویدئو2</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 2 end -->
-                    <!-- single Film 3 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".3s">
-                        <div class="box" style="background: url({% static 'images/gallery/14.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo3">
-                                    <source src="http://sorenchem.com/wp-content/uploads/DIY-Makeup-Setting-Spray-Young-Living-Essential-Oils1.mp4" type="video/mp4">
-                                </video>
-                                <i class="video-tag-close fa fa-close" onclick="pauseVid3()"></i>
+                            <div class="film-information">
+                                <p>{{ video.title }}</p>
+                                <p>{{ video.text | truncatechars:50 | safe}}</p>
                             </div>
                         </div>
-                        <div class="film-information">
-                            <p>عنوان ویدئو3</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 3 end -->
-                    <!-- </div> -->
-                    <!-- <div class="row"> -->
-                    <!-- single Film 4 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".4s">
-                        <div class="box" style="background: url({% static 'images/gallery/13.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo4">
-                                    <source src="http://sorenchem.com/wp-content/uploads/DIY-Makeup-Setting-Spray-Young-Living-Essential-Oils1.mp4" type="video/mp4">
-                                </video>
-                                <i class="video-tag-close fa fa-close" onclick="pauseVid4()"></i>
-                            </div>
-                        </div>
-                        <div class="film-information">
-                            <p>عنوان ویدئو4</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 4 end -->
-                    <!-- single Film 5 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".5s">
-                        <div class="box" style="background: url({% static 'images/gallery/12.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo5">
-                                    <source src="http://sorenchem.com/wp-content/uploads/DIY-Makeup-Setting-Spray-Young-Living-Essential-Oils1.mp4" type="video/mp4">
-                                </video>
-                                <i class="video-tag-close fa fa-close" onclick="pauseVid5()"></i>
-                            </div>
-                        </div>
-                        <div class="film-information">
-                            <p>5عنوان ویدئو</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 5 end -->
-                    <!-- single Film 6 start -->
-                    <div class="single-film wow fadeInDown" data-wow-delay=".6s">
-                        <div class="box" style="background: url({% static 'images/gallery/10.jpg' %});">
-                            <div class="box__right box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__left box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__top box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="box__bottom box-pay-icon">
-                                <a href="javascript:;">
-                                    <i class="play-movie-icon fa fa-play"></i>
-                                </a>
-                            </div>
-                            <div class="play-video">
-                                <video width="320" height="240" controls id="PlayVideo6">
-                                    <source src="http://sorenchem.com/wp-content/uploads/DIY-Makeup-Setting-Spray-Young-Living-Essential-Oils1.mp4" type="video/mp4">
-                                </video>
-                                <i class="video-tag-close fa fa-close" onclick="pauseVid6()"></i>
-                            </div>
-                        </div>
-                        <div class="film-information">
-                            <p>عنوان ویدئو6</p>
-                            <p>توضیحات مختصر</p>
-                        </div>
-                    </div>
-                    <!-- single Film 6 end -->
+                    {% endfor %}
                 </div>
-                <br>
                 <!-- Styled Pagination -->
                 <div class="styled-pagination text-center">
                     <ul class="clearfix">
-                        <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#" class="active">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+                        <li><a href="{% url 'gallery-video' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+                            {% for num_page in page_number %}
+                                {% if forloop.counter == active_page %}
+                                    <li><a href="{% url 'gallery-video' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                {% endif %}
+                                {% if forloop.counter != active_page %}
+                                    <li><a href="{% url 'gallery-video' id=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        <li><a href="{% url 'gallery-video' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
                     </ul>
                 </div>
             </div>
         </section>
-
+        <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
     </div>
     <!--End pagewrapper-->
 
 {% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/revolution.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+    <script src="{% static 'js/owl.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/appear.js' %}"></script>
+    <script src="{% static 'js/isotope.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/jquery3.1.0.min.js' %}"></script>
+    <script src="{% static 'js/script-gallery.js' %}"></script>
+    <script src="{% static 'js/script-gallery.js' %}"></script>
+{% endblock javascript %}

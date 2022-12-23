@@ -54,7 +54,7 @@ def about_us(request):
     return render(request, "about-us.html", context=context)
 
 
-def blogs(request, id=None):
+def blogs(request, id):
     if id is None:
         page = 1
     else:
@@ -73,23 +73,56 @@ def blogs(request, id=None):
     return render(request, "blog.html", context=context)
 
 
-def blog_detail(request):
-    return render(request, "blog-single.html", context=None)
+def blog_detail(request, id):
+    qs_blog = Blog.objects.filter(id=id).first()
+    context = {
+        "blog_detail": qs_blog,
+
+    }
+    return render(request, "blog-single.html", context=context)
 
 
 def faq(request):
     return render(request, "faq.html", context=None)
 
 
-def gallery_image(request):
-    return render(request, "gallery.html", context=None)
+def gallery_image(request, id):
+    if id is None:
+        page = 1
+    else:
+        page = id
+    qs_image = ImageGallery.objects.all().order_by("-id")
+    paginator = Paginator(qs_image, per_page=6)
+    page_object = paginator.get_page(page)
+    context = {
+        "page_number": range(paginator.num_pages),
+        "pages": page_object,
+        "active_page": int(page),
+        "previous_page": int(page) - 1 if int(page) > 1 else int(page),
+        "next_page": int(page) + 1 if int(page) < paginator.num_pages else int(page),
+    }
+    return render(request, "gallery.html", context=context)
 
 
-def gallery_video(request):
-    return render(request, "gallery-video.html", context=None)
+def gallery_video(request, id):
+    if id is None:
+        page = 1
+    else:
+        page = id
+    qs_video = VideoGallery.objects.all().order_by("-id")
+    paginator = Paginator(qs_video, per_page=6)
+    page_object = paginator.get_page(page)
+    context = {
+        "page_number": range(paginator.num_pages),
+        "pages": page_object,
+        "active_page": int(page),
+        "previous_page": int(page) - 1 if int(page) > 1 else int(page),
+        "next_page": int(page) + 1 if int(page) < paginator.num_pages else int(page),
+    }
+    return render(request, "gallery-video.html", context=context)
 
 
-def product_detail(request):
+def product_detail(request, id):
     return render(request, "product-detail.html", context=None)
 
 
