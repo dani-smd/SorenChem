@@ -106,9 +106,9 @@
                                 {% for product in products %}
                                     <article class="post">
                                     <figure class="post-thumb">
-                                        <a href="{% url 'product_detail' id=product.id %}"><img src="{{ product.image_1.url }}" alt=""></a>
+                                        <a href="{% url 'product-detail' id=product.id %}"><img src="{{ product.image_1.url }}" alt=""></a>
                                     </figure>
-                                    <div class="text"><a href="{% url 'product_detail' id=product.id %}">{{ product.title}}</a>
+                                    <div class="text"><a href="{% url 'product-detail' id=product.id %}">{{ product.title}}</a>
                                     </div>
                                     <ul class="post-meta clearfix">
                                         <li><a><i class="fa fa-calendar"></i>{{ product.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>

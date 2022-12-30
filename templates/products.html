@@ -12,16 +12,16 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>اسانس</h1>
+                <h1>{{ group_data.name }}</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li>
-                            <a href="product-groups.html">محصولات</a>
+                            <a href="{% url 'product-group' %}">محصولات</a>
                         </li>
-                        <li class="active">اسانس</li>
+                        <li class="active">{{ group_data.name }}</li>
                     </ul>
                 </div>
             </div>
@@ -32,10 +32,8 @@
 			<div class="auto-container">
 
 
-				<div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7;">
-					شرکت سورن شیمی جهت سهولت مشتریان و متقاضیان گرامی بخشی را اختصاص به نمونه های درخواستی شما نیز داده است. کافیست که نام محصول و مقدار نمونه درخواستی خود را نیز برای ما ارسال کنید تا نمونه را برای شما ارسال نماییم. شما میتوانید اگر برند یا آنالیز خاصی را مد نظر دارید از طریق فرم زیر اقدام به ارسال آنالیز درخواستی نمایید. سورن شیمی این امکان را به مشتریان داده تا بتوانند قبل از خرید مواد اولیه شیمیایی ابتدا آن ها را تست کرده و آزمایش کنند سپس خریداری کنند. با این کار مشتریان رضایت بیشتری داشته و محصولات بهتری را تولید میکنند.
-
-
+				<div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7; text-align: justify">
+                    {{ group_data.description | safe }}
 				</div>
 
 				<div class="row clearfix">
@@ -46,21 +44,21 @@
 						<!--News Section-->
 						<section class="products-section">
 							<div class="row clearfix equal-height">
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                {% for page in pages %}
+								    <div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
 									<!--inner-box-->
 									<div class="inner-box">
 										<!--image-box-->
 										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
+											<a href="{% url 'product-detail' id=page.id %}"><img src="{{ page.image_2.url }}" alt=""></a>
 											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
+												<a class="cart-btn" href="{% url 'product-detail' id=page.id %}">جزییات بیشتر</a>
 											</div>
 										</figure>
 
 										<!--lower-content-->
 										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
+											<h3><a href="{% url 'product-detail' id=page.id %}">{{ page.title }}</a></h3>
 
 											<div class="rating">
 												<span class="fa fa-star"></span>
@@ -73,420 +71,24 @@
 
 									</div>
 								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-                                <div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-half-empty"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-                                <div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-half-empty"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-                                <div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-half-empty"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/22.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="default-shop-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-									<!--inner-box-->
-									<div class="inner-box">
-										<!--image-box-->
-										<figure class="image-box">
-											<a href="product-detail.html"><img src="images/resource/23.jpg" alt=""></a>
-											<div class="overlay-box">
-												<a class="cart-btn" href="product-detail.html">جزییات بیشتر</a>
-											</div>
-										</figure>
-
-										<!--lower-content-->
-										<div class="lower-content">
-											<h3><a href="product-detail.html">لورم ایپسوم</a></h3>
-
-											<div class="rating">
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-												<span class="fa fa-star-o"></span>
-											</div>
-										</div>
-
-									</div>
-								</div>
+                                {% endfor %}
 							</div>
 
 							<!--Styled Pagination-->
 							<div class="styled-pagination">
-								<ul>
-									<li><a href="#">1</a></li>
-									<li><a href="#" class="active">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><span class="fa fa-angle-double-left"></span></a></li>
+								<ul class="clearfix">
+									<li><a href="{% url 'products' id=group_id page=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+
+                                    {% for num_page in page_number %}
+                                        {% if forloop.counter == active_page %}
+                                            <li><a href="{% url 'products' id=group_id page=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                        {% if forloop.counter != active_page %}
+                                            <li><a href="{% url 'products' id=group_id page=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li><a href="{% url 'products' id=group_id page=next_page %}"><span class="fa fa-angle-left"></span></a></li>
 								</ul>
 							</div>
 

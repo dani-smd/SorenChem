@@ -1,5 +1,6 @@
 {% extends 'mainlayout.html' %}
-{#{% load render_partial %}#}
+
+{% load render_partial %}
 
 {% load social_share %}
 
@@ -83,7 +84,7 @@
                                             <ul class="social-links">
                                                 {% post_to_facebook object_or_url "Post to Facebook" %}
                                                 {% post_to_whatsapp  object_or_url "Post to Whatsapp" %}
-                                                {% post_to_telegram  object_or_url "باز نشر در Whatsapp" %}
+                                                {% post_to_telegram  object_or_url "Post to Telegram" %}
                                             </ul>
                                         </div>
                                     </div>
@@ -94,12 +95,12 @@
                             <!--Comments Area-->
                             <div class="comments-area">
                                 <div class="group-title">
-                                    <h2>3 دیدگاه</h2>
+                                    <h2>{{ num_chats }} دیدگاه</h2>
                                 </div>
 
                                 <div class="comment-box">
-                                    <!--Comment-->
-                                    <div class="comment">
+                                    {% for chat in chats %}
+                                        <div class="comment">
                                         <div class="comment-inner">
                                             <div class="author-thumb img-circle"><img class="img-circle"
                                                                                       src="{% static 'images/images.png' %}"
@@ -107,16 +108,15 @@
                                             <!--comment-content-->
                                             <div class="comment-content">
                                                 <div class="comment-info">
-                                                    <h4>تونی استارک</h4>
-                                                    <div class="date">5 شهریور 1398</div>
+                                                    <h4>{{ chat.username }}</h4>
+                                                    <div class="date">{{ chat.created | to_jalali:'%y/%m/%d _ %H:%M' }}</div>
                                                 </div>
-                                                <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                                    چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                                                    مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                                <div class="text">{{ chat.text | safe}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    {% endfor %}
                                 </div>
                             </div>
 
@@ -128,71 +128,7 @@
                                 </div>
 
                                 <!--Comment Form-->
-                                <form method="post" action="blog.html">
-                                    <div class="row clearfix">
-                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                            <label>امتیاز دهید: </label>
-                                            <div style="display: flex">
-                                                <input type="radio" id="contactChoice1" name="contact" value="email"/>
-                                                <label style="padding-top: 7px" for="contactChoice1"><span
-                                                        class="fa fa-star"></span></label>
-
-                                                <input style="margin-right: 15px" type="radio" id="contactChoice2"
-                                                       name="contact" value="phone"/>
-                                                <label style="padding-top: 7px" for="contactChoice2"><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span></label>
-
-                                                <input style="margin-right: 10px" type="radio" id="contactChoice3"
-                                                       name="contact" value="mail"/>
-                                                <label style="padding-top: 7px" for="contactChoice3"><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span></label>
-
-                                                <input style="margin-right: 10px" type="radio" id="contactChoice4"
-                                                       name="contact" value="mail"/>
-                                                <label style="padding-top: 7px" for="contactChoice4"><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span></label>
-
-                                                <input style="margin-right: 10px" type="radio" id="contactChoice5"
-                                                       name="contact" value="mail"/>
-                                                <label style="padding-top: 7px" for="contactChoice5"><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span><span
-                                                        class="fa fa-star"></span></label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="text" name="username" placeholder="نام *" required>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="text" name="username" placeholder="نام خانوادگی *" required>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="email" name="email" placeholder="* ایمیل" required dir="ltr">
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                                            <input type="text" name="username" placeholder="تلفن تماس" dir="ltr">
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                            <textarea name="message" placeholder="متن دیدگاه *" required></textarea>
-                                        </div>
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">
-                                                ارسال دیدگاه
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                </form>
+                                {% render_partial 'blog-comment' id=blog_detail.id %}
 
                             </div>
                             <!--End Comment Form -->
@@ -212,29 +148,19 @@
                                 <div class="sidebar-title">
                                     <h3>مقالات جدید</h3>
                                 </div>
-
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg"
-                                                                        alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a></div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>27 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
-
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg"
-                                                                        alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                    </div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>21 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
+                                {% for blog_sidebar in blogs_sidebar %}
+                                    <article class="post">
+                                        <figure class="post-thumb">
+                                            <a href="{% url 'blog-detail' id=blog_sidebar.id %}"><img src="{{ blog_sidebar.image_3.url }}"
+                                                                            alt=""></a>
+                                        </figure>
+                                        <div class="text"><a href="{% url 'blog-detail' id=blog_sidebar.id %}">{{ blog_sidebar.title }}</a>
+                                        </div>
+                                        <ul class="post-meta clearfix">
+                                            <li><a><i class="fa fa-calendar"></i>{{ blog_sidebar.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
+                                        </ul>
+                                    </article>
+                                {% endfor %}
 
                             </div>
 

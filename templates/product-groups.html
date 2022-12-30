@@ -12,125 +12,42 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>محصولات</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li class="active">محصولات</li>
                     </ul>
                 </div>
             </div>
         </section>
-
         <section class="featured-area">
             <div class="container">
                 <div class="row featured equal-height">
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-loader">
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع کشاورزی</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون</p>
-                                <a class="thm-btn" href="#">بیشتر بخوانید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single featured item-->
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-flasks"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>اسانس</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه</p>
-                                <a class="thm-btn" href="products.html">بیشتر بخوانید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single featured item-->
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="fa fa-envira"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع غذایی</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه</p>
-                                <a class="thm-btn" href="#">بیشتر بخوانید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single featured item-->
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="flaticon-bottle"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>حلال ها</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه</p>
-                                <a class="thm-btn" href="#">بیشتر بخوانید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single featured item-->
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <span class="fa fa-tint"></span>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع تصفیه آب</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه</p>
-                                <a class="thm-btn" href="#">بیشتر بخوانید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single featured item-->
-                    <!--Start single featured item-->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-featured-item">
-                            <div class="icon-holder">
-                                <div class="icon-bg">
-                                    <!-- <span class="flaticon-cabin"></span> -->
-                                    <div class="productGroup-iconbefore">
-                                        <svg width="80px" height="70px" data-name="Layer 2" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg"><path d="M205.37 207.83 185.78 162l-8.45-19.73a41 41 0 0 0-53.82-21.58l-3 1.29a20 20 0 0 0-11.92 15.71v-1.23a4 4 0 0 0-4-4h-3.44V95.07a4 4 0 0 0-4-4h-1.3V25.25a10.56 10.56 0 0 0-.24-2.1 3.93 3.93 0 0 0-.67-2.09A10.21 10.21 0 0 0 81.26 16 44 44 0 0 0 56 55.66v35.41h-.25a4 4 0 0 0-4 4v37.41h-3.44a4 4 0 0 0-4 4V231a4 4 0 0 0 4 4h56.27a4 4 0 0 0 4-4v-87.89a19.56 19.56 0 0 0 1.4 5.14l36.3 84.86a4 4 0 0 0 3.68 2.42 3.94 3.94 0 0 0 1.57-.32l51.74-22.13a4.06 4.06 0 0 0 2.14-2.19 4 4 0 0 0-.04-3.06ZM55.74 140.48h41.49L81.82 175l-29.51-19.84v-14.68Zm29.51 46.4 12.65 8.47L71.8 217Zm3.31-7.41 12-26.87v34.92ZM84.64 23.22a2.22 2.22 0 0 1 2.16.14 2.48 2.48 0 0 1 .57.52C84.51 34.55 73.89 45 64.65 49a35.91 35.91 0 0 1 19.99-25.78ZM64 57.67c8-2.32 17.32-8.94 23.84-17.49v50.89H64Zm-4.25 41.4h33.4v33.41H59.74Zm-7.43 65.72 26.2 17.57L58.57 227h-6.26Zm20 62.18 28.32-23.45V227Zm55.59-57.28 27.22 16.46-13.93 14.6Zm34.24 20.71 23.56 14.25-36.6-.6Zm5.65-5.93 13.08-13.7 12.46 29.15Zm-50.51-48.55a11.9 11.9 0 0 1 6.42-6.56l3-1.29A33 33 0 0 1 170 145.43l7.41 17.34-16.66 17.46-38.27-23.15-5.12-12a12 12 0 0 1-.13-9.16ZM146 212l38.05.62-31.94 13.66Z" fill="#5da73d" class="fill-000000"></path><path d="M82.81 114.43H70.07a4 4 0 0 0 0 8h12.74a4 4 0 0 0 0-8Z" fill="#5da73d" class="fill-000000"></path></svg>
+                    {% for group in groups %}
+                        <!--Start single featured item-->
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-featured-item">
+                                <div class="icon-holder">
+                                    <div class="icon-bg">
+                                        <span class="{{ group.flat_name }}">
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>صنایع آرایشی و بهداشتی</h3>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه</p>
-                                <a class="thm-btn" href="#">بیشتر بخوانید</a>
+                                <div class="text-holder">
+                                    <h3>{{ group.name }}</h3>
+                                    <p>{{ group.description | truncatechars:220 | safe }}</p>
+                                    <a class="thm-btn" href="{% url 'products' id=group.id page=1 %}">بیشتر بخوانید</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End single featured item-->
+                        <!--End single featured item-->
+                    {% endfor %}
                 </div>
             </div>
         </section>
-
     </div>
     <!--End pagewrapper-->
 {% endblock content %}

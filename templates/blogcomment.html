@@ -1,0 +1,70 @@
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="row clearfix">
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <label>امتیاز دهید: </label>
+            <div style="display: flex">
+                <input type="radio" id="contactChoice1" name="rank" value='1' />
+                <label style="padding-top: 7px" for="contactChoice1"><span
+                        class="fa fa-star"></span></label>
+
+                <input style="margin-right: 15px" type="radio" id="contactChoice2"
+                       name="rank" value='2' />
+                <label style="padding-top: 7px" for="contactChoice2"><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span></label>
+
+                <input style="margin-right: 10px" type="radio" id="contactChoice3"
+                       name="rank" value='3' />
+                <label style="padding-top: 7px" for="contactChoice3"><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span></label>
+
+                <input style="margin-right: 10px" type="radio" id="contactChoice4"
+                       name="rank" value='4' />
+                <label style="padding-top: 7px" for="contactChoice4"><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span></label>
+
+                <input style="margin-right: 10px" type="radio" id="contactChoice5"
+                       name="rank" value='5' />
+                <label style="padding-top: 7px" for="contactChoice5"><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span><span
+                        class="fa fa-star"></span></label>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+            <input type="text" name="firstname" placeholder="نام *" required>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+            <input type="text" name="lastname" placeholder="نام خانوادگی *" required>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+            <input type="email" name="email" placeholder="* ایمیل" required dir="ltr">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+            <input type="text" name="phone" placeholder="تلفن تماس" dir="ltr">
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+            <textarea name="message" placeholder="متن دیدگاه *" required></textarea>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+            <button class="theme-btn btn-style-one" type="submit" name="submit-form">
+                ارسال دیدگاه
+            </button>
+        </div>
+        {% if message %}
+            <div class="p-3 mt-3 text-center contact-message {% if success %}success-message {% else %} error-message {% endif %}" id="contact_alert" style="transform: translateX(120%);">
+                <p class="h4">{{message}}</p>
+            </div>
+        {% endif %}
+    </div>
+</form>

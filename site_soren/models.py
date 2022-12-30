@@ -239,12 +239,14 @@ class Blog(models.Model):
 class ChatBlog(models.Model):
     username = models.CharField(max_length=300, verbose_name="نام")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
-    phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه")
+    phone = models.CharField(max_length=11, verbose_name="تلفن‌همراه", null=True, blank=True)
     text = HTMLField(verbose_name="توضیحات")
     score = models.IntegerField(default=0, verbose_name="امتیاز")
     Blog = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True, blank=True,
                              verbose_name="مقاله")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+    read = models.BooleanField(default=False, verbose_name="خوانده شد")
+    publish = models.BooleanField(default=False, verbose_name="منتشر شود")
 
     def __str__(self) -> str:
         return self.username

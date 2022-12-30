@@ -1,0 +1,187 @@
+{% load static %}
+<header class="main-header header-style-three">
+    <!-- Header Top One-->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="clearfix">
+
+                <div class="pull-right logo-outer">
+                    <!--Logo Box-->
+                    <div class="logo-box">
+                        <div class="logo">
+                            <a href="{% url 'index_view' %}" title="Factories">
+                                <h1 class="logo-text">{{ company_name }}</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pull-left upper-right clearfix">
+                     <div class="upper-display">
+                    <!--Info Box-->
+                    <div class="upper-column info-box">
+                        <div class="icon-box">
+                            <a href="tel:{{ phone }}">
+                              <span class="flaticon-telephone-1"></span>
+                            </a>
+                        </div>
+                        <ul>
+                            <li><strong>تلفن ما</strong></li>
+                            <li>
+                                <a href="tel:{{ phone }}">
+                                 {{ phone }}
+                                </a></li>
+                        </ul>
+                    </div>
+
+                    <div class="upper-column info-box">
+                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/uk.png' %}" /></a>
+                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/kw.png' %}" /></a>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Header Lower -->
+    <div class="header-lower">
+        <div class="main-box">
+            <div class="auto-container">
+                <div class="outer-container clearfix">
+                    <!--Nav Outer-->
+                    <div class="nav-outer clearfix">
+                        <!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-header">
+                                <!-- Toggle Button -->
+                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <div class="navbar-collapse collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
+                                    <li><a href="{% url 'about_us' %}">درباره ما</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a>محصولات</a>
+                                        <ul>
+                                            {% for cat in company_cats %}
+                                                {% if cat.id == -1 %}
+                                                    <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                                {% endif %}
+                                                {% if cat.id != -1 %}
+                                                    <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                                    </li>
+                                    <li class="dropdown"><a>گالری</a>
+                                        <ul>
+                                            <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
+                                            <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
+                                    <li><a href="{% url 'contact_us' %}">تماس</a></li>
+
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+
+                        <!--Search Box-->
+                        <div class="outer-box2">
+                            <!--Search form-->
+                            <div class="search-form">
+                                <form method="post" action="">
+                                    <div class="form-group">
+                                        <input type="text" name="search" value="" placeholder="جستجو ..."
+                                            required="">
+                                        <button type="submit" class="theme-btn"><span
+                                                class="icon fa fa-search"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Nav Outer End-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Sticky Header-->
+    <div class="sticky-header">
+        <div class="auto-container clearfix">
+            <!--Logo-->
+            <div class="logo pull-right">
+                <a href="{% url 'index_view' %}" title="Factories">
+                    <h2 class="logo-text">{{ company_name }}</h2>
+                </a>
+            </div>
+
+            <!--Right Col-->
+            <div class="right-col pull-left">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                    <div class="navbar-header">
+                        <!-- Toggle Button -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse clearfix">
+                        <ul class="navigation clearfix">
+                            <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
+                            <li><a href="{% url 'about_us' %}">درباره ما</a>
+                            </li>
+                            <li class="dropdown">
+                                <a>محصولات</a>
+                                <ul>
+                                    {% for cat in company_cats %}
+                                        {% if cat.id == -1 %}
+                                            <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                        {% endif %}
+                                        {% if cat.id != -1 %}
+                                            <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                            </li>
+                            <li class="dropdown"><a>گالری</a>
+                                <ul>
+                                    <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
+                                    <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
+                            <li><a href="{% url 'contact_us' %}">تماس</a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Main Menu End-->
+            </div>
+
+        </div>
+    </div>
+    <!--End Sticky Header-->
+</header>

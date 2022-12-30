@@ -74,12 +74,52 @@ def blogs(request, id):
 
 
 def blog_detail(request, id):
+    qs_allblog = Blog.objects.exclude(id=id).order_by("-id")[:2]
     qs_blog = Blog.objects.filter(id=id).first()
+    qs_chat = ChatBlog.objects.filter(Blog_id=id, publish=True)
     context = {
+        "blogs_sidebar": qs_allblog,
         "blog_detail": qs_blog,
-
+        "chats": qs_chat,
+        "num_chats": qs_chat.count()
     }
+    # --- count visits
+    qs_blog.views += 1
+    qs_blog.save()
+    # ---
     return render(request, "blog-single.html", context=context)
+
+
+def blog_comment(request, id):
+    context = {}
+    if request.POST:
+        rank = request.POST.get('rank', 0)
+        firstname = request.POST.get('firstname', "False")
+        lastname = request.POST.get('lastname', "False")
+        email = request.POST.get('email', "False")
+        phone = request.POST.get('phone', "False")
+        message = request.POST.get('message', "False")
+        # ---
+        name = firstname + ' ' + lastname
+        # ---
+        qs_blog = Blog.objects.filter(id=id)
+        blog = None
+        if not qs_blog:
+            context['message'] = "مقاله یافت نشد."
+            context['success'] = False
+        else:
+            blog = qs_blog.first()
+        # ---
+        qs_contact = ChatBlog.objects.filter(username=name, email=email, read=False)
+        if qs_contact:
+            context['message'] = "پیامی با این محتوا وجود دارد."
+            context['success'] = False
+        else:
+            contact = ChatBlog(username=name, email=email, phone=phone, text=message, score=rank, Blog=blog)
+            contact.save()
+            context['message'] = "با موفقیت ثبت شد"
+            context['success'] = True
+    return render(request, "blogcomment.html", context=context)
 
 
 def faq(request):
@@ -127,11 +167,31 @@ def product_detail(request, id):
 
 
 def product_group(request):
-    return render(request, "product-groups.html", context=None)
+    context = {
+        "groups": ProductGroup.objects.filter(parent__isnull=True).order_by("id")[:6]
+    }
+    return render(request, "product-groups.html", context=context)
 
 
-def products(request):
-    return render(request, "products.html", context=None)
+def products(request, id, page):
+    if page is None:
+        page = 1
+    else:
+        page = page
+    qs_products = ProductDetail.objects.filter(product_group__id__in=[id]).order_by("-id")
+    qs_group = ProductGroup.objects.get(id=id)
+    paginator = Paginator(qs_products, per_page=12)
+    page_object = paginator.get_page(page)
+    context = {
+        "group_id": id,
+        "group_data": qs_group,
+        "page_number": range(paginator.num_pages),
+        "pages": page_object,
+        "active_page": int(page),
+        "previous_page": int(page) - 1 if int(page) > 1 else int(page),
+        "next_page": int(page) + 1 if int(page) < paginator.num_pages else int(page),
+    }
+    return render(request, "products.html", context=context)
 
 
 def sample_request(request):
@@ -162,9 +222,25 @@ def record_sample(request):
     return render(request, "recordsample.html", context=context)
 
 
-def header_view(request):
-    return render(request, "index.html", context=None)
+def header_view(request, *args, **kwargs):
+    result = {
+        -1: {"id": -1, "name": "همه", "sub_cat": []}
+    }
+    # ---
+    for cat in ProductGroup.objects.all().order_by("id"):
+        if not cat.parent:
+            result.setdefault(cat.id, {"id": cat.id, "name": cat.name, "sub_cat": []})
+    # ---
+    qs_gi = GeneralInfo.objects.first()
+    context = {
+        "company_cats": list(result.values()),
+        "email": qs_gi.email,
+        "phone": qs_gi.mobile,
+        "logo": qs_gi.company_logo,
+        "company_name": qs_gi.company_name
+    }
+    return render(request, "layout/header.html", context=context)
 
 
 def footer_view(request):
-    return render(request, "index.html", context=None)
+    return render(request, "layout/footer.html", context=None)

@@ -124,7 +124,7 @@
                     {% for product_group in products_group %}
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="single-featured-item">
-                                <a href="{% url 'products' id=product_group.id %}">
+                                <a href="{% url 'products' id=product_group.id page=1 %}">
                                     <div class="icon-holder">
                                         <div class="icon-bg">
                                         <span class="{{ product_group.flat_name }}">
@@ -339,7 +339,7 @@
                             {% if product_gp.type == "AI" and forloop.counter == 1 %}
                                 <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
-                                        <a href="{% url 'product_detail' id=product.id %}">
+                                        <a href="{% url 'product-detail' id=product.id %}">
                                             <figure class="effect-bubba">
                                                 <img src="{{ product.image_1.url }}" alt="image">
                                                 <figcaption>
@@ -356,7 +356,7 @@
                             {% if product_gp.type == "ES" and forloop.counter == 1 %}
                                 <div class="default-portfolio-item Essence col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
-                                        <a href="{% url 'product_detail' id=product.id %}">
+                                        <a href="{% url 'product-detail' id=product.id %}">
                                             <figure class="effect-bubba">
                                                 <img src="{{ product.image_1.url }}" alt="image">
                                                 <figcaption>
@@ -373,7 +373,7 @@
                             {% if product_gp.type == "FI" and forloop.counter == 1 %}
                                 <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
-                                        <a href="{% url 'product_detail' id=product.id %}">
+                                        <a href="{% url 'product-detail' id=product.id %}">
                                             <figure class="effect-bubba">
                                                 <img src="{{ product.image_1.url }}" alt="image">
                                                 <figcaption>
