@@ -142,6 +142,8 @@ class ChatProductDetail(models.Model):
     product_detail = models.ForeignKey(ProductDetail, on_delete=models.CASCADE, null=True, blank=True,
                                        verbose_name="جزيیات محصول")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+    read = models.BooleanField(default=False, verbose_name="خوانده شد")
+    publish = models.BooleanField(default=False, verbose_name="منتشر شود")
 
     def __str__(self) -> str:
         return self.username

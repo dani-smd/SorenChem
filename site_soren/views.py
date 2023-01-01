@@ -163,7 +163,29 @@ def gallery_video(request, id):
 
 
 def product_detail(request, id):
-    return render(request, "product-detail.html", context=None)
+    general_info = GeneralInfo.objects.first()
+    qs_product = ProductDetail.objects.filter(id=id).first()
+    cats = qs_product.product_group.all()
+    cat_id = None
+    cat_name = None
+    for cat in cats:
+        if not cat.parent:
+            cat_id = cat.id
+            cat_name = cat.name
+    qs_chat = ChatProductDetail.objects.filter(product_detail=id, publish=True)
+    context = {
+        "sidebar": general_info,
+        "product": qs_product,
+        "chats": qs_chat,
+        "num_chats": qs_chat.count(),
+        "cat_id": cat_id,
+        "cat_name": cat_name
+    }
+    # --- count visits
+    qs_product.views += 1
+    qs_product.save()
+    # ---
+    return render(request, "product-detail.html", context=context)
 
 
 def product_group(request):

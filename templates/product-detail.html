@@ -3,6 +3,8 @@
 
 {% load static %}
 
+{% load jalali_tags %}
+
 {% block title %}محصولات - جزئیات{% endblock title %}
 
 {% block content %}
@@ -12,15 +14,15 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style="background-image:url({% static 'images/background/bg-page-title-1.jpg' %});">
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>جزئیات محصول</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
-                        <li><a href="product-groups.html">محصولات</a></li>
-                        <li><a href="products.html">اسانس</a></li>
-                        <li class="active">جزئیات محصول</li>
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li><a href="{% url 'product-group' %}">محصولات</a></li>
+                        <li><a href="{% url 'products' id=cat_id page=1 %}">{{ cat_name }}</a></li>
+                        <li class="active">{{ product.title }}</li>
                     </ul>
                 </div>
             </div>
@@ -46,38 +48,38 @@
                                         <div class="row clearfix">
                                             <div class="image-column col-md-6 col-sm-6 col-xs-12">
                                                 <figure class="image-box">
-                                                    <a href="images/resource/22.jpg" class="lightbox-image"><img
-                                                            src="images/resource/22.jpg" alt=""></a>
+                                                    <a href="{{ product.image_1.url }}" class="lightbox-image"><img
+                                                            src="{{ product.image_1.url }}" alt=""></a>
                                                 </figure>
                                             </div>
                                             <div class="info-column col-md-6 col-sm-6 col-xs-12">
                                                 <div class="details-header">
-                                                    <h3>اسانس رازیانه</h3>
+                                                    <h3>{{ product.title }}</h3>
                                                 </div>
                                                 <div class="text">
                                                     <ul class="detail-products">
-                                                        <li>نام فارسی: <span>اسانس رازیانه</span></li>
-                                                        <li>نام لاتین: <span>Fennel essential oil</span></li>
-                                                        <li>فرمول شیمیایی: <span>C30H40O3</span></li>
-                                                        <li>نوع بسته بندی: <span>کارتون</span></li>
-                                                        <li>کشور سازنده: <span>اسپانیا</span></li>
-                                                        <li>کاربرد: <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                                        <li>نام فارسی: <span>{{ product.farsi_name }}</span></li>
+                                                        <li>نام لاتین: <span>{{ product.english_name}}</span></li>
+                                                        <li>فرمول شیمیایی: <span>{{ product.formula }}</span></li>
+                                                        <li>نوع بسته بندی: <span>{{ product.package_type }}</span></li>
+                                                        <li>کشور سازنده: <span>{{ product.made_by }}</span></li>
+                                                        <li>کاربرد: <span> {{ product.application }}
                                                         </span></li>
                                                     </ul>
-                                                    <div class="stock"><a href="#"><i class="fa fa-download"
+                                                    <div class="stock"><a href="{{ product.file.url }}" download><i class="fa fa-download"
                                                                                       style="margin-left: 5px;"
                                                                                       aria-hidden="true"></i>دانلود
-                                                        آنالیز اسانس رازیانه</a></div>
-                                                    <div class="other-options clearfix mt-30">
-                                                        <button type="button"
-                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر
-                                                            فروش
-                                                        </button>
-                                                        <button type="button" style="margin-right: 20px"
-                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر
-                                                            فروش
-                                                        </button>
-                                                    </div>
+                                                        آنالیز {{ product.title }}</a></div>
+{#                                                    <div class="other-options clearfix mt-30">#}
+{#                                                        <button type="button" value="{{ sidebar.telephone_1 }}"#}
+{#                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر#}
+{#                                                            فروش#}
+{#                                                        </button>#}
+{#                                                        <button type="button" style="margin-right: 20px"#}
+{#                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر#}
+{#                                                            فروش#}
+{#                                                        </button>#}
+{#                                                    </div>#}
                                                 </div>
                                             </div>
                                         </div>
@@ -102,86 +104,35 @@
                                                     <div class="tab active-tab" id="prod-description">
                                                         <h3>توضیحات محصول</h3>
                                                         <div class="content">
-                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
-                                                                روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                                                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
-                                                                هدف</p>
-                                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-                                                                و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه
-                                                                روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                                                                شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف
-                                                                بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و
-                                                                سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان
-                                                                را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان
-                                                                رایانه ای</p>
+                                                            {{ product.description | safe }}
                                                         </div>
                                                     </div>
 
                                                     <!--Tab-->
                                                     <div class="tab" id="prod-reviews">
-                                                        <h3>3 نقد و بررسی</h3>
+                                                        <h3>{{ num_chats }} نقد و بررسی</h3>
 
                                                         <!--Reviews Container-->
                                                         <div class="reviews-container">
-
-                                                            <!--Reviews-->
-                                                            <article class="review-box clearfix">
-                                                                <figure class="rev-thumb"><img
-                                                                        src="images/shop/author-1.png" alt=""></figure>
-                                                                <div class="rev-content">
-                                                                    <div class="rating"><span class="fa fa-star"></span>
-                                                                        <span class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span> <span
-                                                                                class="fa fa-star-o"></span></div>
-                                                                    <div class="rev-info">تونی استارک - 3 شهریور 1398
+                                                            {% for chat in chats %}
+                                                                <!--Reviews-->
+                                                                <article class="review-box clearfix">
+                                                                    <figure class="rev-thumb"><img
+                                                                            src="{% static 'images/images.png' %}" alt=""></figure>
+                                                                    <div class="rev-content">
+                                                                        <div class="rating"><span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star"></span> <span
+                                                                                    class="fa fa-star-o"></span></div>
+                                                                        <div class="rev-info">{{ chat.username}} - {{ chat.created | to_jalali:'%y/%m/%d _ %H:%M'}}
+                                                                        </div>
+                                                                        <div class="rev-text">
+                                                                            {{ chat.text | safe }}
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="rev-text">
-                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
-                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                                                                    </div>
-                                                                </div>
-                                                            </article>
-
-                                                            <article class="review-box clearfix">
-                                                                <figure class="rev-thumb"><img
-                                                                        src="images/shop/author-3.jpg" alt=""></figure>
-                                                                <div class="rev-content">
-                                                                    <div class="rating"><span class="fa fa-star"></span>
-                                                                        <span class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span> <span
-                                                                                class="fa fa-star-o"></span> <span
-                                                                                class="fa fa-star-o"></span></div>
-                                                                    <div class="rev-info">استیو راجرز - 30 مرداد 1398
-                                                                    </div>
-                                                                    <div class="rev-text">
-                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
-                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                                                                    </div>
-                                                                </div>
-                                                            </article>
-
-                                                            <article class="review-box clearfix">
-                                                                <figure class="rev-thumb"><img
-                                                                        src="images/shop/author-4.jpg" alt=""></figure>
-                                                                <div class="rev-content">
-                                                                    <div class="rating"><span class="fa fa-star"></span>
-                                                                        <span class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span> <span
-                                                                                class="fa fa-star"></span></div>
-                                                                    <div class="rev-info">پیتر پارکر - 23 مرداد 1398
-                                                                    </div>
-                                                                    <div class="rev-text">
-                                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                                            از صنعت چاپ و با استفاده از طراحان گرافیک
-                                                                            است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                                                                    </div>
-                                                                </div>
-                                                            </article>
+                                                                </article>
+                                                            {% endfor %}
 
                                                         </div>
 
@@ -269,26 +220,26 @@
                         <h3>راه های ارتباط با ما</h3>
                         <ul class="mt-20 contact-us">
                             <li>
-                                <a href="tel:+985138676767">
+                                <a href="tel:{{ sidebar.telephone_1 }}">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>051-38676767</span>
+                                    <span>{{ sidebar.telephone_1 }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:+989033222110">
+                                <a href="tel:{{ sidebar.mobile }}">
                                     <i class="fa fa-mobile" style="font-size: 24px;" aria-hidden="true"></i>
-                                    <span>09033222110</span>
+                                    <span>{{ sidebar.mobile }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:+989033222110"><i class="fa fa-whatsapp" aria-hidden="true"></i>
-                                    <span>09033222110</span>
+                                <a href="tel:{{ sidebar.whatsapp_number }}"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <span>{{ sidebar.whatsapp_number }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    info@sorenchem.com</li>
-                            </a>
+                                <a><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    {{ sidebar.email}}</a>
+                            </li>
                         </ul>
                     </div>
                     <!--Sidebar-->
