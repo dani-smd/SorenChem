@@ -1251,7 +1251,7 @@ img {
 	float: right;
 }
 
-.header-style-three .main-menu .navigation>li:first-child {
+.header-style-three .main-menu .navigation>li.current {
 	border-bottom: 1px solid #5da73d;
 }
 
