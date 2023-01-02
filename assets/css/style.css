@@ -9079,7 +9079,9 @@ figure.effect-bubba:hover p {
 	background-size: cover !important;
 	background-repeat: no-repeat !important;
   }
-  
+  .mt-gallery {
+	  margin-top: 65px !important;
+  }
   .box__bottom, .box__top, .box__left, .box__right {
 	position: absolute;
 	width: inherit;
@@ -9104,7 +9106,7 @@ figure.effect-bubba:hover p {
 	height: 100%;
 	transform: none;
   }
-  
+
   .box__right {
 	background: rgba(7, 7, 7, 0.116);
 	transform: translateX(100%);

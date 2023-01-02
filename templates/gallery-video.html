@@ -29,38 +29,38 @@
             <div class="film-container">
                 <div class="row">
                     {% for video in pages %}
-                        <div class="single-film wow fadeInDown" data-wow-delay=".1s">
+                        <div class="single-film wow fadeInDown col-lg-4 col-md-4 col-sm-6 col-xs-12" data-wow-delay=".{{ forloop.counter }}s">
                             <div class="box" style="background: url({{ video.image.url }});">
                                 <div class="box__right box-pay-icon">
-                                    <a href="{{ video.video.url }}">
-                                        <i class="play-movie-icon fa fa-play"></i>
+                                    <a href="javascript:;">
+                                        <i class="play-movie-icon fa fa-play mt-gallery"></i>
                                     </a>
                                 </div>
                                 <div class="box__left box-pay-icon">
-                                    <a href="{{ video.video.url }}">
-                                        <i class="play-movie-icon fa fa-play"></i>
+                                    <a href="javascript:;">
+                                        <i class="play-movie-icon fa fa-play mt-gallery"></i>
                                     </a>
                                 </div>
                                 <div class="box__top box-pay-icon">
-                                    <a href="{{ video.video.url }}">
-                                        <i class="play-movie-icon fa fa-play"></i>
+                                    <a href="javascript:;">
+                                        <i class="play-movie-icon fa fa-play mt-gallery"></i>
                                     </a>
                                 </div>
                                 <div class="box__bottom box-pay-icon">
-                                    <a href="{{ video.video.url }}">
-                                        <i class="play-movie-icon fa fa-play"></i>
+                                    <a href="javascript:;">
+                                        <i class="play-movie-icon fa fa-play mt-gallery"></i>
                                     </a>
                                 </div>
                                 <div class="play-video">
-                                    <video width="320" height="240" controls id="PlayVideo1">
+                                    <video width="320" height="240" controls id="PlayVideo{{ forloop.counter }}">
                                         <source src="{{ video.video.url }}" type="video/mp4">
                                     </video>
-                                    <i class="video-tag-close fa fa-close" onclick="pauseVid6()"></i>
                                 </div>
+                                <i class="video-tag-close fa fa-close" onclick="pauseVid{{ forloop.counter }}()"></i>
                             </div>
                             <div class="film-information">
                                 <p>{{ video.title }}</p>
-                                <p>{{ video.text | truncatechars:50 | safe}}</p>
+                                <p>{{ video.text | truncatechars:50 | safe }}</p>
                             </div>
                         </div>
                     {% endfor %}
@@ -68,16 +68,20 @@
                 <!-- Styled Pagination -->
                 <div class="styled-pagination text-center">
                     <ul class="clearfix">
-                        <li><a href="{% url 'gallery-video' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
-                            {% for num_page in page_number %}
-                                {% if forloop.counter == active_page %}
-                                    <li><a href="{% url 'gallery-video' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
-                                {% endif %}
-                                {% if forloop.counter != active_page %}
-                                    <li><a href="{% url 'gallery-video' id=forloop.counter %}">{{ forloop.counter }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        <li><a href="{% url 'gallery-video' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
+                        <li><a href="{% url 'gallery-video' id=previous_page %}"><span class="fa fa-angle-right"></span></a>
+                        </li>
+                        {% for num_page in page_number %}
+                            {% if forloop.counter == active_page %}
+                                <li><a href="{% url 'gallery-video' id=forloop.counter %}"
+                                       class="active">{{ forloop.counter }}</a></li>
+                            {% endif %}
+                            {% if forloop.counter != active_page %}
+                                <li><a href="{% url 'gallery-video' id=forloop.counter %}">{{ forloop.counter }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li><a href="{% url 'gallery-video' id=next_page %}"><span class="fa fa-angle-left"></span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -89,18 +93,5 @@
 {% endblock content %}
 
 {% block javascript %}
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script src="{% static 'js/revolution.min.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
-    <script src="{% static 'js/owl.js' %}"></script>
-    <script src="{% static 'js/wow.js' %}"></script>
-    <script src="{% static 'js/appear.js' %}"></script>
-    <script src="{% static 'js/isotope.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/jquery3.1.0.min.js' %}"></script>
-    <script src="{% static 'js/script-gallery.js' %}"></script>
     <script src="{% static 'js/script-gallery.js' %}"></script>
 {% endblock javascript %}
