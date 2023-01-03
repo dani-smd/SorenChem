@@ -59,7 +59,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="text">{{ blog_detail.text | safe}}
+                                        <div class="text">{{ blog_detail.text | safe }}
                                         </div>
 
                                     </div>
@@ -83,8 +83,8 @@
                                             <!--Social Links-->
                                             <ul class="social-links">
                                                 {% post_to_facebook object_or_url "Post to Facebook" %}
-                                                {% post_to_whatsapp  object_or_url "Post to Whatsapp" %}
-                                                {% post_to_telegram  object_or_url "Post to Telegram" %}
+                                                {% post_to_whatsapp object_or_url "Post to Whatsapp" %}
+                                                {% post_to_telegram object_or_url "Post to Telegram" %}
                                             </ul>
                                         </div>
                                     </div>
@@ -102,36 +102,40 @@
                                     {% for chat in chats %}
                                         <div class="comment">
                                         <div class="comment-inner">
-                                            <div class="author-thumb img-circle"><img class="img-circle"
-                                                                                      src="{% static 'images/images.png' %}"
-                                                                                      alt=""></div>
-                                            <!--comment-content-->
-                                            <div class="comment-content">
-                                                <div class="comment-info">
-                                                    <h4>{{ chat.username }}</h4>
-                                                    <div class="date">{{ chat.created | to_jalali:'%y/%m/%d _ %H:%M' }}</div>
-                                                </div>
-                                                <div class="text">{{ chat.text | safe}}
+                                            <div class="author-thumb img-circle">
+                                                <img class="img-circle"
+                                                     src="{% static 'images/images.png' %}"
+                                                     alt="">
+                                            </div>
+                                            <div class="rev-content">
+                                                <div class="rating"><i data-star="3.6"></i></div>
+                                                <!--comment-content-->
+                                                <div class="comment-content">
+                                                    <div class="comment-info">
+                                                        <h4>{{ chat.username }}</h4>
+                                                        <div class="date">{{ chat.created | to_jalali:'%y/%m/%d _ %H:%M' }}</div>
+                                                    </div>
+                                                    <div class="text">{{ chat.text | safe }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     {% endfor %}
-                                </div>
-                            </div>
-
-                            <!-- Comment Form -->
-                            <div class="comment-form">
-
-                                <div class="group-title">
-                                    <h2>دیدگاه خود را بیان کنید</h2>
+                                    </div>
                                 </div>
 
-                                <!--Comment Form-->
-                                {% render_partial 'blog-comment' id=blog_detail.id %}
+                                <!-- Comment Form -->
+                                <div class="comment-form">
 
-                            </div>
-                            <!--End Comment Form -->
+                                    <div class="group-title">
+                                        <h2>دیدگاه خود را بیان کنید</h2>
+                                    </div>
+
+                                    <!--Comment Form-->
+                                    {% render_partial 'blog-comment' id=blog_detail.id %}
+
+                                </div>
+                                <!--End Comment Form -->
 
                         </section>
 
@@ -151,13 +155,17 @@
                                 {% for blog_sidebar in blogs_sidebar %}
                                     <article class="post">
                                         <figure class="post-thumb">
-                                            <a href="{% url 'blog-detail' id=blog_sidebar.id %}"><img src="{{ blog_sidebar.image_3.url }}"
-                                                                            alt=""></a>
+                                            <a href="{% url 'blog-detail' id=blog_sidebar.id %}"><img
+                                                    src="{{ blog_sidebar.image_3.url }}"
+                                                    alt=""></a>
                                         </figure>
-                                        <div class="text"><a href="{% url 'blog-detail' id=blog_sidebar.id %}">{{ blog_sidebar.title }}</a>
+                                        <div class="text"><a
+                                                href="{% url 'blog-detail' id=blog_sidebar.id %}">{{ blog_sidebar.title }}</a>
                                         </div>
                                         <ul class="post-meta clearfix">
-                                            <li><a><i class="fa fa-calendar"></i>{{ blog_sidebar.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
+                                            <li><a><i
+                                                    class="fa fa-calendar"></i>{{ blog_sidebar.created | to_jalali:'%y/%m/%d _ %H:%M' }}
+                                            </a></li>
                                         </ul>
                                     </article>
                                 {% endfor %}
