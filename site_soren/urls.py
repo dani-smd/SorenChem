@@ -2,6 +2,12 @@ from django.urls import path, include
 from .views import (index_view, not_found, contact_us, about_us, blogs, blog_detail, faq, gallery_image, gallery_video,
                     product_detail, product_group, products, sample_request, header_view, footer_view,
                     recordcontactus_view, record_sample, blog_comment)
+from .sitemaps import ArticleSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps = {
+    'blog': ArticleSitemap
+}
 
 urlpatterns = [
     path('', index_view, name="index_view"),
@@ -23,4 +29,5 @@ urlpatterns = [
     path('recordsample/', record_sample, name="record_sample"),
     path('blog-comment/<id>', blog_comment, name="blog-comment"),
     path(r'^tinymce/', include('tinymce.urls')),
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

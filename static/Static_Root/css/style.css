@@ -104,7 +104,7 @@ body {
 a, label {
 	text-decoration: none;
 	cursor: pointer;
-	color: darkslategrey;
+	color: #5da73d;
 }
 
 a:hover,
@@ -343,7 +343,7 @@ div.no-bg {
 	background-color: #ffffff;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-image: url(../images/icons/preloader.GIF);
+	background-image: url(../images/icons/preloader.gif);
 }
 
 img {
