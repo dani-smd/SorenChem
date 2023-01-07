@@ -1,8 +1,10 @@
+from django.db.models import Avg
 from django.shortcuts import render, redirect
 from .models import *
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
 
 def index_view(request):
     context = {
@@ -111,7 +113,7 @@ def blog_comment(request, id):
         else:
             blog = qs_blog.first()
         # ---
-        qs_contact = ChatBlog.objects.filter(username=name, email=email, read=False)
+        qs_contact = ChatBlog.objects.filter(username=name, email=email, text=message, read=False)
         if qs_contact:
             context['message'] = "پیامی با این محتوا وجود دارد."
             context['success'] = False
@@ -186,6 +188,35 @@ def product_detail(request, id):
     qs_product.views += 1
     qs_product.save()
     # ---
+    if request.POST:
+        rank = request.POST.get('rank', 0)
+        firstname = request.POST.get('firstname', "False")
+        lastname = request.POST.get('lastname', "False")
+        email = request.POST.get('email', "False")
+        phone = request.POST.get('phone', "False")
+        message = request.POST.get('message', "False")
+        # ---
+        name = firstname + ' ' + lastname
+        # ---
+        qs_product = ProductDetail.objects.filter(id=id)
+        product = None
+        if not qs_product:
+            context['message'] = "مقاله یافت نشد."
+            context['success'] = False
+        else:
+            product = qs_product.first()
+        # ---
+        qs_contact = ChatProductDetail.objects.filter(username=name, email=email, text=message, read=False)
+        if qs_contact:
+            context['message'] = "پیامی با این محتوا وجود دارد."
+            context['success'] = False
+        else:
+            contact = ChatProductDetail(username=name, email=email, phone=phone, text=message, score=rank,
+                                        product_detail=product)
+            contact.save()
+            context['message'] = "با موفقیت ثبت شد"
+            context['success'] = True
+            return redirect(product_detail, id=id)
     return render(request, "product-detail.html", context=context)
 
 
@@ -202,6 +233,10 @@ def products(request, id, page):
     else:
         page = page
     qs_products = ProductDetail.objects.filter(product_group__id__in=[id]).order_by("-id")
+    scores = {}
+    for product in qs_products:
+        qs_score = ChatProductDetail.objects.filter(product_detail=product).annotate(avg=Avg('score')).first()
+        scores[product.id] = qs_score.avg if qs_score else 0
     qs_group = ProductGroup.objects.get(id=id)
     paginator = Paginator(qs_products, per_page=12)
     page_object = paginator.get_page(page)
@@ -210,6 +245,7 @@ def products(request, id, page):
         "group_data": qs_group,
         "page_number": range(paginator.num_pages),
         "pages": page_object,
+        "scores": scores,
         "active_page": int(page),
         "previous_page": int(page) - 1 if int(page) > 1 else int(page),
         "next_page": int(page) + 1 if int(page) < paginator.num_pages else int(page),
@@ -263,19 +299,32 @@ def header_view(request, *args, **kwargs):
         "company_name": qs_gi.company_name
     }
     if request.POST:
-        url = reverse('')
-        return HttpResponseRedirect(url)
+        return redirect(product_detail, id=1)
     return render(request, "layout/header.html", context=context)
 
 
 def footer_view(request):
-    return render(request, "layout/footer.html", context=None)
+    context = {
+        "general_info": GeneralInfo.objects.first(),
+        "blogs": Blog.objects.all().order_by('-id')[0:2]
+    }
+    if request.POST:
+        useremail = request.POST.get('useremail', "False")
+        qs_email = UserEmailBank.objects.filter(email=useremail)
+        if qs_email:
+            context['message'] = "ایمیل شما قبلا ثبت شده است."
+            context['success'] = False
+        else:
+            contact = UserEmailBank(email=useremail)
+            contact.save()
+            context['message'] = "با موفقیت ثبت شد"
+            context['success'] = True
+    return render(request, "layout/footer.html", context=context)
 
 
 def search_result(request):
     pass
     return render(request, "about-us.html", context=None)
-
 
 # def search_view(request):
 #     if request.POST:

@@ -61,7 +61,11 @@
 											<h3><a href="{% url 'product-detail' id=page.id %}">{{ page.title }}</a></h3>
 
 											<div class="rating">
-												<i data-star="3.6"></i>
+                                                {% for key, value in scores.items %}
+                                                    {% if key == page.id %}
+                                                        <i data-star="{{ value }}"></i>
+                                                    {% endif %}
+                                                {% endfor %}
 											</div>
 										</div>
 
