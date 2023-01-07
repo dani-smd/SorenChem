@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.core.paginator import Paginator
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index_view(request):
     context = {
@@ -261,8 +262,22 @@ def header_view(request, *args, **kwargs):
         "logo": qs_gi.company_logo,
         "company_name": qs_gi.company_name
     }
+    if request.POST:
+        url = reverse('')
+        return HttpResponseRedirect(url)
     return render(request, "layout/header.html", context=context)
 
 
 def footer_view(request):
     return render(request, "layout/footer.html", context=None)
+
+
+def search_result(request):
+    pass
+    return render(request, "about-us.html", context=None)
+
+
+# def search_view(request):
+#     if request.POST:
+#         return redirect('search_result')
+#     return render(request, "about-us.html", context=None)

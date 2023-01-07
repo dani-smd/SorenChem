@@ -1,0 +1,133 @@
+{% extends 'mainlayout.html' %}
+
+{% load jalali_tags %}
+
+{% load static %}
+
+{% block title %}نتایج جستجو ...{% endblock title %}
+
+{% block content %}
+
+    <div class="page-wrapper body_wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!--Page Title-->
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
+            <div class="auto-container">
+                <h1>نتایج جستجو</h1>
+                <div class="bread-crumb-outer">
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li class="active">نتایج جستجو</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--Sidebar Page-->
+        <div class="sidebar-page-container with-right-sidebar gray-bg">
+            <div class="auto-container">
+                <div class="row clearfix">
+
+                    <!--Content Side-->
+                    <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                        <!--News Section-->
+                        <section class="news-section no-padd">
+
+                            <div class="row clearfix equal-height">
+                                {% for blog in pages %}
+                                    <!--News Style One-->
+                                    <div class="news-style-two col-md-6 col-sm-6 col-xs-12">
+                                    <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms"
+                                         data-wow-duration="1500ms"
+                                         style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="{{blog.image_1.url}}" alt="">
+                                            </figure>
+                                            <div class="overlay-box"><a class="link-box" href="{% url 'blog-detail' id=blog.id %}"><span
+                                                    class="fa fa-link"></span></a></div>
+                                        </div>
+                                        <div class="lower-box">
+                                            <div class="post-meta">
+                                                <ul class="clearfix">
+                                                    <li><a><span class="fa fa-calendar"></span>{{ blog.created|to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
+                                                    <li><a><span class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="{% url 'blog-detail' id=blog.id %}">{{ blog.title | truncatechars:100 | safe}}</a></h3>
+                                            <div class="text">{{ blog.text | truncatechars:300 | safe }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Styled Pagination -->
+                            <div class="styled-pagination text-center">
+                                <ul class="clearfix">
+
+                                    <li><a href="{% url 'blogs' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+
+                                    {% for num_page in page_number %}
+                                        {% if forloop.counter == active_page %}
+                                            <li><a href="{% url 'blogs' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                        {% if forloop.counter != active_page %}
+                                            <li><a href="{% url 'blogs' id=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li><a href="{% url 'blogs' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
+
+                                </ul>
+                            </div>
+
+                        </section>
+
+
+                    </div>
+                    <!--Content Side-->
+
+                    <!--Sidebar-->
+                    <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                        <aside class="sidebar">
+
+
+                            <!-- Recent Posts -->
+                            <div class="sidebar-widget popular-posts">
+                                <div class="sidebar-title">
+                                    <h3>محصولات جدید</h3>
+                                </div>
+                                {% for product in products %}
+                                    <article class="post">
+                                    <figure class="post-thumb">
+                                        <a href="{% url 'product-detail' id=product.id %}"><img src="{{ product.image_1.url }}" alt=""></a>
+                                    </figure>
+                                    <div class="text"><a href="{% url 'product-detail' id=product.id %}">{{ product.title}}</a>
+                                    </div>
+                                    <ul class="post-meta clearfix">
+                                        <li><a><i class="fa fa-calendar"></i>{{ product.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>
+                                    </ul>
+                                </article>
+                                {% endfor %}
+                            </div>
+
+                        </aside>
+
+
+                    </div>
+                    <!--Sidebar-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--End pagewrapper-->
+
+{% endblock content %}
