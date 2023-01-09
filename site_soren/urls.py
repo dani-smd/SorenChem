@@ -28,7 +28,7 @@ urlpatterns = [
     path('recordcantactus/', recordcontactus_view, name="recordcontactus_view"),
     path('recordsample/', record_sample, name="record_sample"),
     path('blog-comment/<id>', blog_comment, name="blog-comment"),
-    path('search-result/', search_result, name="search-result"),
+    path('search-result/<page>', search_result, name="search-result"),
     path(r'^tinymce/', include('tinymce.urls')),
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

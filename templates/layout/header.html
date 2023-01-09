@@ -104,10 +104,10 @@
                         <div class="outer-box2">
                             <!--Search form-->
                             <div class="search-form">
-                                <form method="post" action="">
+                                <form method="post" action="{% url 'search-result' page=1 %}">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" name="search" value="" placeholder="جستجو ..."
+                                        <input type="text" name="search" value="" placeholder="جستجو در مقالات ..."
                                             required="">
                                         <button type="submit" class="theme-btn"><span
                                                 class="icon fa fa-search"></span></button>

@@ -4,6 +4,8 @@ from .models import *
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponse
+from django.shortcuts import resolve_url
 
 
 def index_view(request):
@@ -298,8 +300,6 @@ def header_view(request, *args, **kwargs):
         "logo": qs_gi.company_logo,
         "company_name": qs_gi.company_name
     }
-    if request.POST:
-        return redirect(product_detail, id=1)
     return render(request, "layout/header.html", context=context)
 
 
@@ -322,9 +322,24 @@ def footer_view(request):
     return render(request, "layout/footer.html", context=context)
 
 
-def search_result(request):
-    pass
-    return render(request, "about-us.html", context=None)
+def search_result(request, page):
+    if request.POST:
+        search = request.POST.get('search', "False")
+        # ---
+        qs_blog = Blog.objects.filter(title__contains=search, text__contains=search)
+        # ---
+        paginator = Paginator(qs_blog, per_page=12)
+        page_object = paginator.get_page(page)
+        # ---
+        context = {
+            "page_number": range(paginator.num_pages),
+            "pages": page_object,
+            "active_page": int(page),
+            "previous_page": int(page) - 1 if int(page) > 1 else int(page),
+            "next_page": int(page) + 1 if int(page) < paginator.num_pages else int(page),
+            "products": ProductDetail.objects.all().order_by("-id")[:3]
+        }
+    return render(request, "search.html", context=context)
 
 # def search_view(request):
 #     if request.POST:

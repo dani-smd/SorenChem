@@ -71,18 +71,18 @@
                             <div class="styled-pagination text-center">
                                 <ul class="clearfix">
 
-                                    <li><a href="{% url 'blogs' id=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+                                    <li><a href="{% url 'search-result' page=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
 
                                     {% for num_page in page_number %}
                                         {% if forloop.counter == active_page %}
-                                            <li><a href="{% url 'blogs' id=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                            <li><a href="{% url 'search-result' page=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
                                         {% endif %}
                                         {% if forloop.counter != active_page %}
-                                            <li><a href="{% url 'blogs' id=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                            <li><a href="{% url 'search-result' page=forloop.counter %}">{{ forloop.counter }}</a></li>
                                         {% endif %}
                                     {% endfor %}
 
-                                    <li><a href="{% url 'blogs' id=next_page %}"><span class="fa fa-angle-left"></span></a></li>
+                                    <li><a href="{% url 'search-result' page=next_page %}"><span class="fa fa-angle-left"></span></a></li>
 
                                 </ul>
                             </div>
