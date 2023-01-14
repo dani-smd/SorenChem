@@ -2,11 +2,17 @@ from django.urls import path, include
 from .views import (index_view, not_found, contact_us, about_us, blogs, blog_detail, faq, gallery_image, gallery_video,
                     product_detail, product_group, products, sample_request, header_view, footer_view,
                     recordcontactus_view, record_sample, blog_comment, search_result)
-from .sitemaps import ArticleSitemap
+from .sitemaps import ArticleSitemap, ProductSitemap, StaticSitemap, ProductGroupSitemap, VideoGallerySitemap, \
+    ImageGallerySitemap
 from django.contrib.sitemaps.views import sitemap
 
 sitemaps = {
-    'blog': ArticleSitemap
+    'blog': ArticleSitemap,
+    'product': ProductSitemap,
+    'product_group': ProductGroupSitemap,
+    'image': ImageGallerySitemap,
+    'video': VideoGallerySitemap,
+    'static': StaticSitemap
 }
 
 urlpatterns = [
@@ -15,11 +21,11 @@ urlpatterns = [
     path('contact-us/', contact_us, name="contact_us"),
     path('about-us/', about_us, name="about_us"),
     path('blogs/<id>', blogs, name="blogs"),
-    path('blog-detail/<id>', blog_detail, name="blog-detail"),
+    path('blog-detail/<id>/<url>', blog_detail, name="blog-detail"),
     path('faq/', faq, name="blogs_view"),
     path('gallery-image/<id>', gallery_image, name="gallery-image"),
     path('gallery-video/<id>', gallery_video, name="gallery-video"),
-    path('product-detail/<id>', product_detail, name="product-detail"),
+    path('product-detail/<id>/<url>', product_detail, name="product-detail"),
     path('product-group/', product_group, name="product-group"),
     path('products/<id>/<page>', products, name="products"),
     path('sample-request/', sample_request, name="add_record"),

@@ -78,7 +78,7 @@ def blogs(request, id):
     return render(request, "blog.html", context=context)
 
 
-def blog_detail(request, id):
+def blog_detail(request, id, url):
     qs_allblog = Blog.objects.exclude(id=id).order_by("-id")[:2]
     qs_blog = Blog.objects.filter(id=id).first()
     qs_chat = ChatBlog.objects.filter(Blog_id=id, publish=True)
@@ -167,7 +167,7 @@ def gallery_video(request, id):
     return render(request, "gallery-video.html", context=context)
 
 
-def product_detail(request, id):
+def product_detail(request, id, url):
     general_info = GeneralInfo.objects.first()
     qs_product = ProductDetail.objects.filter(id=id).first()
     cats = qs_product.product_group.all()

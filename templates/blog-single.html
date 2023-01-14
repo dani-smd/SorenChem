@@ -155,12 +155,12 @@
                                 {% for blog_sidebar in blogs_sidebar %}
                                     <article class="post">
                                         <figure class="post-thumb">
-                                            <a href="{% url 'blog-detail' id=blog_sidebar.id %}"><img
+                                            <a href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}"><img
                                                     src="{{ blog_sidebar.image_3.url }}"
                                                     alt=""></a>
                                         </figure>
                                         <div class="text"><a
-                                                href="{% url 'blog-detail' id=blog_sidebar.id %}">{{ blog_sidebar.title }}</a>
+                                                href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}">{{ blog_sidebar.title }}</a>
                                         </div>
                                         <ul class="post-meta clearfix">
                                             <li><a><i

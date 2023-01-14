@@ -47,7 +47,7 @@
                                         <div class="image-box">
                                             <figure class="image"><img src="{{blog.image_1.url}}" alt="">
                                             </figure>
-                                            <div class="overlay-box"><a class="link-box" href="{% url 'blog-detail' id=blog.id %}"><span
+                                            <div class="overlay-box"><a class="link-box" href="{% url 'blog-detail' id=blog.id url=blog.url%}"><span
                                                     class="fa fa-link"></span></a></div>
                                         </div>
                                         <div class="lower-box">
@@ -57,7 +57,7 @@
                                                     <li><a><span class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
                                                 </ul>
                                             </div>
-                                            <h3><a href="{% url 'blog-detail' id=blog.id %}">{{ blog.title | truncatechars:100 | safe}}</a></h3>
+                                            <h3><a href="{% url 'blog-detail' id=blog.id url=blog.url%}">{{ blog.title | truncatechars:100 | safe}}</a></h3>
                                             <div class="text">{{ blog.text | truncatechars:300 | safe }}
                                             </div>
 
@@ -106,9 +106,9 @@
                                 {% for product in products %}
                                     <article class="post">
                                     <figure class="post-thumb">
-                                        <a href="{% url 'product-detail' id=product.id %}"><img src="{{ product.image_1.url }}" alt=""></a>
+                                        <a href="{% url 'product-detail' id=product.id url=product.url%}"><img src="{{ product.image_1.url }}" alt=""></a>
                                     </figure>
-                                    <div class="text"><a href="{% url 'product-detail' id=product.id %}">{{ product.title}}</a>
+                                    <div class="text"><a href="{% url 'product-detail' id=product.id url=product.url%}">{{ product.title}}</a>
                                     </div>
                                     <ul class="post-meta clearfix">
                                         <li><a><i class="fa fa-calendar"></i>{{ product.created | to_jalali:'%y/%m/%d _ %H:%M' }}</a></li>

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'site_soren',
+        'site_soren',
     'django_render_partial',
     'jalali_date',
     'tinymce',
@@ -87,8 +87,8 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sorendb',
-        'USER': 'soren',
+        'NAME': 'sorenche_sorendb',
+        'USER': 'sorenche_soren',
         'PASSWORD': 'soren@14012022',
         'HOST': '127.0.0.1',
         'PORT': '3306',

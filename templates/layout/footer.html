@@ -60,10 +60,10 @@
                                 {% for blog in blogs %}
                                     <article class="post">
                                         <figure class="post-thumb">
-                                            <a href="{% url 'blog-detail' id=blog.id %}"><img src="{{ blog.image_1.url }}"
+                                            <a href="{% url 'blog-detail' id=blog.id url=blog.url%}"><img src="{{ blog.image_1.url }}"
                                                     alt=""></a>
                                         </figure>
-                                        <div class="text"><a href="{% url 'blog-detail' id=blog.id %}">{{ blog.title }}</a></div>
+                                        <div class="text"><a href="{% url 'blog-detail' id=blog.id url=blog.url%}">{{ blog.title }}</a></div>
                                         <ul class="post-meta clearfix">
                                             <li><a href="#"><i class="fa fa-calendar"></i>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M'  }} </a></li>
                                         </ul>
