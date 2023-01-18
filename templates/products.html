@@ -3,7 +3,7 @@
 
 {% load static %}
 
-{% block title %}محصولات{% endblock title %}
+{% block title %}منتجات{% endblock title %}
 
 {% block content %}
     <div class="page-wrapper body_wrapper">
@@ -17,9 +17,9 @@
                 <h1>{{ group_data.name }}</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li><a href="{% url 'index_view' %}">الصفحة الرئيسية</a></li>
                         <li>
-                            <a href="{% url 'product-group' %}">محصولات</a>
+                            <a href="{% url 'product-group' %}">منتجات</a>
                         </li>
                         <li class="active">{{ group_data.name }}</li>
                     </ul>
@@ -52,7 +52,7 @@
 										<figure class="image-box">
 											<a href="{% url 'product-detail' id=page.id url=page.url%}"><img src="{{ page.image_2.url }}" alt=""></a>
 											<div class="overlay-box">
-												<a class="cart-btn" href="{% url 'product-detail' id=page.id url=page.url%}">جزییات بیشتر</a>
+												<a class="cart-btn" href="{% url 'product-detail' id=page.id url=page.url%}">المزيد من التفاصيل</a>
 											</div>
 										</figure>
 

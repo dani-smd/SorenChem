@@ -2,42 +2,42 @@
     {% csrf_token %}
     <div class="row clearfix">
         <div class="form-group col-md-12 col-sm-12 col-xs-12">
-            <label>امتیاز دهید: </label>
+            <label>معدل: </label>
             <div style="display: flex">
                 <div class="rate">
                     <input type="radio" id="contactChoice5" name="rank" value="5"/>
-                    <label for="contactChoice5" title="5 امتیاز">5 stars</label>
+                    <label for="contactChoice5" title="5 نتيجة">5 stars</label>
                     <input type="radio" id="contactChoice4" name="rank" value="4"/>
-                    <label for="contactChoice4" title="4 امتیاز">4 stars</label>
+                    <label for="contactChoice4" title="4 نتيجة">4 stars</label>
                     <input type="radio" id="contactChoice3" name="rank" value="3"/>
-                    <label for="contactChoice3" title="3 امتیاز">3 stars</label>
+                    <label for="contactChoice3" title="3 نتيجة">3 stars</label>
                     <input type="radio" id="contactChoice2" name="rank" value="2"/>
-                    <label for="contactChoice2" title="2 امتیاز">2 stars</label>
+                    <label for="contactChoice2" title="2 نتيجة">2 stars</label>
                     <input type="radio" id="contactChoice1" name="rank" value="1"/>
-                    <label for="contactChoice1" title="1 امتیاز">1 star</label>
+                    <label for="contactChoice1" title="1 نتيجة">1 star</label>
                 </div>
             </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-            <input type="text" name="firstname" placeholder="نام *" required>
+            <input type="text" name="firstname" placeholder="اسم *" required>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-            <input type="text" name="lastname" placeholder="نام خانوادگی *" required>
+            <input type="text" name="lastname" placeholder="الكنية *" required>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-            <input type="email" name="email" placeholder="* ایمیل" required dir="ltr">
+            <input type="email" name="email" placeholder="* البريد الإلكتروني" required dir="ltr">
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-            <input type="text" name="phone" placeholder="تلفن تماس" dir="ltr">
+            <input type="text" name="phone" placeholder="مكالمة هاتفية" dir="ltr">
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-            <textarea name="message" placeholder="متن دیدگاه *" required></textarea>
+            <textarea name="message" placeholder="نص التعليق *" required></textarea>
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
             <button class="theme-btn btn-style-one" type="submit" name="submit-form">
-                ارسال دیدگاه
+                إرسال تعليق
             </button>
         </div>
         {% if message %}

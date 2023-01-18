@@ -1,5 +1,4 @@
 {% load static %}
-{% load render_partial %}
 <header class="main-header header-style-three">
     <!-- Header Top One-->
     <div class="header-upper">
@@ -27,7 +26,7 @@
                             </a>
                         </div>
                         <ul>
-                            <li><strong>تلفن ما</strong></li>
+                            <li><strong>هاتفنا</strong></li>
                             <li>
                                 <a href="tel:{{ phone }}">
                                  {{ phone }}
@@ -37,7 +36,7 @@
 
                     <div class="upper-column info-box">
                         <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/uk.png' %}" /></a>
-                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/kw.png' %}" /></a>
+                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/ir.png' %}" /></a>
                     </div>
                 </div>
                 </div>
@@ -68,15 +67,15 @@
 
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
-                                    <li><a href="{% url 'about_us' %}">درباره ما</a>
+                                    <li class="current"><a href="{% url 'index_view' %}">الصفحة الرئيسية</a></li>
+                                    <li><a href="{% url 'about_us' %}">معلومات عنا</a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="/product">محصولات</a>
+                                        <a href="/product">منتجات</a>
                                         <ul>
                                             {% for cat in company_cats %}
                                                 {% if cat.id == -1 %}
-                                                    <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                                    <li><a href="{% url 'product-group' %}">مشاهدة جميع المنتجات</a></li>
                                                 {% endif %}
                                                 {% if cat.id != -1 %}
                                                     <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
@@ -84,16 +83,16 @@
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                                    <li><a href="{% url 'blogs' id=1 %}">مقالات</a>
                                     </li>
-                                    <li class="dropdown"><a href="/gallery">گالری</a>
+                                    <li class="dropdown"><a href="/gallery">صالة عرض</a>
                                         <ul>
-                                            <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
-                                            <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                            <li><a href="{% url 'gallery-image' id=1 %}">معرض الصور</a></li>
+                                            <li><a href="{% url 'gallery-video' id=1 %}">معرض الفيديو</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
-                                    <li><a href="{% url 'contact_us' %}">تماس</a></li>
+                                    <li><a href="{% url 'add_record' %}">طلب عينة</a></li>
+                                    <li><a href="{% url 'contact_us' %}">اتصال</a></li>
 
                                 </ul>
                             </div>
@@ -104,10 +103,9 @@
                         <div class="outer-box2">
                             <!--Search form-->
                             <div class="search-form">
-                                <form method="post" action="{% url 'search-result' page=1 %}">
-                                    {% csrf_token %}
+                                <form method="post" action="">
                                     <div class="form-group">
-                                        <input type="text" name="search" value="" placeholder="جستجو در مقالات ..."
+                                        <input type="text" name="search" value="" placeholder="يبحث ..."
                                             required="">
                                         <button type="submit" class="theme-btn"><span
                                                 class="icon fa fa-search"></span></button>
@@ -150,15 +148,15 @@
 
                     <div class="navbar-collapse collapse clearfix">
                         <ul class="navigation clearfix">
-                            <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
-                            <li><a href="{% url 'about_us' %}">درباره ما</a>
+                            <li class="current"><a href="{% url 'index_view' %}">الصفحة الرئيسية</a></li>
+                            <li><a href="{% url 'about_us' %}">معلومات عنا</a>
                             </li>
                             <li class="dropdown">
-                                <a href="/product">محصولات</a>
+                                <a href="/product">منتجات</a>
                                 <ul>
                                     {% for cat in company_cats %}
                                         {% if cat.id == -1 %}
-                                            <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                            <li><a href="{% url 'product-group' %}">مشاهدة جميع المنتجات</a></li>
                                         {% endif %}
                                         {% if cat.id != -1 %}
                                             <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
@@ -166,16 +164,16 @@
                                     {% endfor %}
                                 </ul>
                             </li>
-                            <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                            <li><a href="{% url 'blogs' id=1 %}">مقالات</a>
                             </li>
-                            <li class="dropdown"><a href="/gallery">گالری</a>
+                            <li class="dropdown"><a href="/gallery">صالة عرض</a>
                                 <ul>
-                                    <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
-                                    <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                    <li><a href="{% url 'gallery-image' id=1 %}">معرض الصور</a></li>
+                                    <li><a href="{% url 'gallery-video' id=1 %}">معرض الفيديو</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
-                            <li><a href="{% url 'contact_us' %}">تماس</a></li>
+                            <li><a href="{% url 'add_record' %}">طلب عينة</a></li>
+                            <li><a href="{% url 'contact_us' %}">اتصال</a></li>
 
                         </ul>
                     </div>

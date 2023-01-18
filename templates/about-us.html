@@ -3,7 +3,7 @@
 
 {% load static %}
 
-{% block title %}درباره ما{% endblock title %}
+{% block title %}معلومات عنا{% endblock title %}
 
 {% block content %}
 
@@ -15,11 +15,11 @@
         <!--Page Title-->
         <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>درباره ما</h1>
+                <h1>معلومات عنا</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="{% url 'index_view' %}">خانه</a></li>
-                        <li class="active">درباره ما</li>
+                        <li><a href="{% url 'index_view' %}">الصفحة الرئيسية</a></li>
+                        <li class="active">معلومات عنا</li>
                     </ul>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                         <div class="inner-box">
                             <!--Sec Title-->
                             <div class="sec-title">
-                                <div class="title">معرفی ما</div>
-                                <h2>خوش آمدید به <span>سورن شیمی</span></h2>
+                                    <div class="title">نقدم لكم</div>
+                                <h2>مرحبا بك في <span>سورن شیمی</span></h2>
                             </div>
                             <div class="text">
                                 <p class="dark-text" style="text-align: justify">{{ aboutus.introduction_text | safe }}</p>
@@ -79,10 +79,10 @@
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="column col-md-8 col-sm-12 col-xs-12">
-                        <div class="text">ما بهترین شرکت وارد کننده مواد اولیه هستیم!!</div>
+                        <div class="text">نحن افضل شركة استيراد الخامات !!</div>
                     </div>
                     <div class="column text-left col-md-4 col-sm-12 col-xs-12">
-                        <a href="#" class="theme-btn btn-style-two">ارتباط با ما</a>
+                        <a href="#" class="theme-btn btn-style-two">اتصل بنا</a>
                     </div>
                 </div>
             </div>
