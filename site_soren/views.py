@@ -13,7 +13,7 @@ def index_view(request):
         "mainbanner": MainBanner.objects.all(),
         "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id").distinct()[:6],
         "products_group": ProductGroup.objects.filter(parent__isnull=True).order_by("id")[:6],
-        "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:5],
+        "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:7],
         "aboutus": AboutUs.objects.first(),
         "general_info": GeneralInfo.objects.first(),
         "products": ProductDetail.objects.all().order_by("-id")[:9],

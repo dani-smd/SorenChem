@@ -61,7 +61,7 @@ class MainBanner(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
-        return self.title
+        return f"بنر با عنوان: {self.title}"
 
     class Meta:
         verbose_name = "بنر اصلی"
