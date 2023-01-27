@@ -50,18 +50,22 @@
 									<div class="inner-box">
 										<!--image-box-->
 										<figure class="image-box">
-											<a href="{% url 'product-detail' id=page.id %}"><img src="{{ page.image_2.url }}" alt=""></a>
+											<a href="{% url 'product-detail' id=page.id url=page.url%}"><img src="{{ page.image_2.url }}" alt=""></a>
 											<div class="overlay-box">
-												<a class="cart-btn" href="{% url 'product-detail' id=page.id %}">جزییات بیشتر</a>
+												<a class="cart-btn" href="{% url 'product-detail' id=page.id url=page.url%}">جزییات بیشتر</a>
 											</div>
 										</figure>
 
 										<!--lower-content-->
 										<div class="lower-content">
-											<h3><a href="{% url 'product-detail' id=page.id %}">{{ page.title }}</a></h3>
+											<h3><a href="{% url 'product-detail' id=page.id url=page.url%}">{{ page.title }}</a></h3>
 
 											<div class="rating">
-												<i data-star="3.6"></i>
+                                                {% for key, value in scores.items %}
+                                                    {% if key == page.id %}
+                                                        <i data-star="{{ value }}"></i>
+                                                    {% endif %}
+                                                {% endfor %}
 											</div>
 										</div>
 

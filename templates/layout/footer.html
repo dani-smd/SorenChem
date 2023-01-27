@@ -1,3 +1,5 @@
+{% load jalali_tags %}
+
 <footer class="main-footer">
     <!--Footer Upper-->
     <div class="footer-upper">
@@ -12,32 +14,31 @@
                                 <h3>راه های ارتباط با ما</h3>
                                 <div class="text margin-bott-30">
                                     <ul>
-                                        <li><i class="fa fa-map-marker"></i> آدرس : مشهد، بلوار وکیل آباد، بین
-                                            وکیل آباد 35و37، پلاک 847 طبقه اول</li>
+                                        <li><i class="fa fa-map-marker"></i> آدرس :{{ general_info.address }}</li>
                                         <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                            <span>38676767-051</span>
+                                            <span>{{ general_info.telephone_1 }}</span>
                                         </li>
                                         <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                            <span>38693859-051</span>
+                                            <span>{{ general_info.telephone_2 }}</span>
                                         </li>
                                         <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
-                                            <span>38915692-051</span>
+                                            <span>{{ general_info.telephone_3 }}</span>
                                         </li>
                                         <li><i class="fa fa-mobile" aria-hidden="true"></i> موبایل :
-                                            <span>09033222110</span>
+                                            <span>{{ general_info.mobile }}</span>
                                         </li>
                                         <li><i class="fa fa-whatsapp" aria-hidden="true"></i> واتس اپ :
-                                            <span>09033222110</span>
+                                            <span>{{ general_info.whatsapp_number}}</span>
                                         </li>
                                         <li><i class="fa fa-envelope-o" aria-hidden="true"></i> ایمیل :
-                                            info@sorenchem.com</li>
+                                            {{ general_info.email }}</li>
                                     </ul>
                                 </div>
 
                                 <div class="social-links">
-                                    <a href="#"><span class="fa fa-whatsapp"></span></a>
-                                    <a href="#"><span class="fa fa-telegram"></span></a>
-                                    <a href="#"><span class="fa fa-instagram"></span></a>
+                                    <a href="{{ general_info.whatsapp }}"><span class="fa fa-whatsapp"></span></a>
+                                    <a href="{{ general_info.telegram }}"><span class="fa fa-telegram"></span></a>
+                                    <a href="{{ general_info.instagram }}"><span class="fa fa-instagram"></span></a>
                                 </div>
 
                             </div>
@@ -56,28 +57,18 @@
                         <div class="col-lg-6 col-sm-6 col-xs-12 column">
                             <div class="footer-widget popular-posts">
                                 <h3>آخرین مقالات</h3>
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg"
-                                                alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی
-                                            نامفهوم</a></div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>30 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg"
-                                                alt=""></a>
-                                    </figure>
-                                    <div class="text"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                    </div>
-                                    <ul class="post-meta clearfix">
-                                        <li><a href="#"><i class="fa fa-calendar"></i>18 مرداد 1398 </a></li>
-                                    </ul>
-                                </article>
+                                {% for blog in blogs %}
+                                    <article class="post">
+                                        <figure class="post-thumb">
+                                            <a href="{% url 'blog-detail' id=blog.id url=blog.url%}"><img src="{{ blog.image_1.url }}"
+                                                    alt=""></a>
+                                        </figure>
+                                        <div class="text"><a href="{% url 'blog-detail' id=blog.id url=blog.url%}">{{ blog.title }}</a></div>
+                                        <ul class="post-meta clearfix">
+                                            <li><a href="#"><i class="fa fa-calendar"></i>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M'  }} </a></li>
+                                        </ul>
+                                    </article>
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -91,7 +82,8 @@
                                         <p>برای دریافت جدیدترین اخبار و به روز رسانی ها در لیست ایمیل ما مشترک
                                             شوید.</p>
                                     </div>
-                                    <form method="post" action="index.html">
+                                    <form method="post" action="">
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <input type="email" name="useremail" value=""
                                                 placeholder="آدرس ایمیل" required="">
