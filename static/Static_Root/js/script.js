@@ -35,6 +35,22 @@
 	headerStyle();
 
 
+    $(function () {
+        let url = window.location.href;
+        url = url.replace(/^.*\/\/[^\/]+/, '');
+        $('.navigation li.current').removeClass('current');
+        $(".navigation li a").each(function () {
+            let _href = this.href.replace(/^.*\/\/[^\/]+/, '')
+            if (url.includes('/product') && _href == '/product') {
+                $(this).closest("li").addClass("current");
+            } else if (url.includes('/gallery') && _href == '/gallery') {
+                $(this).closest("li").addClass("current");
+            } else if (url == _href) {
+                $(this).closest("li").addClass("current");
+            }
+        });
+    });
+
 	//Submenu Dropdown Toggle
 	if ($('.main-header .navigation li.dropdown ul').length) {
 		$('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
