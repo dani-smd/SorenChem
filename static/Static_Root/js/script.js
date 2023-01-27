@@ -210,12 +210,12 @@
 	if ($('.sponsors-carousel-one').length) {
 		$('.sponsors-carousel-one').owlCarousel({
 			loop: true,
-			rtl: true,
+			ltr: true,
 			margin: 30,
 			nav: true,
 			smartSpeed: 500,
 			autoplay: 4000,
-			navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+			navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 			responsive: {
 				0: {
 					items: 1
@@ -241,12 +241,12 @@
 	if ($('.sponsors-carousel-two').length) {
 		$('.sponsors-carousel-two').owlCarousel({
 			loop: true,
-			rtl: true,
+			ltr: true,
 			margin: 30,
 			nav: true,
 			smartSpeed: 500,
 			autoplay: 4000,
-			navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+			navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 			responsive: {
 				0: {
 					items: 1
@@ -272,12 +272,12 @@
 	if ($('.team-carousel').length) {
 		$('.team-carousel').owlCarousel({
 			loop: true,
-			rtl: true,
+			ltr: true,
 			margin: 30,
 			nav: true,
 			smartSpeed: 500,
 			autoplay: true,
-			navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+			navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 			responsive: {
 				0: {
 					items: 1
@@ -310,11 +310,11 @@
 		$sync1
 			.owlCarousel({
 				loop: false,
-				rtl: true,
+				ltr: true,
 				items: 1,
 				margin: 0,
 				nav: false,
-				navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+				navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 				dots: false,
 				autoplay: true,
 				autoplayTimeout: 5000
@@ -330,11 +330,11 @@
 		$sync2
 			.owlCarousel({
 				loop: false,
-				rtl: true,
+				ltr: true,
 				margin: 50,
 				items: 1,
 				nav: true,
-				navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+				navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 				dots: false,
 				center: false,
 				autoplay: true,
@@ -381,13 +381,13 @@
 	if ($('.single-item-carousel').length) {
 		$('.single-item-carousel').owlCarousel({
 			loop: true,
-			rtl: true,
+			ltr: true,
 			mouseDrag: true,
 			margin: 10,
 			nav: true,
 			smartSpeed: 700,
 			autoplay: 4000,
-			navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+			navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 			responsive: {
 				0: {
 					items: 1
@@ -407,13 +407,13 @@
 	if ($('.gallery-carousel').length) {
 		$('.gallery-carousel').owlCarousel({
 			loop: true,
-			rtl: true,
+			ltr: true,
 			mouseDrag: true,
 			margin: 0,
 			nav: true,
 			smartSpeed: 700,
 			autoplay: 4000,
-			navText: ['<span class="fa fa-angle-right"></span>', '<span class="fa fa-angle-left"></span>'],
+			navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
 			responsive: {
 				0: {
 					items: 1
@@ -478,12 +478,12 @@
 				}
 			},
 			messages: {
-				name: "لطفا نام خود را وارد نمایید",
+				name: "Please enter your name",
 				email: {
-					required: "لطفا ایمیل خود را وارد نمایید",
-					email: "لطفا یک ایمیل معتبر وارد نمایید"
+					required: "Please enter your email",
+					email: "Please enter a valid email"
 				},
-				message: "لطفا پیام خود را وارد نمایید"
+				message: "Please enter your message"
 			}
 		});
 	}

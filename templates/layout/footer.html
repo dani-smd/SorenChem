@@ -11,26 +11,26 @@
                     <div class="row clearfix">
                         <div class="col-lg-12 col-sm-12 col-xs-12 column">
                             <div class="footer-widget about-widget">
-                                <h3>راه های ارتباط با ما</h3>
+                                <h3>Ways to contact us</h3>
                                 <div class="text margin-bott-30">
                                     <ul>
-                                        <li><i class="fa fa-map-marker"></i> آدرس :{{ general_info.address }}</li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
+                                        <li><i class="fa fa-map-marker"></i> Address :{{ general_info.address }}</li>
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i> Phone :
                                             <span>{{ general_info.telephone_1 }}</span>
                                         </li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i> Phone :
                                             <span>{{ general_info.telephone_2 }}</span>
                                         </li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i> تلفن :
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i> Phone :
                                             <span>{{ general_info.telephone_3 }}</span>
                                         </li>
-                                        <li><i class="fa fa-mobile" aria-hidden="true"></i> موبایل :
+                                        <li><i class="fa fa-mobile" aria-hidden="true"></i> Mobile :
                                             <span>{{ general_info.mobile }}</span>
                                         </li>
-                                        <li><i class="fa fa-whatsapp" aria-hidden="true"></i> واتس اپ :
+                                        <li><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp :
                                             <span>{{ general_info.whatsapp_number}}</span>
                                         </li>
-                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> ایمیل :
+                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email :
                                             {{ general_info.email }}</li>
                                     </ul>
                                 </div>
@@ -56,7 +56,7 @@
                         <!--Footer Column-->
                         <div class="col-lg-6 col-sm-6 col-xs-12 column">
                             <div class="footer-widget popular-posts">
-                                <h3>آخرین مقالات</h3>
+                                <h3>Latest Articles</h3>
                                 {% for blog in blogs %}
                                     <article class="post">
                                         <figure class="post-thumb">
@@ -65,7 +65,7 @@
                                         </figure>
                                         <div class="text"><a href="{% url 'blog-detail' id=blog.id url=blog.url%}">{{ blog.title }}</a></div>
                                         <ul class="post-meta clearfix">
-                                            <li><a href="#"><i class="fa fa-calendar"></i>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M'  }} </a></li>
+                                            <li><a href="{% url 'blog-detail' id=blog.id url=blog.url%}"><i class="fa fa-calendar"></i>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M'  }} </a></li>
                                         </ul>
                                     </article>
                                 {% endfor %}
@@ -75,23 +75,22 @@
                         <!--Footer Column-->
                         <div class="col-lg-6 col-sm-6 col-xs-12 column">
                             <div class="footer-widget newsletter-widget">
-                                <h3>اشتراک خبرنامه</h3>
+                                <h3>Newsletter</h3>
 
                                 <div class="newsletter-form">
                                     <div class="text padd-bott-20">
-                                        <p>برای دریافت جدیدترین اخبار و به روز رسانی ها در لیست ایمیل ما مشترک
-                                            شوید.</p>
+                                        <p>Subscribe to our email list to receive the latest news and updates.</p>
                                     </div>
                                     <form method="post" action="">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <input type="email" name="useremail" value=""
-                                                placeholder="آدرس ایمیل" required="">
+                                                placeholder="E-mail" required="">
                                             <button type="submit" class="theme-btn btn-submit"><span
                                                     class="fa fa-envelope-o"></span></button>
                                         </div>
-                                        <div class="confid"><em>ما به شما اسپم نخواهیم فرستاد <br>و آدرس ایمیل
-                                                شما منتشر نخواهد شد.</em></div>
+                                        <div class="confid"><em>We will not spam you
+                                            <br>And your email address will not be published.</em></div>
                                     </form>
                                 </div>
                             </div>
@@ -110,8 +109,8 @@
         <div class="auto-container">
             <div class="row clearfix">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="copyright-text">تمام حقوق این سایت برای <a href="https://sorenchem.com/"
-                            target="_blank">سورن شیمی</a> محفوظ است </div>
+                    <div class="copyright-text">All rights of this site are reserved for  <a href="https://sorenchem.com/"
+                            target="_blank">Soren Chemical</a></div>
                 </div>
             </div>
         </div>

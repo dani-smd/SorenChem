@@ -478,12 +478,12 @@
 				}
 			},
 			messages: {
-				name: "لطفا نام خود را وارد نمایید",
+				name: "Please enter your name",
 				email: {
-					required: "لطفا ایمیل خود را وارد نمایید",
-					email: "لطفا یک ایمیل معتبر وارد نمایید"
+					required: "Please enter your email",
+					email: "Please enter a valid email"
 				},
-				message: "لطفا پیام خود را وارد نمایید"
+				message: "Please enter your message"
 			}
 		});
 	}

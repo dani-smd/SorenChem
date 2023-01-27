@@ -6,7 +6,7 @@
         <div class="auto-container">
             <div class="clearfix">
 
-                <div class="pull-right logo-outer">
+                <div class="pull-left logo-outer">
                     <!--Logo Box-->
                     <div class="logo-box">
                         <div class="logo">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
 
-                <div class="pull-left upper-right clearfix">
+                <div class="pull-right upper-right clearfix">
                      <div class="upper-display">
                     <!--Info Box-->
                     <div class="upper-column info-box">
@@ -27,7 +27,7 @@
                             </a>
                         </div>
                         <ul>
-                            <li><strong>تلفن ما</strong></li>
+                            <li><strong>Our Phone</strong></li>
                             <li>
                                 <a href="tel:{{ phone }}">
                                  {{ phone }}
@@ -68,15 +68,15 @@
 
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
-                                    <li><a href="{% url 'about_us' %}">درباره ما</a>
+                                    <li class="current"><a href="{% url 'index_view' %}">Home</a></li>
+                                    <li><a href="{% url 'about_us' %}">About Us</a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="/product">محصولات</a>
+                                        <a href="/product">Products</a>
                                         <ul>
                                             {% for cat in company_cats %}
                                                 {% if cat.id == -1 %}
-                                                    <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                                    <li><a href="{% url 'product-group' %}">View All Products</a></li>
                                                 {% endif %}
                                                 {% if cat.id != -1 %}
                                                     <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
@@ -84,16 +84,16 @@
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                                    <li><a href="{% url 'blogs' id=1 %}">Blogs</a>
                                     </li>
-                                    <li class="dropdown"><a href="/gallery">گالری</a>
+                                    <li class="dropdown"><a href="/gallery">Gallery</a>
                                         <ul>
-                                            <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
-                                            <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                            <li><a href="{% url 'gallery-image' id=1 %}">Photo Gallery</a></li>
+                                            <li><a href="{% url 'gallery-video' id=1 %}">Video Gallery</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
-                                    <li><a href="{% url 'contact_us' %}">تماس</a></li>
+                                    <li><a href="{% url 'add_record' %}">Sample Request</a></li>
+                                    <li><a href="{% url 'contact_us' %}">Contact</a></li>
 
                                 </ul>
                             </div>
@@ -107,7 +107,7 @@
                                 <form method="post" action="{% url 'search-result' page=1 %}">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" name="search" value="" placeholder="جستجو در مقالات ..."
+                                        <input type="text" name="search" value="" placeholder="Search Articles ..."
                                             required="">
                                         <button type="submit" class="theme-btn"><span
                                                 class="icon fa fa-search"></span></button>
@@ -128,14 +128,14 @@
     <div class="sticky-header">
         <div class="auto-container clearfix">
             <!--Logo-->
-            <div class="logo pull-right">
+            <div class="logo pull-left">
                 <a href="{% url 'index_view' %}" title="Factories">
                     <h2 class="logo-text">{{ company_name }}</h2>
                 </a>
             </div>
 
             <!--Right Col-->
-            <div class="right-col pull-left">
+            <div class="right-col pull-right">
                 <!-- Main Menu -->
                 <nav class="main-menu">
                     <div class="navbar-header">
@@ -150,15 +150,15 @@
 
                     <div class="navbar-collapse collapse clearfix">
                         <ul class="navigation clearfix">
-                            <li class="current"><a href="{% url 'index_view' %}">خانه</a></li>
-                            <li><a href="{% url 'about_us' %}">درباره ما</a>
+                            <li class="current"><a href="{% url 'index_view' %}">Home</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a>
                             </li>
                             <li class="dropdown">
-                                <a href="/product">محصولات</a>
+                                <a href="/product">Product</a>
                                 <ul>
                                     {% for cat in company_cats %}
                                         {% if cat.id == -1 %}
-                                            <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
+                                            <li><a href="{% url 'product-group' %}">View All Products</a></li>
                                         {% endif %}
                                         {% if cat.id != -1 %}
                                             <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
@@ -166,16 +166,16 @@
                                     {% endfor %}
                                 </ul>
                             </li>
-                            <li><a href="{% url 'blogs' id=1 %}">بلاگ</a>
+                            <li><a href="{% url 'blogs' id=1 %}">Blogs</a>
                             </li>
-                            <li class="dropdown"><a href="/gallery">گالری</a>
+                            <li class="dropdown"><a href="/gallery">Gallery</a>
                                 <ul>
-                                    <li><a href="{% url 'gallery-image' id=1 %}">گالری عکس</a></li>
-                                    <li><a href="{% url 'gallery-video' id=1 %}">گالری ویدئو</a></li>
+                                    <li><a href="{% url 'gallery-image' id=1 %}">Photo Gallery</a></li>
+                                    <li><a href="{% url 'gallery-video' id=1 %}">Video Gallery</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{% url 'add_record' %}">درخواست نمونه</a></li>
-                            <li><a href="{% url 'contact_us' %}">تماس</a></li>
+                            <li><a href="{% url 'add_record' %}">Sample Request</a></li>
+                            <li><a href="{% url 'contact_us' %}">Contact</a></li>
 
                         </ul>
                     </div>

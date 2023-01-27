@@ -5,7 +5,7 @@
 
 {% load jalali_tags %}
 
-{% block title %}محصولات - جزئیات{% endblock title %}
+{% block title %}Products - details{% endblock title %}
 
 {% block content %}
     <div class="page-wrapper body_wrapper">
@@ -16,11 +16,11 @@
         <!--Page Title-->
         <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>جزئیات محصول</h1>
+                <h1>{{ product.title }}</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="{% url 'index_view' %}">خانه</a></li>
-                        <li><a href="{% url 'product-group' %}">محصولات</a></li>
+                        <li><a href="{% url 'index_view' %}">Home</a></li>
+                        <li><a href="{% url 'product-group' %}">Products</a></li>
                         <li><a href="{% url 'products' id=cat_id page=1 %}">{{ cat_name }}</a></li>
                         <li class="active">{{ product.title }}</li>
                     </ul>
@@ -58,27 +58,25 @@
                                                 </div>
                                                 <div class="text">
                                                     <ul class="detail-products">
-                                                        <li>نام فارسی: <span>{{ product.farsi_name }}</span></li>
-                                                        <li>نام لاتین: <span>{{ product.english_name }}</span></li>
-                                                        <li>فرمول شیمیایی: <span>{{ product.formula }}</span></li>
-                                                        <li>نوع بسته بندی: <span>{{ product.package_type }}</span></li>
-                                                        <li>کشور سازنده: <span>{{ product.made_by }}</span></li>
-                                                        <li>کاربرد: <span> {{ product.application }}
+                                                        <li>Title: <span>{{ product.farsi_name }}</span></li>
+                                                        <li>Latin name: <span>{{ product.english_name }}</span></li>
+                                                        <li>Chemical Formula: <span>{{ product.formula }}</span></li>
+                                                        <li>Package type: <span>{{ product.package_type }}</span></li>
+                                                        <li>Manufacturer country: <span>{{ product.made_by }}</span></li>
+                                                        <li>Usage: <span> {{ product.application }}
                                                         </span></li>
                                                     </ul>
                                                     <div class="stock"><a href="{{ product.file.url }}" download><i
                                                             class="fa fa-download"
                                                             style="margin-left: 5px;"
-                                                            aria-hidden="true"></i>دانلود
-                                                        آنالیز {{ product.title }}</a></div>
+                                                            aria-hidden="true"></i>Download Analysis
+                                                         {{ product.title }}</a></div>
                                                     {#                                                    <div class="other-options clearfix mt-30">#}
                                                     {#                                                        <button type="button" value="{{ sidebar.telephone_1 }}"#}
-                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر#}
-                                                    {#                                                            فروش#}
+                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">Contact Sales Manager#}
                                                     {#                                                        </button>#}
                                                     {#                                                        <button type="button" style="margin-right: 20px"#}
-                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر#}
-                                                    {#                                                            فروش#}
+                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">WhatsApp Sales Manager#}
                                                     {#                                                        </button>#}
                                                     {#                                                    </div>#}
                                                 </div>
@@ -94,8 +92,8 @@
 
                                                 <!--Tab Btns-->
                                                 <div class="tab-btns clearfix">
-                                                    <a href="#prod-description" class="tab-btn active-btn">توضیحات</a>
-                                                    <a href="#prod-reviews" class="tab-btn">نقد و بررسی ها</a>
+                                                    <a href="#prod-description" class="tab-btn active-btn">Description</a>
+                                                    <a href="#prod-reviews" class="tab-btn">Reviews</a>
                                                 </div>
 
                                                 <!--Tabs Container-->
@@ -103,7 +101,7 @@
 
                                                     <!--Tab / Active Tab-->
                                                     <div class="tab active-tab" id="prod-description">
-                                                        <h3>توضیحات محصول</h3>
+                                                        <h3>Product Description</h3>
                                                         <div class="content">
                                                             {{ product.description | safe }}
                                                         </div>
@@ -111,7 +109,7 @@
 
                                                     <!--Tab-->
                                                     <div class="tab" id="prod-reviews">
-                                                        <h3>{{ num_chats }} نقد و بررسی</h3>
+                                                        <h3>{{ num_chats }} Review</h3>
 
                                                         <!--Reviews Container-->
                                                         <div class="reviews-container">
@@ -138,66 +136,66 @@
                                                         <!--Add Review-->
                                                         <div class="comment-form">
                                                             <div class="group-title">
-                                                                <h2>دیدگاه خود را بیان کنید</h2>
+                                                                <h2>Express your point of view</h2>
                                                             </div>
 
                                                             <form method="post" action="">
                                                                 {% csrf_token %}
                                                                 <div class="row clearfix">
                                                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                                                        <label>امتیاز دهید: </label>
+                                                                        <label>Rate: </label>
                                                                         <div style="display: flex">
                                                                             <div class="rate">
                                                                                 <input type="radio" id="contactChoice5"
                                                                                        name="rank" value="5"/>
                                                                                 <label for="contactChoice5"
-                                                                                       title="5 امتیاز">5 stars</label>
+                                                                                       title="5 Score">5 stars</label>
                                                                                 <input type="radio" id="contactChoice4"
                                                                                        name="rank" value="4"/>
                                                                                 <label for="contactChoice4"
-                                                                                       title="4 امتیاز">4 stars</label>
+                                                                                       title="4 Score">4 stars</label>
                                                                                 <input type="radio" id="contactChoice3"
                                                                                        name="rank" value="3"/>
                                                                                 <label for="contactChoice3"
-                                                                                       title="3 امتیاز">3 stars</label>
+                                                                                       title="3 Score">3 stars</label>
                                                                                 <input type="radio" id="contactChoice2"
                                                                                        name="rank" value="2"/>
                                                                                 <label for="contactChoice2"
-                                                                                       title="2 امتیاز">2 stars</label>
+                                                                                       title="2 Score">2 stars</label>
                                                                                 <input type="radio" id="contactChoice1"
                                                                                        name="rank" value="1"/>
                                                                                 <label for="contactChoice1"
-                                                                                       title="1 امتیاز">1 star</label>
+                                                                                       title="1 Score">1 star</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                         <input type="text" name="firstname"
-                                                                               placeholder="نام *" required>
+                                                                               placeholder="First Name *" required>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                         <input type="text" name="lastname"
-                                                                               placeholder="نام خانوادگی *" required>
+                                                                               placeholder="Last Name *" required>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                         <input type="email" name="email"
-                                                                               placeholder="* ایمیل" required dir="ltr">
+                                                                               placeholder="Email *" required dir="ltr">
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                                         <input type="text" name="phone"
-                                                                               placeholder="تلفن تماس" dir="ltr">
+                                                                               placeholder="Phone" dir="ltr">
                                                                     </div>
 
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                                                                         <textarea name="message"
-                                                                                  placeholder="متن دیدگاه *"
+                                                                                  placeholder="Comment text *"
                                                                                   required></textarea>
                                                                     </div>
 
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                                                                         <button class="theme-btn btn-style-one"
                                                                                 type="submit" name="submit-form">
-                                                                            ارسال دیدگاه
+                                                                            Submit
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -217,7 +215,7 @@
                     <!--Sidebar-->
                     <div class="sidebar-side pull-right col-lg-3 col-md-4 col-sm-12 col-xs-12"
                          style="padding:25px 50px 0 0;">
-                        <h3>راه های ارتباط با ما</h3>
+                        <h3>Ways to contact us</h3>
                         <ul class="mt-20 contact-us">
                             <li>
                                 <a href="tel:{{ sidebar.telephone_1 }}">

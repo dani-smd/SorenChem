@@ -35,8 +35,8 @@
 
 **********************************************/
 
-@import url("farsi-fonts-styles/primary-iran-yekan.css");
-@import url("farsi-fonts-styles/secondary-pinar.css");
+@import url("en-font-style/primary-opensans.css");
+@import url("en-font-style/secondary-opensans.css");
 
 @import url('font-awesome.css');
 @import url('flaticon.css');
@@ -73,7 +73,7 @@
 
 body {
 	font-family: "primary-font", "segoe ui", "tahoma";
-	direction: rtl;
+	direction: ltr;
 	font-size: 15px;
 	color: #777777;
 	line-height: 1.9em;
@@ -382,15 +382,15 @@ img {
 	display: block;
 	font-family: "FontAwesome";
 	font-size: 20px;
-	right: 0;
+	left: 0;
 	line-height: 20px;
-	padding-right: 0;
+	padding-left: 0;
 	padding-top: 4px;
 	position: absolute;
 	bottom: -12px;
 	z-index: 5;
-	right: 50%;
-	margin-right: -6px;
+	left: 50%;
+	margin-left: -6px;
 	transition: all 500ms ease;
 }
 
@@ -404,7 +404,7 @@ img {
 	position: absolute;
 	content: "";
 	width: 0%;
-	right: 0;
+	left: 0;
 	bottom: 0;
 	background: #5da73d;
 	transition: .7s ease;
@@ -586,20 +586,20 @@ img {
 
 .main-header .logo a {
 	padding: 20px 0;
-	padding-right: 90px;
+	padding-left: 90px;
 	position: relative;
 	top: 0px;
 	background-image: url(../images/home/logo1.png);
-	background-position: 100% 0px;
+	/*background-position: 100% 0px;*/
 	background-repeat: no-repeat;
 	display: inline-block;
 	height: auto;
 }
 
 .main-header .sticky-header .logo a {
-	padding: 16px 60px 10px 0;
+	padding: 16px 0px 10px 60px;
 	position: relative;
-	background-position: 100% 2px;
+	/*background-position: 100% 2px;*/
 	top: 0px;
 	background-image: url(../images/home/smallogo1.png);
 	background-repeat: no-repeat;
@@ -930,7 +930,7 @@ img {
 .main-menu .navigation>li {
 	position: relative;
 	display: inline-block;
-	float: right;
+	float: left;
 	padding: 18px 0px 15px;
 	margin-right: 55px;
 }
@@ -1018,7 +1018,7 @@ img {
 
 .main-menu .navigation>li>ul {
 	position: absolute;
-	right: -26px;
+	left: -26px;
 	top: 120%;
 	width: 260px;
 	z-index: 100;
@@ -1205,15 +1205,15 @@ img {
 }
 
 .sticky-header .main-menu .navigation>li {
-	float: right;
+	float: left;
 	padding: 0;
 	margin: 0;
 	display: block;
-	margin-right: 55px;
+	margin-left: 55px;
 }
 
 .sticky-header .main-menu .navigation>li:last-child {
-	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .header-style-three .main-menu .navigation>li:after {
@@ -1300,7 +1300,7 @@ img {
 
 .main-header .outer-box2 {
 	position: absolute;
-	left: 0px;
+	right: 0px;
 	top: 0px;
 }
 
@@ -1339,7 +1339,7 @@ img {
 .outer-box2 .search-form .form-group input[type="submit"],
 .outer-box2 .search-form button {
 	position: absolute;
-	left: 0px;
+	right: 0px;
 	top: 0px;
 	width: 70px;
 	height: 100%;
@@ -1421,12 +1421,12 @@ img {
 
 .main-header.header-style-three .info-box .icon-box {
 	position: absolute;
-	right: 0;
+	left: 0;
 	top: 6px;
 	width: 57px;
 	height: 40px;
 	padding-right: 8px;
-	border-left: 1px solid rgba(19, 29, 51, 0.1);
+	border-right: 1px solid rgba(19, 29, 51, 0.1);
 	color: #5da73d;
 	text-align: right;
 	line-height: 37px;
@@ -1456,6 +1456,7 @@ img {
 
 .main-header.header-style-three .info-box ul {
 	margin-top: -4px;
+	margin-left: 90px;
 }
 
 .main-header.header-style-three .info-box li {
@@ -1533,7 +1534,7 @@ img {
 .sec-title h2:before {
 	content: '';
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	bottom: 0px;
 	width: 40px;
 	border-bottom: 2px solid #5da73d;
@@ -1542,15 +1543,15 @@ img {
 .sec-title h2:after {
 	content: '';
 	position: absolute;
-	right: 40px;
+	left: 40px;
 	bottom: 0px;
 	width: 40px;
 	border-bottom: 2px solid #5da73d;
 }
 
 .sec-title.centered h2:before {
-	right: 50%;
-	margin-right: -27px;
+	left: 50%;
+	margin-left: -27px;
 }
 
 .sec-title.centered h2:after {
@@ -2079,7 +2080,7 @@ img {
 
 .default-portfolio-item .overlay-box {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: -100%;
 	width: 100%;
 	height: 100%;
@@ -3031,7 +3032,7 @@ img {
 }
 
 .news-style-two .lower-box .post-meta li .fa {
-	padding-left: 3px;
+	padding-right: 5px;
 }
 
 .news-style-two .lower-box .text {
@@ -3134,7 +3135,7 @@ img {
 
 .blog-details .post-options .share-options {
 	position: relative;
-	text-align: left;
+	text-align: right;
 	top: -45px;
 }
 
@@ -3287,7 +3288,7 @@ img {
 	line-height: 24px;
 	height: 50px;
 	font-size: 14px;
-	text-align: right;
+	text-align: left;
 	border: 1px solid #f7f7f7;
 	padding: 8px 20px 8px;
 	background-color: #f7f7f7;
@@ -3655,7 +3656,7 @@ img {
 	font-size: 15px;
 	color: #696969;
 	padding: 0px 0px;
-	padding-right: 95px;
+	padding-left: 95px;
 	min-height: 95px;
 	margin-bottom: 28px;
 	padding-bottom: 22px;
@@ -3670,7 +3671,7 @@ img {
 
 .main-footer .popular-posts .post .post-thumb {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: 0px;
 	width: 75px;
 	border-radius: 50%;
@@ -4816,21 +4817,21 @@ img {
 
 .page-title .bread-crumb-outer .bread-crumb li {
 	position: relative;
-	float: right;
-	margin-left: 24px;
+	float: left;
+	margin-right: 24px;
 	color: #ffffff;
 	line-height: 24px;
 	font-size: 14px;
 }
 
 .page-title .bread-crumb-outer .bread-crumb li:last-child {
-	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .page-title .bread-crumb-outer .bread-crumb li:after {
 	content: '/';
 	position: absolute;
-	left: -16px;
+	right: -16px;
 	width: 10px;
 	line-height: 24px;
 	font-size: 14px;
@@ -4985,7 +4986,7 @@ img {
 .contact-section h2:before {
 	content: '';
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	bottom: 0px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -4994,7 +4995,7 @@ img {
 .contact-section h2:after {
 	content: '';
 	position: absolute;
-	right: 22px;
+	left: 22px;
 	bottom: 0px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -5014,7 +5015,7 @@ img {
 .contact-section .contact-info li {
 	position: relative;
 	display: block;
-	padding: 4px 50px 4px 0px;
+	padding: 4px 0px 4px 50px;
 	line-height: 24px;
 	font-size: 14px;
 	margin-bottom: 15px;
@@ -5028,7 +5029,7 @@ img {
 
 .contact-section .contact-info li .icon-box {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: 0;
 	text-align: center;
 	width: 32px;
@@ -5295,7 +5296,7 @@ img {
 .sidebar-widget .sidebar-title h3:before {
 	content: '';
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	bottom: 0px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -5304,7 +5305,7 @@ img {
 .sidebar-widget .sidebar-title h3:after {
 	content: '';
 	position: absolute;
-	right: 22px;
+	left: 22px;
 	bottom: 0px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -5364,7 +5365,7 @@ img {
 	font-size: 15px;
 	color: #696969;
 	padding: 0px 0px;
-	padding-right: 95px;
+	padding-left: 95px;
 	min-height: 95px;
 	margin-bottom: 23px;
 	padding-bottom: 17px;
@@ -5379,7 +5380,7 @@ img {
 
 .sidebar .popular-posts .post .post-thumb {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: 0px;
 	width: 75px;
 	border-radius: 50%;
@@ -5620,7 +5621,7 @@ img {
 .sidebar-page-container .group-title h2:before {
 	content: '';
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	bottom: -18px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -5629,7 +5630,7 @@ img {
 .sidebar-page-container .group-title h2:after {
 	content: '';
 	position: absolute;
-	right: 22px;
+	left: 22px;
 	bottom: -18px;
 	width: 20px;
 	border-bottom: 3px solid #5da73d;
@@ -5760,7 +5761,7 @@ img {
 	display: block;
 	width: 100%;
 	line-height: 20px;
-	text-align: right;
+	text-align: left;
 	padding: 10px 20px;
 	color: #333333;
 	border: 1px solid #f4f4f4;
@@ -6263,7 +6264,7 @@ img {
 
 .default-portfolio-item figure {
 	position: relative;
-	float: right;
+	float: left;
 	overflow: hidden;
 	margin: 10px 1%;
 	min-width: 320px;
@@ -6300,7 +6301,7 @@ img {
 .default-portfolio-item figure figcaption>a {
 	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 }
@@ -6432,7 +6433,7 @@ figure.effect-bubba:hover p {
 
 .gallery-section .default-portfolio-item figure {
 	position: relative;
-	float: right;
+	float: left;
 	overflow: hidden;
 	margin: 10px 1%;
 	width: 100%;
@@ -8182,12 +8183,12 @@ figure.effect-bubba:hover p {
 
 .services-block-four .inner-box {
 	position: relative;
-	padding-right: 130px;
+	padding-left: 130px;
 }
 
 .services-block-four .inner-box .icon-box {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: 0px;
 	width: 100px;
 	height: 100px;
@@ -8375,12 +8376,12 @@ figure.effect-bubba:hover p {
 
 .service-block .inner-box {
 	position: relative;
-	padding-right: 90px;
+	padding-left: 90px;
 }
 
 .service-block .inner-box .icon-box {
 	position: absolute;
-	right: 0px;
+	left: 0px;
 	top: 0px;
 	width: 70px;
 	height: 60px;
@@ -9338,7 +9339,7 @@ figure.effect-bubba:hover p {
  */
 
 .rate {
-    float: right;
+    float: left;
     height: 46px;
     padding: 0 10px;
 }
@@ -9348,7 +9349,7 @@ figure.effect-bubba:hover p {
 	clip:rect(0,0,0,0);
 }
 .rate:not(:checked) > label {
-    float:left;
+    float:right;
     width:1em;
     overflow:hidden;
     white-space:nowrap;

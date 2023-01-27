@@ -4,7 +4,7 @@
 
 {% load static %}
 
-{% block title %}مقالات{% endblock title %}
+{% block title %}Blog{% endblock title %}
 
 {% block content %}
 
@@ -16,11 +16,11 @@
         <!--Page Title-->
         <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>بلاگ</h1>
+                <h1>Blog</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="{% url 'index_view' %}">خانه</a></li>
-                        <li class="active">بلاگ</li>
+                        <li><a href="{% url 'index_view' %}">Home</a></li>
+                        <li class="active">Blog</li>
                     </ul>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                             <!-- Recent Posts -->
                             <div class="sidebar-widget popular-posts">
                                 <div class="sidebar-title">
-                                    <h3>محصولات جدید</h3>
+                                    <h3>New Products</h3>
                                 </div>
                                 {% for product in products %}
                                     <article class="post">

@@ -8,7 +8,7 @@
 
 {% load static %}
 
-{% block title %}مقاله{% endblock title %}
+{% block title %}Blog{% endblock title %}
 
 {% block content %}
 
@@ -20,12 +20,12 @@
         <!--Page Title-->
         <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>جزئیات بلاگ</h1>
+                <h1>{{ blog_detail.title }}</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="{% url 'index_view' %}">خانه</a></li>
-                        <li><a href="{% url 'blogs' id=1 %}">بلاگ</a></li>
-                        <li class="active">جزئیات بلاگ</li>
+                        <li><a href="{% url 'index_view' %}">Home</a></li>
+                        <li><a href="{% url 'blogs' id=1 %}">Blog</a></li>
+                        <li class="active">{{ blog_detail.title }}</li>
                     </ul>
                 </div>
             </div>
@@ -65,14 +65,14 @@
                                     </div>
 
                                     <div class="post-options">
-                                        <div class="tags"><strong>برچسب ها :</strong>
+                                        <div class="tags"><strong>Labels :</strong>
                                             <a>
                                                 {% for tag in blog_detail.tags.all %}
                                                     {{ tag.name }}،
                                                 {% endfor %}
                                             </a>
                                         </div>
-                                        <div class="categories"><strong>دسته ها :</strong>
+                                        <div class="categories"><strong>Categories :</strong>
                                             <a>
                                                 {% for category in blog_detail.category.all %}
                                                     {{ category.name }}،
@@ -95,7 +95,7 @@
                             <!--Comments Area-->
                             <div class="comments-area">
                                 <div class="group-title">
-                                    <h2>{{ num_chats }} دیدگاه</h2>
+                                    <h2>{{ num_chats }} Viewpoint</h2>
                                 </div>
 
                                 <div class="comment-box">
@@ -128,7 +128,7 @@
                                 <div class="comment-form">
 
                                     <div class="group-title">
-                                        <h2>دیدگاه خود را بیان کنید</h2>
+                                        <h2>Express your point of view</h2>
                                     </div>
 
                                     <!--Comment Form-->
@@ -150,7 +150,7 @@
                             <!-- Recent Posts -->
                             <div class="sidebar-widget popular-posts">
                                 <div class="sidebar-title">
-                                    <h3>مقالات جدید</h3>
+                                    <h3>New Articles</h3>
                                 </div>
                                 {% for blog_sidebar in blogs_sidebar %}
                                     <article class="post">
