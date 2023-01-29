@@ -20,6 +20,7 @@ class GeneralInfo(models.Model):
                                      null=True, blank=True)
     address = models.CharField(max_length=5000, verbose_name="آدرس", null=True, blank=True)
     email = models.CharField(max_length=5000, verbose_name="ایمیل", null=True, blank=True)
+    telephone = models.CharField(max_length=11, verbose_name="شماره تماس هدر", null=True, blank=True)
     telephone_1 = models.CharField(max_length=11, verbose_name="شماره تماس اول", null=True, blank=True)
     telephone_2 = models.CharField(max_length=11, verbose_name="شماره تماس دوم", null=True, blank=True)
     telephone_3 = models.CharField(max_length=11, verbose_name="شماره تماس سوم", null=True, blank=True)
@@ -55,7 +56,7 @@ class GeneralInfo(models.Model):
 class MainBanner(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان بنر", null=True, blank=True)
     text = HTMLField(verbose_name="محتوا عنوان", null=True, blank=True)
-    image_1 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره یک", null=True, blank=True)
+    image_1 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر صفحه اصلی", null=True, blank=True)
     image_2 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره دو", null=True, blank=True)
     image_3 = models.ImageField(upload_to="./banner/%Y/%m", verbose_name="تصویر شماره سه", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
@@ -107,25 +108,25 @@ class Category(models.Model):
 
 
 class ProductDetail(models.Model):
-    product_group = models.ManyToManyField(ProductGroup, verbose_name="دسته محصول")
-    title = models.CharField(max_length=300, verbose_name="عنوان")
-    farsi_name = models.CharField(max_length=300, verbose_name="نام فارسی")
-    english_name = models.CharField(max_length=300, verbose_name="نام لاتین")
-    formula = models.CharField(max_length=300, verbose_name="فرمول شیمیایی")
-    package_type = models.CharField(max_length=300, verbose_name="نوع بسته‌بندی")
-    made_by = models.CharField(max_length=300, verbose_name="ساخت کشور")
-    application = models.CharField(max_length=300, verbose_name="کاربرد")
+    product_group = models.ManyToManyField(ProductGroup, null=True, blank=True, verbose_name="دسته محصول")
+    title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
+    farsi_name = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام فارسی")
+    english_name = models.CharField(max_length=300, null=True, blank=True, verbose_name="نام لاتین")
+    formula = models.CharField(max_length=300, null=True, blank=True, verbose_name="فرمول شیمیایی")
+    package_type = models.CharField(max_length=300, null=True, blank=True, verbose_name="نوع بسته‌بندی")
+    made_by = models.CharField(max_length=300, null=True, blank=True, verbose_name="ساخت کشور")
+    application = models.CharField(max_length=300, null=True, blank=True, verbose_name="کاربرد")
     file = models.ImageField(upload_to="productFile/%Y/%m", null=True, blank=True, verbose_name="آپلود فایل آنالیز")
     image_1 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True,
-                                verbose_name="تصویر شماره یک محصول")
+                                verbose_name="تصویر در صفحه جزئیات محصول")
     image_2 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True,
-                                verbose_name="تصویر شماره دو محصول")
+                                verbose_name="تصویر در صفحه اصلی")
     image_3 = models.ImageField(upload_to="productImage/%Y/%m", null=True, blank=True,
                                 verbose_name="تصویر شماره سه محصول")
     description = HTMLField(verbose_name="توضیحات")
     url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
-    tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با محصول")
-    category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با محصول")
+    tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با محصول")
+    category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با محصول")
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
@@ -226,11 +227,11 @@ class FrequentlyAskedQuestion(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = HTMLField(null=True, blank=True, verbose_name="متن مقاله")
-    tags = models.ManyToManyField(Tags, verbose_name="تگ مرتبط با مقاله")
-    category = models.ManyToManyField(Category, verbose_name="دسته مرتبط با مقاله")
-    image_1 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر شماره یک مقاله")
-    image_2 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر شماره دو مقاله")
-    image_3 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر شماره سه مقاله")
+    tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با مقاله")
+    category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با مقاله")
+    image_1 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر در صفحه اصلی")
+    image_2 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر در داخلی مقاله")
+    image_3 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر ساید بار")
     url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
@@ -336,3 +337,4 @@ class UserEmailBank(models.Model):
     class Meta:
         verbose_name = "ایمیل"
         verbose_name_plural = "بانک ایمیل"
+

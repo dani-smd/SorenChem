@@ -80,7 +80,7 @@
                                     {% if forloop.counter == 1 %}
                                         <div class="item active">
                                             <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{% url 'product-detail' id=essence.id url=essence.url%}"><img src="{{ essence.image_1.url }}"
+                                                <a href="{% url 'product-detail' id=essence.id url=essence.url%}"><img src="{{ essence.image_2.url }}"
                                                                  class="img-responsive center-block"></a>
                                                 <h4 class="text-center">{{ essence.title }}</h4>
                                             </div>
@@ -89,7 +89,7 @@
                                     {% if forloop.counter != 1 %}
                                         <div class="item">
                                             <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{% url 'product-detail' id=essence.id url=essence.url%}"><img src="{{ essence.image_1.url }}"
+                                                <a href="{% url 'product-detail' id=essence.id url=essence.url%}"><img src="{{ essence.image_2.url }}"
                                                                  class="img-responsive center-block"></a>
                                                 <h4 class="text-center">{{ essence.title }}</h4>
                                             </div>
@@ -341,7 +341,7 @@
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url%}">
                                             <figure class="effect-bubba">
-                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <img src="{{ product.image_2.url }}" alt="image">
                                                 <figcaption>
                                                     <div class="content">
                                                         <h2>{{ product.title }}</h2>
@@ -358,7 +358,7 @@
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url%}">
                                             <figure class="effect-bubba">
-                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <img src="{{ product.image_2.url }}" alt="image">
                                                 <figcaption>
                                                     <div class="content">
                                                         <h2>{{ product.title }}</h2>
@@ -375,7 +375,7 @@
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url%}">
                                             <figure class="effect-bubba">
-                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <img src="{{ product.image_2.url }}" alt="image">
                                                 <figcaption>
                                                     <div class="content">
                                                         <h2>{{ product.title }}</h2>
@@ -392,7 +392,7 @@
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url%}">
                                             <figure class="effect-bubba">
-                                                <img src="{{ product.image_1.url }}" alt="image">
+                                                <img src="{{ product.image_2.url }}" alt="image">
                                                 <figcaption>
                                                     <div class="content">
                                                         <h2>{{ product.title }}</h2>
