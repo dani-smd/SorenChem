@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-        'site_soren',
+    'site_soren',
     'django_render_partial',
     'jalali_date',
     'tinymce',
@@ -81,27 +81,31 @@ WSGI_APPLICATION = 'soren.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'sorenche_sorendb',
-    #     'USER': 'sorenche_soren',
-    #     'PASSWORD': 'soren@14012022',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sorenche_sorendb_ar',
+        'USER': 'sorenche_soren_ar',
+        'PASSWORD': 'soren@14012022',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
 }
 
 # --- ADMIN Panel
 # username: admin
 # password: Soren@2022
 
+# --- Database Arabic
+# name: sorenche_sorendb_ar
+# user: sorenche_soren_ar
+# pass: soren@14012022
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
