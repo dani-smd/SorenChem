@@ -296,7 +296,7 @@ def header_view(request, *args, **kwargs):
     context = {
         "company_cats": list(result.values()),
         "email": qs_gi.email,
-        "phone": qs_gi.mobile,
+        "phone": qs_gi.telephone,
         "logo": qs_gi.company_logo,
         "company_name": qs_gi.company_name
     }
