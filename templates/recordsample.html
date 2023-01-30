@@ -42,6 +42,21 @@
                     <button type="submit" class="theme-btn btn-style-one">ارسال درخواست</button>
                 </div>
             </div>
+
+            {% if message %}
+                <div class="Modal">
+                    <h2 class="Modal-InText">
+                        Do you want to continue ?
+                    </h2>
+                    <button class="Modal-InBtn Btn-Right">Yup</button>
+                    <button class="Modal-InBtn Btn-Left">Nope</button>
+                </div>
+                <div class="p-3 mt-3 text-center contact-message {% if success %}success-message {% else %} error-message {% endif %}"
+                     id="contact_alert">
+                    <p class="h4">{{ message }}</p>
+                </div>
+            {% endif %}
+
         </div>
 
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 additional-info">

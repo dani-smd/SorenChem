@@ -5039,6 +5039,9 @@ img {
 	font-size: 12px;
 	color: #5da73d;
 	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .contact-section .contact-info li:hover .icon-box {
@@ -9774,3 +9777,74 @@ body.rtl .cresta-whatsapp-chat-button svg#whatsapp-msng-icon-button {
 		left: 12px
 	}
 }
+
+ .Noti_con {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 5px;
+
+        }
+
+        .noti_alert {
+            position: relative;
+            margin-top: 5px;
+            width: 240px;
+            padding: 6px;
+            border-radius: 3px;
+            border: 1px solid #dddddd;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: flex-end;
+            animation: 1s 1 noti_animation;
+            -webkit-animation: 1s 1 noti_animation;
+            font-weight: 900;
+            color: #a8a8a8;
+            font-size: 13px;
+            direction: rtl;
+
+        }
+
+        .noti_alert p {
+            margin-right: 5px;
+            text-align: right;
+        }
+
+        @keyframes noti_animation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .Noti_icon {
+            padding: 5px;
+            border-radius: 3px;
+            color: white;
+            display: flex;
+            font-size: x-large;
+        }
+
+
+        .remove_alert {
+            animation: 1s 1 remove_alert_animation;
+            -webkit-animation: 1s 1 remove_alert_animation;
+        }
+
+        @keyframes remove_alert_animation {
+            0% {
+                transform: translateX(200px);
+            }
+
+            50% {
+                transform: translateX(200px);
+            }
+
+            100% {
+                display: none;
+            }
+        }
