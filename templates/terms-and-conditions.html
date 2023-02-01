@@ -1,0 +1,40 @@
+{% extends 'mainlayout.html' %}
+{#{% load render_partial %}#}
+
+{% load static %}
+
+{% block title %}قوانین و مقررات{% endblock title %}
+
+{% block content %}
+
+    <div class="page-wrapper body_wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!--Page Title-->
+        <section class="page-title" style='background-image:url({% static 'images/background/bg-page-title-1.jpg' %});'>
+            <div class="auto-container">
+                <h1>قوانین و مقررات</h1>
+                <div class="bread-crumb-outer">
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li class="active">قوانین و مقررات</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="error-section">
+            <div class="auto-container">
+                <h3>قوانین و مقررات</h3>
+                <div>
+                    متن قوانین
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock content %}
+

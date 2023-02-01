@@ -1,0 +1,45 @@
+{% extends 'mainlayout.html' %}
+{% load render_partial %}
+{% load static %}
+{% block title %}فرم ثبت شکایت{% endblock title %}
+{% block content %}
+    <div class="page-wrapper body_wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!--Page Title-->
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
+            <div class="auto-container">
+                <h1>ثبت شکایت</h1>
+                <div class="bread-crumb-outer">
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="{% url 'index_view' %}">خانه</a></li>
+                        <li class="active">ثبت شکایت</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--Checkout Page-->
+        <div class="checkout-page cart-section">
+            <div class="auto-container">
+
+                <div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7;">کاربران گرامی، در صورت بروز هرگونه مشکل و عدم رضایت از خدمات ارائه شده و یا نحوه پاسخ دهی کارشناسان در سورن شیمی می توانید با تکمیل و ارسال فرم زیر ، طرح شکایت درخواستی را به فایل مدیریت ارسال نمایید تا در اولین فرصت در جهت رفع مشکل و حصول رضایت اقدام گردد.
+                </div>
+
+                <!--Billing Details-->
+                <div class="billing-details">
+                    <div class="shop-form">
+                        {% render_partial 'record_sample' %}
+                    </div>
+
+                </div>
+                <!--End Billing Details-->
+
+            </div>
+        </div>
+
+    </div>
+    <!--End pagewrapper-->
+{% endblock content %}

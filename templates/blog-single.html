@@ -20,12 +20,12 @@
         <!--Page Title-->
         <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
-                <h1>جزئیات بلاگ</h1>
+                <h1>{{ blog_detail.title }}</h1>
                 <div class="bread-crumb-outer">
                     <ul class="bread-crumb clearfix">
                         <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li><a href="{% url 'blogs' id=1 %}">بلاگ</a></li>
-                        <li class="active">جزئیات بلاگ</li>
+                        <li class="active">{{ blog_detail.title }}</li>
                     </ul>
                 </div>
             </div>
