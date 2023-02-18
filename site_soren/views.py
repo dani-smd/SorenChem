@@ -341,7 +341,33 @@ def search_result(request, page):
         }
     return render(request, "search.html", context=context)
 
-# def search_view(request):
-#     if request.POST:
-#         return redirect('search_result')
-#     return render(request, "about-us.html", context=None)
+
+def terms_conditions(request):
+    context = {
+        "conditions": GeneralInfo.objects.get(id=1).conditions
+    }
+    return render(request, "terms-and-conditions.html", context=context)
+
+
+def complaints_form(request):
+    return render(request, "complaints-form.html", context=None)
+
+
+def record_complaints_form(request):
+    context = {}
+    if request.POST:
+        name = request.POST.get('name', "False")
+        email = request.POST.get('email', "False")
+        phone = request.POST.get('phone', "False")
+        title = request.POST.get('subject', "False")
+        text = request.POST.get('text', "False")
+        qs_contact = ContactUs.objects.filter(name=name, email=email, title=title, read=False)
+        if qs_contact:
+            context['message'] = "پیامی با این محتوا وجود دارد."
+            context['success'] = False
+        else:
+            contact = ContactUs(name=name, title=title, email=email, text=text, phone=phone, read=False)
+            contact.save()
+            context['message'] = "با موفقیت ثبت شد"
+            context['success'] = True
+    return render(request, "recordcomplaints.html", context=context)

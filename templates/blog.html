@@ -58,7 +58,7 @@
                                                 </ul>
                                             </div>
                                             <h3><a href="{% url 'blog-detail' id=blog.id  url=blog.url%}">{{ blog.title | truncatechars:100 | safe}}</a></h3>
-                                            <div class="text">{{ blog.text | truncatechars:300 | safe }}
+                                            <div class="text">{{ blog.text_summary | truncatechars:290 | safe }}
                                             </div>
 
                                         </div>

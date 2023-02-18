@@ -1,7 +1,8 @@
 from django.urls import path, include
 from .views import (index_view, not_found, contact_us, about_us, blogs, blog_detail, faq, gallery_image, gallery_video,
                     product_detail, product_group, products, sample_request, header_view, footer_view,
-                    recordcontactus_view, record_sample, blog_comment, search_result)
+                    recordcontactus_view, record_sample, blog_comment, search_result, terms_conditions, complaints_form,
+                    record_complaints_form)
 from .sitemaps import ArticleSitemap, ProductSitemap, StaticSitemap, ProductGroupSitemap, VideoGallerySitemap, \
     ImageGallerySitemap
 from django.contrib.sitemaps.views import sitemap
@@ -35,6 +36,9 @@ urlpatterns = [
     path('recordsample/', record_sample, name="record_sample"),
     path('blog-comment/<id>', blog_comment, name="blog-comment"),
     path('search-result/<page>', search_result, name="search-result"),
+    path('terms-conditions/', terms_conditions, name="terms-conditions"),
+    path('complaints-form/', complaints_form, name="complaints-form"),
+    path('record-complaints-form/', record_complaints_form, name="record-complaints-form"),
     path(r'^tinymce/', include('tinymce.urls')),
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

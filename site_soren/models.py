@@ -44,6 +44,7 @@ class GeneralInfo(models.Model):
     general_feature_title = models.CharField(max_length=300, verbose_name="عنوان ویژگی عمومی", null=True, blank=True)
     general_feature_text = HTMLField(verbose_name="محتوا ویژگی عمومی", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
+    conditions = HTMLField(verbose_name="قوانین و مقررات", null=True, blank=True)
 
     def __str__(self) -> str:
         return "اطلاعات کلی سایت"
@@ -227,6 +228,7 @@ class FrequentlyAskedQuestion(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = HTMLField(null=True, blank=True, verbose_name="متن مقاله")
+    text_summary = models.TextField(null=True, blank=True, verbose_name="خلاصه مقاله")
     tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با مقاله")
     category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با مقاله")
     image_1 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر در صفحه اصلی")
@@ -314,7 +316,8 @@ class SampleRequierment(models.Model):
 class ContactUs(models.Model):
     name = models.CharField(max_length=300, verbose_name="نام")
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
-    email = models.CharField(max_length=50, verbose_name="ایمیل")
+    email = models.CharField(max_length=50, null=True, blank=True, verbose_name="ایمیل")
+    phone = models.CharField(max_length=11, null=True, blank=True, verbose_name="موبایل")
     text = HTMLField(null=True, blank=True, verbose_name="متن تماس با ما")
     read = models.BooleanField(default=False, verbose_name="خوانده شد؟")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)

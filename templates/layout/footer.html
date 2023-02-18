@@ -9,7 +9,7 @@
                 <!--Two 4th column-->
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="row clearfix">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-sm-12 col-xs-12 column">
                             <div class="footer-widget about-widget">
                                 <h3>راه های ارتباط با ما</h3>
                                 <div class="text margin-bott-30">
@@ -52,12 +52,12 @@
 
                                     <div class="col-lg-6 col-sm-6 col-xs-6">
                                         <ul>
-                                            <li><i class="fa fa-angle-left"></i><a href="/faq">سوالات
-                                                متداول</a></li>
+<!--                                            <li><i class="fa fa-angle-left"></i><a href="/faq">سوالات-->
+<!--                                                متداول</a></li>-->
                                             <li><i class="fa fa-angle-left"></i>
-                                                <a href="/terms-and-conditions">قوانین و مقررات</a>
+                                                <a href="{% url 'terms-conditions' %}">قوانین و مقررات</a>
                                             </li>
-                                            <li><i class="fa fa-angle-left"></i><a href="#">فرم ثبت شکایت</a>
+                                            <li><i class="fa fa-angle-left"></i><a href="{% url 'complaints-form' %}">فرم ثبت شکایت</a>
                                             </li>
                                         </ul>
                                     </div>

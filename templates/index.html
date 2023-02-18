@@ -450,7 +450,7 @@
                                     </div>
                                     <h3><a href="{% url 'blog-detail' id=blog.id url=blog.url%}">{{ blog.title }}</a>
                                     </h3>
-                                    <div class="text" style="text-align: justify">{{ blog.text | truncatechars:388 | safe }}</div>
+                                    <div class="text" style="text-align: justify">{{ blog.text_summary | truncatechars:290 | safe }}</div>
                                 </div>
                             </div>
                         </div>

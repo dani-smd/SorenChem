@@ -1,5 +1,6 @@
 {% extends 'mainlayout.html' %}
-{#{% load render_partial %}#}
+
+{% load render_partial %}
 
 {% load static %}
 
@@ -13,7 +14,7 @@
         <div class="preloader"></div>
 
         <!--Page Title-->
-        <section class="page-title" style='background-image:url({% static 'images/background/bg-page-title-1.jpg' %});'>
+        <section class="page-title" style="background-image:url({% static 'images/background/1414.jpg' %});">
             <div class="auto-container">
                 <h1>قوانین و مقررات</h1>
                 <div class="bread-crumb-outer">
@@ -29,7 +30,7 @@
             <div class="auto-container">
                 <h3>قوانین و مقررات</h3>
                 <div>
-                    متن قوانین
+                   {{ conditions }}
                 </div>
             </div>
         </section>
