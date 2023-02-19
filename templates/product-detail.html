@@ -48,8 +48,9 @@
                                         <div class="row clearfix">
                                             <div class="image-column col-md-6 col-sm-6 col-xs-12">
                                                 <figure class="image-box">
-                                                    <a href="{{ product.image_1.url }}" class="lightbox-image"><img
-                                                            src="{{ product.image_1.url }}" alt=""></a>
+                                                    <a href="{{ product.image_1.url }}" class="lightbox-image">
+                                                        <img src="{{ product.image_1.url }}" alt="">
+                                                    </a>
                                                 </figure>
                                             </div>
                                             <div class="info-column col-md-6 col-sm-6 col-xs-12">
@@ -66,21 +67,22 @@
                                                         <li>کاربرد: <span> {{ product.application }}
                                                         </span></li>
                                                     </ul>
-                                                    <div class="stock"><a href="{{ product.file.url }}" download><i
-                                                            class="fa fa-download"
+                                                    <div class="stock"><a href="{{ product.file.url }}" download>
+                                                        <i class="fa fa-download"
                                                             style="margin-left: 5px;"
                                                             aria-hidden="true"></i>دانلود
-                                                        آنالیز {{ product.title }}</a></div>
-                                                    {#                                                    <div class="other-options clearfix mt-30">#}
-                                                    {#                                                        <button type="button" value="{{ sidebar.telephone_1 }}"#}
-                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر#}
-                                                    {#                                                            فروش#}
-                                                    {#                                                        </button>#}
-                                                    {#                                                        <button type="button" style="margin-right: 20px"#}
-                                                    {#                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر#}
-                                                    {#                                                            فروش#}
-                                                    {#                                                        </button>#}
-                                                    {#                                                    </div>#}
+                                                        آنالیز {{ product.title }}</a>
+                                                    </div>
+                                                    <div class="other-options clearfix mt-30">
+                                                        <a type="button" value="{{ sidebar.telephone_1 }}" href="tel:{{ general_info.mobile }}"
+                                                                class="theme-btn btn-style-one add-to-cart">تماس با مدیر
+                                                            فروش
+                                                        </a>
+                                                        <a type="button" style="margin-right: 20px" href="{{ general_info.whatsapp }}"
+                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر
+                                                            فروش
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -222,24 +224,26 @@
                             <li>
                                 <a href="tel:{{ sidebar.telephone_1 }}">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>{{ sidebar.telephone_1 }}</span>
+                                    <span class="marginRight-20">{{ sidebar.telephone_1 }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tel:{{ sidebar.mobile }}">
                                     <i class="fa fa-mobile" style="font-size: 24px;" aria-hidden="true"></i>
-                                    <span>{{ sidebar.mobile }}</span>
+                                    <span class="marginRight-20">{{ sidebar.mobile }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:{{ sidebar.whatsapp_number }}"><i class="fa fa-whatsapp"
-                                                                               aria-hidden="true"></i>
-                                    <span>{{ sidebar.whatsapp_number }}</span>
+                                <a href="tel:{{ sidebar.whatsapp_number }}">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <span class="marginRight-20">{{ sidebar.whatsapp_number }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a><i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    {{ sidebar.email }}</a>
+                                <a>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <span class="marginRight-20">{{ sidebar.email }}</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
