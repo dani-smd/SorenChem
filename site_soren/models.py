@@ -32,6 +32,9 @@ class GeneralInfo(models.Model):
     whatsapp = models.CharField(max_length=100, verbose_name="آدرس واتس‌اپ", null=True, blank=True)
     telegram = models.CharField(max_length=100, verbose_name="آدرس تلگرام", null=True, blank=True)
     instagram = models.CharField(max_length=100, verbose_name="آدرس اینستاگرام", null=True, blank=True)
+    aparat = models.CharField(max_length=100, verbose_name="آدرس  آپارات", null=True, blank=True)
+    linkedin = models.CharField(max_length=100, verbose_name="آدرس  لینکدین", null=True, blank=True)
+    facebook = models.CharField(max_length=100, verbose_name="آدرس  فیس‌بوک", null=True, blank=True)
     social_network_description = HTMLField(verbose_name="توضیحات شبکه‌ اجتماعی", null=True, blank=True)
     feature_title_1 = models.CharField(max_length=300, verbose_name="عنوان ویژگی اول", null=True, blank=True)
     feature_text_1 = HTMLField(verbose_name="محتوا ویژگی اول", null=True, blank=True)
@@ -336,6 +339,20 @@ class UserEmailBank(models.Model):
 
     def __str__(self) -> str:
         return self.email
+
+    class Meta:
+        verbose_name = "ایمیل"
+        verbose_name_plural = "بانک ایمیل"
+
+
+class ImageBank(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام")
+    image = models.ImageField(upload_to="imageGallery/blogs_and_products/image/%Y/%m", null=True, blank=True,
+                              verbose_name="تصویر")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.name
 
     class Meta:
         verbose_name = "ایمیل"
