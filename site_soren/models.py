@@ -355,5 +355,5 @@ class ImageBank(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "ایمیل"
-        verbose_name_plural = "بانک ایمیل"
+        verbose_name = "تصویر"
+        verbose_name_plural = "بانک تصاویر"

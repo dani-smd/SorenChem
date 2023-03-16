@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from site_soren.models import (GeneralInfo, MainBanner, ProductGroup, Tags, Category, ProductDetail, ChatProductDetail,
                                AboutUs, FrequentlyAskedQuestion, Blog, ChatBlog, ImageGallery, VideoGallery,
-                               SampleRequierment, ContactUs, UserEmailBank)
+                               SampleRequierment, ContactUs, UserEmailBank, ImageBank)
 
 
 class SampleRequiermentAdmin(admin.ModelAdmin):
@@ -57,3 +57,4 @@ admin.site.register(VideoGallery)
 admin.site.register(SampleRequierment, SampleRequiermentAdmin)
 admin.site.register(ContactUs, ContactUsAdmin)
 admin.site.register(UserEmailBank)
+admin.site.register(ImageBank)

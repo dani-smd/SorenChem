@@ -344,7 +344,7 @@
                     <!--Default Portfolio Item-->
                     {% for product in products %}
                         {% for product_gp in product.product_group.all %}
-                            {% if product_gp.type == "AI" and forloop.counter == 1 %}
+                            {% if product_gp.type == "AI" %}
                                 <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url %}">
@@ -361,7 +361,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            {% if product_gp.type == "CI" and forloop.counter == 1 %}
+                            {% if product_gp.type == "CI" %}
                                 <div class="default-portfolio-item CosmeticsIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url %}">
@@ -378,7 +378,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            {% if product_gp.type == "FI" and forloop.counter == 1 %}
+                            {% if product_gp.type == "FI" %}
                                 <div class="default-portfolio-item FoodIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url %}">
@@ -395,7 +395,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            {% if product_gp.type == "SO" and forloop.counter == 1 %}
+                            {% if product_gp.type == "SO" %}
                                 <div class="default-portfolio-item Solver col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
                                         <a href="{% url 'product-detail' id=product.id url=product.url %}">
