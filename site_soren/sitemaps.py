@@ -6,7 +6,7 @@ from django.urls import reverse
 class ArticleSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.8
-    protocol = 'http'
+    protocol = 'https'
 
     def items(self):
         return Blog.objects.all()
@@ -21,7 +21,7 @@ class ArticleSitemap(Sitemap):
 class ProductSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
-    protocol = 'http'
+    protocol = 'https'
 
     def items(self):
         return ProductDetail.objects.all()
@@ -36,7 +36,7 @@ class ProductSitemap(Sitemap):
 class ImageGallerySitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
-    protocol = 'http'
+    protocol = 'https'
 
     def items(self):
         return ImageGallery.objects.all()
@@ -51,7 +51,7 @@ class ImageGallerySitemap(Sitemap):
 class VideoGallerySitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
-    protocol = 'http'
+    protocol = 'https'
 
     def items(self):
         return VideoGallery.objects.all()
@@ -66,7 +66,7 @@ class VideoGallerySitemap(Sitemap):
 class ProductGroupSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
-    protocol = 'http'
+    protocol = 'https'
 
     def items(self):
         return ProductGroup.objects.all()

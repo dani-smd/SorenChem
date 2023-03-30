@@ -325,16 +325,16 @@
                         <li class="active" data-filter=".default-portfolio-item">
                             <span>مشاهده همه</span>
                         </li>
-                        <li data-filter=".CosmeticsIndustry">
+                        <li data-filter=".CI">
                             <span>آرایشی و بهداشتی</span>
                         </li>
-                        <li data-filter=".Solver">
+                        <li data-filter=".SO">
                             <span>حلال</span>
                         </li>
-                        <li data-filter=".FoodIndustry">
+                        <li data-filter=".FI">
                             <span>صنایع غذایی</span>
                         </li>
-                        <li data-filter=".Growth">
+                        <li data-filter=".AI">
                             <span>صنایع کشاورزی</span>
                         </li>
                     </ul>
@@ -344,23 +344,22 @@
                     <!--Default Portfolio Item-->
                     {% for product in products %}
                         {% for product_gp in product.product_group.all %}
-                            {% if product_gp.type == "AI" %}
-                                <div class="default-portfolio-item Growth col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="inner-box">
-                                        <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                            <figure class="effect-bubba">
-                                                <img src="{{ product.image_2.url }}" alt="image">
-                                                <figcaption>
-                                                    <div class="content">
-                                                        <h2>{{ product.title }}</h2>
-                                                        <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
+                            <div class="default-portfolio-item {{ product_gp.type }} col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                        <figure class="effect-bubba">
+                                            <img src="{{ product.image_2.url }}" alt="image">
+                                            <figcaption>
+                                                <div class="content">
+                                                    <h2>{{ product.title }}</h2>
+                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
                                 </div>
-                            {% endif %}
+                            </div>
+
                             {% if product_gp.type == "CI" %}
                                 <div class="default-portfolio-item CosmeticsIndustry col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="inner-box">
