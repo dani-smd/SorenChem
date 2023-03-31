@@ -132,6 +132,7 @@ class ProductDetail(models.Model):
     tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با محصول")
     category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با محصول")
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
+    show_in_last_product = models.BooleanField(default=False, verbose_name="نمایش در بخش آخرین محصولات")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:

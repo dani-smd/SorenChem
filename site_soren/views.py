@@ -9,6 +9,26 @@ from django.shortcuts import resolve_url
 
 
 def index_view(request):
+    allproducts = ProductDetail.objects.filter(show_in_last_product=True).order_by("-id")[:6]
+    # ---
+    ALL = []
+    AI = []
+    CI = []
+    FI = []
+    SO = []
+
+    for product in allproducts:
+        for product_gp in product.product_group.all():
+            if product_gp.type == "AI":
+                AI.append(product)
+            elif product_gp.type == "CI":
+                CI.append(product)
+            elif product_gp.type == "FI":
+                FI.append(product)
+            elif product_gp.type == "SO":
+                SO.append(product)
+        ALL.append(product)
+
     context = {
         "mainbanner": MainBanner.objects.all(),
         "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id").distinct()[:6],
@@ -16,7 +36,11 @@ def index_view(request):
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:7],
         "aboutus": AboutUs.objects.first(),
         "general_info": GeneralInfo.objects.first(),
-        "products": ProductDetail.objects.all().order_by("-id")[:9],
+        "ALL": ALL,
+        "AI": AI,
+        "CI": CI,
+        "SO": SO,
+        "FI": FI,
         "blogs": Blog.objects.all().order_by("-id")[:3]
     }
     return render(request, "index.html", context=context)
