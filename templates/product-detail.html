@@ -5,7 +5,13 @@
 
 {% load jalali_tags %}
 
-{% block title %}محصولات - جزئیات{% endblock title %}
+{% block title %}{{ product.farsi_name }}{% endblock title %}
+
+{% block description %}نام اسانس: {{ product.farsi_name }}، مورد استفاده در: {{ product.application }}{% endblock description %}
+
+{% block keywords %}{% for keyword in product.tags.all %}{{ keyword }},{% endfor %}{% endblock keywords %}
+
+{% block canonical %}https://sorenchem.com{{ request.path }}{% endblock canonical %}
 
 {% block content %}
     <div class="page-wrapper body_wrapper">
@@ -49,7 +55,7 @@
                                             <div class="image-column col-md-6 col-sm-6 col-xs-12">
                                                 <figure class="image-box">
                                                     <a href="{{ product.image_1.url }}" class="lightbox-image">
-                                                        <img src="{{ product.image_1.url }}" alt="">
+                                                        <img src="{{ product.image_1.url }}" alt="{{ product.title }}">
                                                     </a>
                                                 </figure>
                                             </div>

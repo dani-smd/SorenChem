@@ -5,11 +5,13 @@
 
 {% load static %}
 
-{% block title %}سورن شیمی{% endblock title %}
+{% block title %}سورن شیمی | SorenChem{% endblock title %}
 
-{% block description %}{{ about_us | truncatechars:247 }}{% endblock description %}
+{% block description %}{{ aboutus.who_we_are | truncatechars:247 }}{% endblock description %}
 
-{% block keywords %}{% for keyword in keywords %}{{ keyword }},{% endfor %}{% endblock keywords %}
+{% block keywords %}{% for keyword in keywords %}{{ keyword.name }},{% endfor %}{% endblock keywords %}
+
+{% block canonical %}https://sorenchem.com{{ request.path }}{% endblock canonical %}
 
 {% block content %}
 
@@ -342,105 +344,102 @@
 
                 <div class="row-15 grid clearfix masonary-layout filter-layout">
                     <!--Default Portfolio Item-->
-                    <div class="ALL">
-                        {% for product in ALL %}
-                            <div class="default-portfolio-item ALL col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                        <figure class="effect-bubba">
-                                            <img src="{{ product.image_2.url }}" alt="image">
-                                            <figcaption>
-                                                <div class="content">
-                                                    <h2>{{ product.title }}</h2>
-                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
 
-                    <div class="AI">
-                        {% for product in AI %}
-                            <div class="default-portfolio-item AI col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                        <figure class="effect-bubba">
-                                            <img src="{{ product.image_2.url }}" alt="image">
-                                            <figcaption>
-                                                <div class="content">
-                                                    <h2>{{ product.title }}</h2>
-                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
+                    {% for product in ALL %}
+                        <div class="default-portfolio-item ALL col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner-box">
+                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                    <figure class="effect-bubba">
+                                        <img src="{{ product.image_2.url }}" alt="image">
+                                        <figcaption>
+                                            <div class="content">
+                                                <h2>{{ product.title }}</h2>
+                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
 
-                    <div class="CI">
-                        {% for product in CI %}
-                            <div class="default-portfolio-item CI col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                        <figure class="effect-bubba">
-                                            <img src="{{ product.image_2.url }}" alt="image">
-                                            <figcaption>
-                                                <div class="content">
-                                                    <h2>{{ product.title }}</h2>
-                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
 
-                    <div class="FI">
-                        {% for product in FI %}
-                            <div class="default-portfolio-item FI col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                        <figure class="effect-bubba">
-                                            <img src="{{ product.image_2.url }}" alt="image">
-                                            <figcaption>
-                                                <div class="content">
-                                                    <h2>{{ product.title }}</h2>
-                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
+                    {% for product in AI %}
+                        <div class="default-portfolio-item AI col-lg-4 col-md-4 col-sm-6 col-xs-12" style="display: none;">
+                            <div class="inner-box">
+                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                    <figure class="effect-bubba">
+                                        <img src="{{ product.image_2.url }}" alt="image">
+                                        <figcaption>
+                                            <div class="content">
+                                                <h2>{{ product.title }}</h2>
+                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
 
-                    <div class="SO">
-                        {% for product in SO %}
-                            <div class="default-portfolio-item SO col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <div class="inner-box">
-                                    <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                        <figure class="effect-bubba">
-                                            <img src="{{ product.image_2.url }}" alt="image">
-                                            <figcaption>
-                                                <div class="content">
-                                                    <h2>{{ product.title }}</h2>
-                                                    <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
+
+                    {% for product in CI %}
+                        <div class="default-portfolio-item CI col-lg-4 col-md-4 col-sm-6 col-xs-12" style="display: none;">
+                            <div class="inner-box">
+                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                    <figure class="effect-bubba">
+                                        <img src="{{ product.image_2.url }}" alt="image">
+                                        <figcaption>
+                                            <div class="content">
+                                                <h2>{{ product.title }}</h2>
+                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
+
+
+
+                    {% for product in FI %}
+                        <div class="default-portfolio-item FI col-lg-4 col-md-4 col-sm-6 col-xs-12" style="display: none;">
+                            <div class="inner-box">
+                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                    <figure class="effect-bubba">
+                                        <img src="{{ product.image_2.url }}" alt="image">
+                                        <figcaption>
+                                            <div class="content">
+                                                <h2>{{ product.title }}</h2>
+                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    {% for product in SO %}
+                        <div class="default-portfolio-item SO col-lg-4 col-md-4 col-sm-6 col-xs-12" style="display: none;">
+                            <div class="inner-box">
+                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                                    <figure class="effect-bubba">
+                                        <img src="{{ product.image_2.url }}" alt="image">
+                                        <figcaption>
+                                            <div class="content">
+                                                <h2>{{ product.title }}</h2>
+                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
                 </div>
 
             </div>
