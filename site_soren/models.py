@@ -14,6 +14,17 @@ CATEGORY = (
 )
 
 
+class Tags(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام تگ")
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "تگ"
+        verbose_name_plural = "تگ‌ها"
+
+
 class GeneralInfo(models.Model):
     company_name = models.CharField(max_length=500, verbose_name="نام شرکت", null=True, blank=True)
     company_logo = models.ImageField(upload_to="logo/%Y/%m", default="logo/default_avatar.png", verbose_name="لوگو",
@@ -27,6 +38,7 @@ class GeneralInfo(models.Model):
     telephone_4 = models.CharField(max_length=11, verbose_name="شماره تماس چهارم", null=True, blank=True)
     mobile = models.CharField(max_length=11, verbose_name="موبایل", null=True, blank=True)
     whatsapp_number = models.CharField(max_length=20, verbose_name="شماره تماس واتس‌اپ", null=True, blank=True)
+    tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با صفحه‌ اصلی")
     contactus_text = HTMLField(verbose_name="متن صفحه درباره ما", null=True, blank=True)
     twitter = models.CharField(max_length=100, verbose_name="آدرس توییتر", null=True, blank=True)
     whatsapp = models.CharField(max_length=100, verbose_name="آدرس واتس‌اپ", null=True, blank=True)
@@ -87,17 +99,6 @@ class ProductGroup(models.Model):
     class Meta:
         verbose_name = "دسته محصول"
         verbose_name_plural = "دسته محصولات"
-
-
-class Tags(models.Model):
-    name = models.CharField(max_length=300, verbose_name="نام تگ")
-
-    def __str__(self) -> str:
-        return self.name
-
-    class Meta:
-        verbose_name = "تگ"
-        verbose_name_plural = "تگ‌ها"
 
 
 class Category(models.Model):

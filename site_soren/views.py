@@ -10,13 +10,14 @@ from django.shortcuts import resolve_url
 
 def index_view(request):
     allproducts = ProductDetail.objects.filter(show_in_last_product=True).order_by("-id")[:6]
+    index = GeneralInfo.objects.first()
     # ---
     ALL = []
     AI = []
     CI = []
     FI = []
     SO = []
-
+    # ---
     for product in allproducts:
         for product_gp in product.product_group.all():
             if product_gp.type == "AI":
@@ -36,6 +37,7 @@ def index_view(request):
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:7],
         "aboutus": AboutUs.objects.first(),
         "general_info": GeneralInfo.objects.first(),
+        "keywords": index.tags.all(),
         "ALL": ALL,
         "AI": AI,
         "CI": CI,

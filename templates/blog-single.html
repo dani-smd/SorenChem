@@ -8,7 +8,13 @@
 
 {% load static %}
 
-{% block title %}مقاله{% endblock title %}
+{% block title %}{{ blog_detail.title }}{% endblock title %}
+
+{% block description %}{{ blog_detail.text_summary }}{% endblock description %}
+
+{% block keywords %}{% for keyword in blog_detail.tags.all %}{{ keyword }},{% endfor %}{% endblock keywords %}
+
+{% block canonical %}https://sorenchem.com{{ request.path }}{% endblock canonical %}
 
 {% block content %}
 
@@ -43,7 +49,7 @@
                             <div class="news-style-two">
                                 <div class="inner-box">
                                     <div class="image-box">
-                                        <figure class="image"><img src="{{ blog_detail.image_2.url }}" alt="">
+                                        <figure class="image"><img src="{{ blog_detail.image_2.url }}" alt="{{ blog_detail.title }}">
                                         </figure>
                                     </div>
                                     <div class="lower-box">
