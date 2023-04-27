@@ -4,7 +4,7 @@ from site_soren.models import (GeneralInfo, MainBanner, ProductGroup, Tags, Cate
                                AboutUs, FrequentlyAskedQuestion, Blog, ChatBlog, ImageGallery, VideoGallery,
                                SampleRequierment, ContactUs, UserEmailBank, ImageBank)
 
-
+# TEST
 class SampleRequiermentAdmin(admin.ModelAdmin):
     list_display = ("owner_name", "read", "created")
     list_per_page = 25
