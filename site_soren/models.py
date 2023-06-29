@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.contrib.sitemaps import ping_google
 
 # from image_optimizer.fields import OptimizedImageField
 # Create your models here.
@@ -14,24 +15,39 @@ CATEGORY = (
 )
 
 
+class Tags(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام تگ")
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "تگ"
+        verbose_name_plural = "تگ‌ها"
+
+
 class GeneralInfo(models.Model):
     company_name = models.CharField(max_length=500, verbose_name="نام شرکت", null=True, blank=True)
     company_logo = models.ImageField(upload_to="logo/%Y/%m", default="logo/default_avatar.png", verbose_name="لوگو",
                                      null=True, blank=True)
     address = models.CharField(max_length=5000, verbose_name="آدرس", null=True, blank=True)
     email = models.CharField(max_length=5000, verbose_name="ایمیل", null=True, blank=True)
-    telephone = models.CharField(max_length=11, verbose_name="شماره تماس هدر", null=True, blank=True)
-    telephone_1 = models.CharField(max_length=11, verbose_name="شماره تماس اول", null=True, blank=True)
-    telephone_2 = models.CharField(max_length=11, verbose_name="شماره تماس دوم", null=True, blank=True)
-    telephone_3 = models.CharField(max_length=11, verbose_name="شماره تماس سوم", null=True, blank=True)
-    telephone_4 = models.CharField(max_length=11, verbose_name="شماره تماس چهارم", null=True, blank=True)
-    mobile = models.CharField(max_length=11, verbose_name="موبایل", null=True, blank=True)
+    telephone = models.CharField(max_length=20, verbose_name="شماره تماس هدر", null=True, blank=True)
+    telephone_1 = models.CharField(max_length=20, verbose_name="شماره تماس اول", null=True, blank=True)
+    telephone_2 = models.CharField(max_length=20, verbose_name="شماره تماس دوم", null=True, blank=True)
+    telephone_3 = models.CharField(max_length=20, verbose_name="شماره تماس سوم", null=True, blank=True)
+    telephone_4 = models.CharField(max_length=20, verbose_name="شماره تماس چهارم", null=True, blank=True)
+    mobile = models.CharField(max_length=20, verbose_name="موبایل", null=True, blank=True)
     whatsapp_number = models.CharField(max_length=20, verbose_name="شماره تماس واتس‌اپ", null=True, blank=True)
+    tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با صفحه‌ اصلی")
     contactus_text = HTMLField(verbose_name="متن صفحه درباره ما", null=True, blank=True)
     twitter = models.CharField(max_length=100, verbose_name="آدرس توییتر", null=True, blank=True)
     whatsapp = models.CharField(max_length=100, verbose_name="آدرس واتس‌اپ", null=True, blank=True)
     telegram = models.CharField(max_length=100, verbose_name="آدرس تلگرام", null=True, blank=True)
     instagram = models.CharField(max_length=100, verbose_name="آدرس اینستاگرام", null=True, blank=True)
+    aparat = models.CharField(max_length=100, verbose_name="آدرس  آپارات", null=True, blank=True)
+    linkedin = models.CharField(max_length=100, verbose_name="آدرس  لینکدین", null=True, blank=True)
+    facebook = models.CharField(max_length=100, verbose_name="آدرس  فیس‌بوک", null=True, blank=True)
     social_network_description = HTMLField(verbose_name="توضیحات شبکه‌ اجتماعی", null=True, blank=True)
     feature_title_1 = models.CharField(max_length=300, verbose_name="عنوان ویژگی اول", null=True, blank=True)
     feature_text_1 = HTMLField(verbose_name="محتوا ویژگی اول", null=True, blank=True)
@@ -44,6 +60,7 @@ class GeneralInfo(models.Model):
     general_feature_title = models.CharField(max_length=300, verbose_name="عنوان ویژگی عمومی", null=True, blank=True)
     general_feature_text = HTMLField(verbose_name="محتوا ویژگی عمومی", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
+    conditions = HTMLField(verbose_name="قوانین و مقررات", null=True, blank=True)
 
     def __str__(self) -> str:
         return "اطلاعات کلی سایت"
@@ -75,6 +92,7 @@ class ProductGroup(models.Model):
     name = models.CharField(max_length=300, verbose_name="نام گروه", null=True, blank=True)
     flat_name = models.CharField(max_length=300, verbose_name="نام آیکون", null=True, blank=True)
     description = HTMLField(verbose_name="توضیحات", null=True, blank=True)
+    url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -83,17 +101,6 @@ class ProductGroup(models.Model):
     class Meta:
         verbose_name = "دسته محصول"
         verbose_name_plural = "دسته محصولات"
-
-
-class Tags(models.Model):
-    name = models.CharField(max_length=300, verbose_name="نام تگ")
-
-    def __str__(self) -> str:
-        return self.name
-
-    class Meta:
-        verbose_name = "تگ"
-        verbose_name_plural = "تگ‌ها"
 
 
 class Category(models.Model):
@@ -128,6 +135,7 @@ class ProductDetail(models.Model):
     tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با محصول")
     category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با محصول")
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
+    show_in_last_product = models.BooleanField(default=False, verbose_name="نمایش در بخش آخرین محصولات")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -227,6 +235,7 @@ class FrequentlyAskedQuestion(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     text = HTMLField(null=True, blank=True, verbose_name="متن مقاله")
+    text_summary = models.TextField(null=True, blank=True, verbose_name="خلاصه مقاله")
     tags = models.ManyToManyField(Tags, null=True, blank=True, verbose_name="تگ مرتبط با مقاله")
     category = models.ManyToManyField(Category, null=True, blank=True, verbose_name="دسته مرتبط با مقاله")
     image_1 = models.ImageField(upload_to="blogImage/%Y/%m", null=True, blank=True, verbose_name="تصویر در صفحه اصلی")
@@ -235,6 +244,7 @@ class Blog(models.Model):
     url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+    publish = models.BooleanField(default=False, verbose_name="منتشر شود؟")
 
     def __str__(self) -> str:
         return self.title
@@ -315,6 +325,7 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=300, verbose_name="نام")
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name="عنوان")
     email = models.CharField(max_length=50, verbose_name="ایمیل")
+    phone = models.CharField(max_length=11, null=True, blank=True, verbose_name="موبایل")
     text = HTMLField(null=True, blank=True, verbose_name="متن تماس با ما")
     read = models.BooleanField(default=False, verbose_name="خوانده شد؟")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
@@ -338,3 +349,28 @@ class UserEmailBank(models.Model):
         verbose_name = "ایمیل"
         verbose_name_plural = "بانک ایمیل"
 
+
+class ImageBank(models.Model):
+    name = models.CharField(max_length=300, verbose_name="نام")
+    image = models.ImageField(upload_to="imageGallery/blogs_and_products/image/%Y/%m", null=True, blank=True,
+                              verbose_name="تصویر")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد", null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "تصویر"
+        verbose_name_plural = "بانک تصاویر"
+
+
+class Entry(models.Model):
+    # ...
+    def save(self, force_insert=False, force_update=False):
+        super().save(force_insert, force_update)
+        try:
+            ping_google()
+        except Exception:
+            # Bare 'except' because we could get a variety
+            # of HTTP-related exceptions.
+            pass

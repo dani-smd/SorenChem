@@ -79,7 +79,7 @@
                                                     <li><a href="{% url 'product-group' %}">View All Products</a></li>
                                                 {% endif %}
                                                 {% if cat.id != -1 %}
-                                                    <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                                    <li><a href="{% url 'products' id=cat.id page=1 url=cat.url%}">{{ cat.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>
@@ -161,7 +161,7 @@
                                             <li><a href="{% url 'product-group' %}">View All Products</a></li>
                                         {% endif %}
                                         {% if cat.id != -1 %}
-                                            <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                            <li><a href="{% url 'products' id=cat.id page=1 url=cat.url%}">{{ cat.name }}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>

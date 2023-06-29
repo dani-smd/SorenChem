@@ -8,7 +8,13 @@
 
 {% load static %}
 
-{% block title %}Blog{% endblock title %}
+{% block title %}{{ blog_detail.title }}{% endblock title %}
+
+{% block description %}{{ blog_detail.text_summary }}{% endblock description %}
+
+{% block keywords %}{% for keyword in blog_detail.tags.all %}{{ keyword }},{% endfor %}{% endblock keywords %}
+
+{% block canonical %}https://en.sorenchem.com{{ request.path }}{% endblock canonical %}
 
 {% block content %}
 

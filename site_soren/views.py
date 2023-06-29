@@ -6,9 +6,30 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.shortcuts import resolve_url
+from django.db import connections
 
 
 def index_view(request):
+    allproducts = ProductDetail.objects.filter(show_in_last_product=True).order_by("-id")[:6]
+    index = GeneralInfo.objects.first()
+    # ---
+    ALL = []
+    # ---
+    for product in allproducts:
+        className = ""
+        for product_gp in product.product_group.all():
+            if product_gp.type == "AI":
+                className += " AI"
+            elif product_gp.type == "CI":
+                className += " CI"
+            elif product_gp.type == "FI":
+                className += " FI"
+            elif product_gp.type == "SO":
+                className += " SO"
+
+        product.string_column = className
+        ALL.append(product)
+
     context = {
         "mainbanner": MainBanner.objects.all(),
         "essences": ProductDetail.objects.filter(product_group__type="ES").order_by("-id").distinct()[:6],
@@ -16,8 +37,9 @@ def index_view(request):
         "fas": FrequentlyAskedQuestion.objects.all().order_by("-id")[:7],
         "aboutus": AboutUs.objects.first(),
         "general_info": GeneralInfo.objects.first(),
-        "products": ProductDetail.objects.all().order_by("-id")[:9],
-        "blogs": Blog.objects.all().order_by("-id")[:3]
+        "keywords": index.tags.all(),
+        "ALL": ALL,
+        "blogs": Blog.objects.filter(publish=True).order_by("-id")[:3]
     }
     return render(request, "index.html", context=context)
 
@@ -177,6 +199,7 @@ def product_detail(request, id, url):
         if not cat.parent:
             cat_id = cat.id
             cat_name = cat.name
+            cat_url = cat.url
     qs_chat = ChatProductDetail.objects.filter(product_detail=id, publish=True)
     context = {
         "sidebar": general_info,
@@ -184,7 +207,8 @@ def product_detail(request, id, url):
         "chats": qs_chat,
         "num_chats": qs_chat.count(),
         "cat_id": cat_id,
-        "cat_name": cat_name
+        "cat_name": cat_name,
+        "cat_url": cat_url
     }
     # --- count visits
     qs_product.views += 1
@@ -229,7 +253,7 @@ def product_group(request):
     return render(request, "product-groups.html", context=context)
 
 
-def products(request, id, page):
+def products(request, id, page, url):
     if page is None:
         page = 1
     else:
@@ -290,7 +314,7 @@ def header_view(request, *args, **kwargs):
     # ---
     for cat in ProductGroup.objects.all().order_by("id"):
         if not cat.parent:
-            result.setdefault(cat.id, {"id": cat.id, "name": cat.name, "sub_cat": []})
+            result.setdefault(cat.id, {"id": cat.id, "name": cat.name, "sub_cat": [], "url": cat.url})
     # ---
     qs_gi = GeneralInfo.objects.first()
     context = {
@@ -341,8 +365,50 @@ def search_result(request, page):
         }
     return render(request, "search.html", context=context)
 
-# def search_view(request):
-#     if request.POST:
-#         return redirect('search_result')
-#     return render(request, "about-us.html", context=None)
 
+def terms_conditions(request):
+    context = {
+        "conditions": GeneralInfo.objects.get(id=1).conditions
+    }
+    return render(request, "terms-and-conditions.html", context=context)
+
+
+def complaints_form(request):
+    return render(request, "complaints-form.html", context=None)
+
+
+def record_complaints_form(request):
+    context = {}
+    if request.POST:
+        name = request.POST.get('name', "False")
+        email = request.POST.get('email', "False")
+        phone = request.POST.get('phone', "False")
+        title = request.POST.get('subject', "False")
+        text = request.POST.get('text', "False")
+        qs_contact = ContactUs.objects.filter(name=name, email=email, title=title, read=False)
+        if qs_contact:
+            context['message'] = "پیامی با این محتوا وجود دارد."
+            context['success'] = False
+        else:
+            contact = ContactUs(name=name, title=title, email=email, text=text, phone=phone, read=False)
+            contact.save()
+            context['message'] = "با موفقیت ثبت شد"
+            context['success'] = True
+    return render(request, "recordcomplaints.html", context=context)
+
+
+def copy_table_data(request):
+    source_cursor = connections['destination'].cursor()
+    destination_cursor = connections['default'].cursor()
+
+    # Fetch all rows from the source table
+    source_cursor.execute("SELECT * FROM jq_posts WHERE post_type='post'")
+    rows = source_cursor.fetchall()
+
+    # Insert the rows into the destination table
+    for row in rows:
+        blog = Blog(title=row[5], text=row[4], text_summary=row[4])
+        blog.save()
+        temp = row
+
+    return HttpResponse(f"Data copied successfully: {temp[5]}")

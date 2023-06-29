@@ -5,7 +5,13 @@
 
 {% load jalali_tags %}
 
-{% block title %}Products - details{% endblock title %}
+{% block title %}{{ product.farsi_name }}{% endblock title %}
+
+{% block description %}name of product: {{ product.farsi_name }}، can be used in: {{ product.application }}{% endblock description %}
+
+{% block keywords %}{% for keyword in product.tags.all %}{{ keyword }},{% endfor %}{% endblock keywords %}
+
+{% block canonical %}https://en.sorenchem.com{{ request.path }}{% endblock canonical %}
 
 {% block content %}
     <div class="page-wrapper body_wrapper">
@@ -21,7 +27,7 @@
                     <ul class="bread-crumb clearfix">
                         <li><a href="{% url 'index_view' %}">Home</a></li>
                         <li><a href="{% url 'product-group' %}">Products</a></li>
-                        <li><a href="{% url 'products' id=cat_id page=1 %}">{{ cat_name }}</a></li>
+                        <li><a href="{% url 'products' id=cat_id page=1 url=cat_url%}">{{ cat_name }}</a></li>
                         <li class="active">{{ product.title }}</li>
                     </ul>
                 </div>
@@ -71,6 +77,16 @@
                                                             style="margin-left: 5px;"
                                                             aria-hidden="true"></i>Download Analysis
                                                          {{ product.title }}</a></div>
+                                                    <div class="other-options clearfix mt-30">
+                                                        <a type="button" value="{{ sidebar.mobile }}" href="tel:{{ sidebar.mobile }}"
+                                                                class="theme-btn btn-style-one add-to-cart">Call Sales Manager
+
+                                                        </a>
+                                                        <a type="button" style="margin-right: 20px" href="{{ sidebar.whatsapp }}"
+                                                                class="theme-btn btn-style-one add-to-cart"> Sales Manager Whatsapp
+
+                                                        </a>
+                                                    </div>
                                                     {#                                                    <div class="other-options clearfix mt-30">#}
                                                     {#                                                        <button type="button" value="{{ sidebar.telephone_1 }}"#}
                                                     {#                                                                class="theme-btn btn-style-one add-to-cart">Contact Sales Manager#}
