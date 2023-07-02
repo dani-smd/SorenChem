@@ -43,9 +43,7 @@
 @import url('owl.css');
 @import url('jquery-ui.css');
 @import url('jquery.fancybox.css');
-@import url('nouislider.css');
 @import url('jquery.bootstrap-touchspin.css');
-@import url('icomoon.css');
 
 /***
 
@@ -9402,6 +9400,7 @@ figure.effect-bubba:hover p {
     font-weight: 800;
     padding-bottom: 30px;
 }
+
 /***
 ===================================================================
   blog comment
@@ -10074,3 +10073,46 @@ body.rtl .cresta-whatsapp-chat-button svg#whatsapp-msng-icon-button {
     }
 }
 
+.txt-align {
+    text-align: justify;
+}
+
+.blog-animated {
+    visibility: visible;
+    animation-duration: 1500ms;
+    animation-delay: 0ms;
+    animation-name: fadeInUp;
+}
+
+.desc-complaint {
+    margin-bottom: 50px;
+    border-right: 2px solid #5da73d;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mr-20 {
+    margin-right: 20px
+}
+
+.product-contact {
+    padding:25px 50px 0 0;
+}
+
+.font-24 {
+    font-size: 24px;
+}
+
+.product-description {
+    margin-bottom: 50px;
+    border-right:2px solid #5da73d;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    text-align: justify
+}

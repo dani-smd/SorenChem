@@ -56,12 +56,11 @@
                                         <h3>{{ blog_detail.title }}</h3>
                                         <div class="post-meta">
                                             <ul class="clearfix">
-                                                <li><a href="#"><span
-                                                        class="fa fa-calendar"></span>{{ blog_detail.created | to_jalali:'%y/%m/%d _ %H:%M' }}
-                                                </a>
+                                                <li>
+                                                    <span class="fa fa-calendar"></span>{{ blog_detail.created | to_jalali:'%y/%m/%d _ %H:%M' }}
                                                 </li>
-                                                <li><a href="#"><span
-                                                        class="fa fa-commenting-o"></span>{{ blog_detail.views }}</a>
+                                                <li>
+                                                    <span class="fa fa-commenting-o"></span>{{ blog_detail.views }}
                                                 </li>
                                             </ul>
                                         </div>
@@ -111,7 +110,7 @@
                                             <div class="author-thumb img-circle">
                                                 <img class="img-circle"
                                                      src="{% static 'images/images.png' %}"
-                                                     alt="">
+                                                     alt="circle image">
                                             </div>
                                             <div class="rev-content">
                                                 <div class="rating"><i data-star="{{ chat.score }}"></i></div>
@@ -161,17 +160,17 @@
                                 {% for blog_sidebar in blogs_sidebar %}
                                     <article class="post">
                                         <figure class="post-thumb">
-                                            <a href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}"><img
-                                                    src="{{ blog_sidebar.image_3.url }}"
-                                                    alt=""></a>
+                                            <a href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}">
+                                                <img src="{{ blog_sidebar.image_3.url }}" alt="{{ blog_sidebar.title }}">
+                                            </a>
                                         </figure>
-                                        <div class="text"><a
-                                                href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}">{{ blog_sidebar.title }}</a>
+                                        <div class="text">
+                                            <a href="{% url 'blog-detail' id=blog_sidebar.id  url=blog_sidebar.url%}">{{ blog_sidebar.title }}</a>
                                         </div>
                                         <ul class="post-meta clearfix">
-                                            <li><a><i
-                                                    class="fa fa-calendar"></i>{{ blog_sidebar.created | to_jalali:'%y/%m/%d _ %H:%M' }}
-                                            </a></li>
+                                            <li>
+                                                <i class="fa fa-calendar"></i>{{ blog_sidebar.created | to_jalali:'%y/%m/%d _ %H:%M' }}
+                                            </li>
                                         </ul>
                                     </article>
                                 {% endfor %}

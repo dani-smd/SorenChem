@@ -1,14 +1,14 @@
 {% load static %}
 <form method="post" action="" id="contact-form">
     {% csrf_token %}
-    <div class="row clearfix">
+    <div class="row clearfix frmDiv">
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
 
             <div class="default-title">
                 <h2>ثبت شکایت</h2>
             </div>
 
-            <div class="row clearfix">
+            <div class="row clearfix frmDiv">
 
                 <!--Form Group-->
                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -42,12 +42,10 @@
                 </div>
             </div>
 
-            {% if message %}
-                <div class="p-3 mt-3 text-center contact-message {% if success %}success-message {% else %} error-message {% endif %}"
-                     id="contact_alert">
-                    <p class="h4">{{ message }}</p>
-                </div>
-            {% endif %}
+            <div class="p-3 mt-3 text-center success-message message hidden"
+                 style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7; color: #549d34;"  >
+                <p class="h4">با تشکر از شما پیام شما با موفقیت ثبت شد.<br /><br /> درخواست شما را پیگیری و به زودی با شما تماس می گیریم.</p>
+            </div>
 
         </div>
 
@@ -56,3 +54,31 @@
         </div>
     </div>
 </form>
+
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+        // catch the form's submit event
+        $('#contact-form').submit(function () {
+            // create an AJAX call
+            $.ajax({
+                data: $(this).serialize(), // get the form data
+                type: $(this).attr('method'), // GET or POST
+                url: "{% url 'record-complaints-form' %}",
+                // on success
+                success: function (response) {
+                    $(".frmDiv").addClass("hidden");
+                    $(".message").removeClass("hidden")
+                },
+                // on error
+                error: function (response) {
+                    // alert the error if any error occured
+                    alert(response.responseJSON.errors);
+                    console.log(response.responseJSON.errors)
+                }
+            });
+            return false;
+        });
+    })
+</script>
+{% endblock javascript %}

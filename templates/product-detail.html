@@ -73,10 +73,9 @@
                                                         <li>کاربرد: <span> {{ product.application }}
                                                         </span></li>
                                                     </ul>
-                                                    <div class="stock"><a href="{{ product.file.url }}" download>
-                                                        <i class="fa fa-download"
-                                                            style="margin-left: 5px;"
-                                                            aria-hidden="true"></i>دانلود
+                                                    <div class="stock">
+                                                        <a href="{{ product.file.url }}" download>
+                                                        <i class="fa fa-download ml-5" aria-hidden="true"></i>دانلود
                                                         آنالیز {{ product.title }}</a>
                                                     </div>
                                                     <div class="other-options clearfix mt-30">
@@ -84,8 +83,8 @@
                                                                 class="theme-btn btn-style-one add-to-cart">تماس با مدیر
                                                             فروش
                                                         </a>
-                                                        <a type="button" style="margin-right: 20px" href="{{ sidebar.whatsapp }}"
-                                                                class="theme-btn btn-style-one add-to-cart">واتس آپ مدیر
+                                                        <a type="button" href="{{ sidebar.whatsapp }}"
+                                                                class="marginRight-20 theme-btn btn-style-one add-to-cart">واتس آپ مدیر
                                                             فروش
                                                         </a>
                                                     </div>
@@ -128,7 +127,7 @@
                                                                 <article class="review-box clearfix">
                                                                     <figure class="rev-thumb"><img
                                                                             src="{% static 'images/images.png' %}"
-                                                                            alt=""></figure>
+                                                                            alt="views"></figure>
                                                                     <div class="rev-content">
                                                                         <div class="rating"><i data-star="{{ chat.score }}"></i></div>
                                                                         <div class="rev-info">{{ chat.username }}
@@ -154,7 +153,7 @@
                                                                 <div class="row clearfix">
                                                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                                                         <label>امتیاز دهید: </label>
-                                                                        <div style="display: flex">
+                                                                        <div class="d-flex">
                                                                             <div class="rate">
                                                                                 <input type="radio" id="contactChoice5"
                                                                                        name="rank" value="5"/>
@@ -223,8 +222,7 @@
                     <!--Content Side-->
 
                     <!--Sidebar-->
-                    <div class="sidebar-side pull-right col-lg-3 col-md-4 col-sm-12 col-xs-12"
-                         style="padding:25px 50px 0 0;">
+                    <div class="sidebar-side pull-right col-lg-3 col-md-4 col-sm-12 col-xs-12 product-contact">
                         <h3>راه های ارتباط با ما</h3>
                         <ul class="mt-20 contact-us">
                             <li>
@@ -235,7 +233,7 @@
                             </li>
                             <li>
                                 <a href="tel:{{ sidebar.mobile }}">
-                                    <i class="fa fa-mobile" style="font-size: 24px;" aria-hidden="true"></i>
+                                    <i class="fa fa-mobile font-24" aria-hidden="true"></i>
                                     <span class="marginRight-20">{{ sidebar.mobile }}</span>
                                 </a>
                             </li>

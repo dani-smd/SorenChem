@@ -13,21 +13,21 @@ def index_view(request):
     index = GeneralInfo.objects.first()
     # ---
     ALL = []
-    AI = []
-    CI = []
-    FI = []
-    SO = []
     # ---
+    className = ""
     for product in allproducts:
+        className = ""
         for product_gp in product.product_group.all():
             if product_gp.type == "AI":
-                AI.append(product)
+                className += " AI"
             elif product_gp.type == "CI":
-                CI.append(product)
+                className += " CI"
             elif product_gp.type == "FI":
-                FI.append(product)
+                className += " FI"
             elif product_gp.type == "SO":
-                SO.append(product)
+                className += " SO"
+
+        product.string_column = className
         ALL.append(product)
 
     context = {
@@ -39,10 +39,6 @@ def index_view(request):
         "general_info": GeneralInfo.objects.first(),
         "keywords": index.tags.all(),
         "ALL": ALL,
-        "AI": AI,
-        "CI": CI,
-        "SO": SO,
-        "FI": FI,
         "blogs": Blog.objects.all().order_by("-id")[:3]
     }
     return render(request, "index.html", context=context)
