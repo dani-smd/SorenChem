@@ -41,16 +41,36 @@ class ContactUsAdmin(admin.ModelAdmin):
         return obj.title
 
 
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ("title", "publish", "views", "created")
+    list_per_page = 25
+    search_fields = ['title']
+
+    @admin.display(description="عنوان مقاله")
+    def title(self, obj):
+        return obj.title
+
+
+class ProductDetailAdmin(admin.ModelAdmin):
+    list_display = ("title", "views", "created")
+    list_per_page = 25
+    search_fields = ['title']
+
+    @admin.display(description="عنوان محصول")
+    def title(self, obj):
+        return obj.title
+
+
 admin.site.register(GeneralInfo)
 admin.site.register(MainBanner)
 admin.site.register(ProductGroup)
 admin.site.register(Tags)
 admin.site.register(Category)
-admin.site.register(ProductDetail)
+admin.site.register(ProductDetail, ProductDetailAdmin)
 admin.site.register(ChatProductDetail, ChatProductDetailAdmin)
 admin.site.register(AboutUs)
 admin.site.register(FrequentlyAskedQuestion)
-admin.site.register(Blog)
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(ChatBlog, ChatBlogAdmin)
 admin.site.register(ImageGallery)
 admin.site.register(VideoGallery)

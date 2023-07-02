@@ -85,21 +85,30 @@ WSGI_APPLICATION = 'soren.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'sorenche_sorendb',
-    #     'USER': 'sorenche_soren',
-    #     'PASSWORD': 'soren@14012022',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sorenche_sorendatabase',
+        'USER': 'sorenche_sorenchem',
+        'PASSWORD': 'soren@14012022',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    },
+    'destination': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sorenche_OLDDB',
+        'USER': 'sorenche_sorenchem',
+        'PASSWORD': 'soren@14012022',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
 }
 
 # --- ADMIN Panel

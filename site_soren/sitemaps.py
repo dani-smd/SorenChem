@@ -75,7 +75,7 @@ class ProductGroupSitemap(Sitemap):
         return obj.created
 
     def location(self, obj):
-        return '/products/%s/%s' % (obj.id, 1)
+        return '/products/%s/%s/%s' % (obj.id, 1, obj.url)
 
 
 class StaticSitemap(Sitemap):

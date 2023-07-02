@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.contrib.sitemaps import ping_google
 
 # from image_optimizer.fields import OptimizedImageField
 # Create your models here.
@@ -91,6 +92,7 @@ class ProductGroup(models.Model):
     name = models.CharField(max_length=300, verbose_name="نام گروه", null=True, blank=True)
     flat_name = models.CharField(max_length=300, verbose_name="نام آیکون", null=True, blank=True)
     description = HTMLField(verbose_name="توضیحات", null=True, blank=True)
+    url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
     def __str__(self) -> str:
@@ -242,6 +244,7 @@ class Blog(models.Model):
     url = models.CharField(max_length=300, verbose_name="متن قابل نمایش در URL", null=True, blank=True)
     views = models.IntegerField(default=0, verbose_name="تعداد بازدیدها")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
+    publish = models.BooleanField(default=False, verbose_name="منتشر شود؟")
 
     def __str__(self) -> str:
         return self.title
@@ -359,3 +362,15 @@ class ImageBank(models.Model):
     class Meta:
         verbose_name = "تصویر"
         verbose_name_plural = "بانک تصاویر"
+
+
+class Entry(models.Model):
+    # ...
+    def save(self, force_insert=False, force_update=False):
+        super().save(force_insert, force_update)
+        try:
+            ping_google()
+        except Exception:
+            # Bare 'except' because we could get a variety
+            # of HTTP-related exceptions.
+            pass
