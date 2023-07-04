@@ -14,7 +14,6 @@ def index_view(request):
     # ---
     ALL = []
     # ---
-    className = ""
     for product in allproducts:
         className = ""
         for product_gp in product.product_group.all():
@@ -39,7 +38,7 @@ def index_view(request):
         "general_info": GeneralInfo.objects.first(),
         "keywords": index.tags.all(),
         "ALL": ALL,
-        "blogs": Blog.objects.all().order_by("-id")[:3]
+        "blogs": Blog.objects.filter(publish=True).order_by("-id")[:3]
     }
     return render(request, "index.html", context=context)
 
@@ -86,7 +85,7 @@ def blogs(request, id):
         page = 1
     else:
         page = id
-    qs_blog = Blog.objects.all().order_by("-id")
+    qs_blog = Blog.objects.filter(publish=True).order_by("-id")
     paginator = Paginator(qs_blog, per_page=6)
     page_object = paginator.get_page(page)
     context = {
@@ -101,8 +100,8 @@ def blogs(request, id):
 
 
 def blog_detail(request, id, url):
-    qs_allblog = Blog.objects.exclude(id=id).order_by("-id")[:2]
-    qs_blog = Blog.objects.filter(id=id).first()
+    qs_allblog = Blog.objects.exclude(id=id, publish=False).order_by("-id")[:2]
+    qs_blog = Blog.objects.filter(id=id, publish=True).first()
     qs_chat = ChatBlog.objects.filter(Blog_id=id, publish=True)
     context = {
         "blogs_sidebar": qs_allblog,
@@ -129,7 +128,7 @@ def blog_comment(request, id):
         # ---
         name = firstname + ' ' + lastname
         # ---
-        qs_blog = Blog.objects.filter(id=id)
+        qs_blog = Blog.objects.filter(id=id, publish=True)
         blog = None
         if not qs_blog:
             context['message'] = "مقاله یافت نشد."
@@ -206,7 +205,8 @@ def product_detail(request, id, url):
         "chats": qs_chat,
         "num_chats": qs_chat.count(),
         "cat_id": cat_id,
-        "cat_name": cat_name
+        "cat_name": cat_name,
+        "cat_url": cat_url
     }
     # --- count visits
     qs_product.views += 1
@@ -251,7 +251,7 @@ def product_group(request):
     return render(request, "product-groups.html", context=context)
 
 
-def products(request, id, page):
+def products(request, id, page, url):
     if page is None:
         page = 1
     else:
@@ -312,7 +312,7 @@ def header_view(request, *args, **kwargs):
     # ---
     for cat in ProductGroup.objects.all().order_by("id"):
         if not cat.parent:
-            result.setdefault(cat.id, {"id": cat.id, "name": cat.name, "sub_cat": []})
+            result.setdefault(cat.id, {"id": cat.id, "name": cat.name, "sub_cat": [], "url": cat.url})
     # ---
     qs_gi = GeneralInfo.objects.first()
     context = {
@@ -328,7 +328,7 @@ def header_view(request, *args, **kwargs):
 def footer_view(request):
     context = {
         "general_info": GeneralInfo.objects.first(),
-        "blogs": Blog.objects.all().order_by('-id')[0:2]
+        "blogs": Blog.objects.filter(publish=True).order_by('-id')[0:2]
     }
     if request.POST:
         useremail = request.POST.get('useremail', "False")
@@ -348,7 +348,7 @@ def search_result(request, page):
     if request.POST:
         search = request.POST.get('search', "False")
         # ---
-        qs_blog = Blog.objects.filter(title__contains=search, text__contains=search)
+        qs_blog = Blog.objects.filter(title__contains=search, text__contains=search, publish=True)
         # ---
         paginator = Paginator(qs_blog, per_page=12)
         page_object = paginator.get_page(page)
@@ -393,3 +393,20 @@ def record_complaints_form(request):
             context['message'] = "با موفقیت ثبت شد"
             context['success'] = True
     return render(request, "recordcomplaints.html", context=context)
+
+
+def copy_table_data(request):
+    source_cursor = connections['destination'].cursor()
+    destination_cursor = connections['default'].cursor()
+
+    # Fetch all rows from the source table
+    source_cursor.execute("SELECT * FROM jq_posts WHERE post_type='post'")
+    rows = source_cursor.fetchall()
+
+    # Insert the rows into the destination table
+    for row in rows:
+        blog = Blog(title=row[5], text=row[4], text_summary=row[4])
+        blog.save()
+        temp = row
+
+    return HttpResponse(f"Data copied successfully: {temp[5]}")

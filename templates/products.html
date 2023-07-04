@@ -77,18 +77,18 @@
 							<!--Styled Pagination-->
 							<div class="styled-pagination">
 								<ul class="clearfix">
-									<li><a href="{% url 'products' id=group_id page=previous_page %}"><span class="fa fa-angle-right"></span></a></li>
+									<li><a href="{% url 'products' id=group_id page=previous_page url=group_data.url%}"><span class="fa fa-angle-right"></span></a></li>
 
                                     {% for num_page in page_number %}
                                         {% if forloop.counter == active_page %}
-                                            <li><a href="{% url 'products' id=group_id page=forloop.counter %}" class="active">{{ forloop.counter }}</a></li>
+                                            <li><a href="{% url 'products' id=group_id page=forloop.counter url=group_data.url%}" class="active">{{ forloop.counter }}</a></li>
                                         {% endif %}
                                         {% if forloop.counter != active_page %}
-                                            <li><a href="{% url 'products' id=group_id page=forloop.counter %}">{{ forloop.counter }}</a></li>
+                                            <li><a href="{% url 'products' id=group_id page=forloop.counter url=group_data.url%}">{{ forloop.counter }}</a></li>
                                         {% endif %}
                                     {% endfor %}
 
-                                    <li><a href="{% url 'products' id=group_id page=next_page %}"><span class="fa fa-angle-left"></span></a></li>
+                                    <li><a href="{% url 'products' id=group_id page=next_page url=group_data.url%}"><span class="fa fa-angle-left"></span></a></li>
 								</ul>
 							</div>
 

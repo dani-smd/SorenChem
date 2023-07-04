@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="upper-column info-box">
-                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/uk.png' %}" /></a>
-                        <a href="#" style="margin-left:10px;"><img src="{% static 'images/flag/kw.png' %}" /></a>
+                        <a href="https://en.sorenchem.com/" style="margin-left:10px;"><img src="{% static 'images/flag/uk.png' %}" /></a>
+                        <a href="https://ar.sorenchem.com/" style="margin-left:10px;"><img src="{% static 'images/flag/kw.png' %}" /></a>
                     </div>
                 </div>
                 </div>
@@ -79,7 +79,7 @@
                                                     <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
                                                 {% endif %}
                                                 {% if cat.id != -1 %}
-                                                    <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                                    <li><a href="{% url 'products' id=cat.id page=1 url=cat.url%}">{{ cat.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>
@@ -161,7 +161,7 @@
                                             <li><a href="{% url 'product-group' %}">مشاهده همه محصولات</a></li>
                                         {% endif %}
                                         {% if cat.id != -1 %}
-                                            <li><a href="{% url 'products' id=cat.id page=1 %}">{{ cat.name }}</a></li>
+                                            <li><a href="{% url 'products' id=cat.id page=1 url=cat.url%}">{{ cat.name }}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>

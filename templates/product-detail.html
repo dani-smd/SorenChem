@@ -27,7 +27,7 @@
                     <ul class="bread-crumb clearfix">
                         <li><a href="{% url 'index_view' %}">خانه</a></li>
                         <li><a href="{% url 'product-group' %}">محصولات</a></li>
-                        <li><a href="{% url 'products' id=cat_id page=1 %}">{{ cat_name }}</a></li>
+                        <li><a href="{% url 'products' id=cat_id page=1 url=cat_url%}">{{ cat_name }}</a></li>
                         <li class="active">{{ product.title }}</li>
                     </ul>
                 </div>

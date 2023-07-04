@@ -39,7 +39,7 @@
                                 <div class="text-holder">
                                     <h3>{{ group.name }}</h3>
                                     <p>{{ group.description | truncatechars:220 | safe }}</p>
-                                    <a class="thm-btn" href="{% url 'products' id=group.id page=1 %}">بیشتر بخوانید</a>
+                                    <a class="thm-btn" href="{% url 'products' id=group.id page=1 url=group.url%}">بیشتر بخوانید</a>
                                 </div>
                             </div>
                         </div>
