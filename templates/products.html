@@ -32,7 +32,7 @@
 			<div class="auto-container">
 
 
-				<div style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7; text-align: justify">
+				<div class="product-description">
                     {{ group_data.description | safe }}
 				</div>
 
@@ -50,7 +50,7 @@
 									<div class="inner-box">
 										<!--image-box-->
 										<figure class="image-box">
-											<a href="{% url 'product-detail' id=page.id url=page.url%}"><img src="{{ page.image_2.url }}" alt=""></a>
+											<a href="{% url 'product-detail' id=page.id url=page.url%}"><img src="{{ page.image_2.url }}" alt="{{ page.title }}"></a>
 											<div class="overlay-box">
 												<a class="cart-btn" href="{% url 'product-detail' id=page.id url=page.url%}">جزییات بیشتر</a>
 											</div>

@@ -1,186 +1,162 @@
 {% spaceless %}
-    {% load render_partial %}
-    {% load static %}
+{% load render_partial %}
+{% load static %}
 
-    <html lang="en">
+<html lang="fa">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <title>{% block title %}{% endblock title %}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{% block title %}{% endblock title %}</title>
 
-        <!-- Stylesheets -->
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/revolution-slider.css' %}" rel="stylesheet">
-        <link href="{% static 'css/slider-setting.css' %}" rel="stylesheet">
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
-        <!-- Responsive -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Stylesheets -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/revolution-slider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/slider-setting.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/slider-Product.css' %}" rel="stylesheet">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-        <!--[if lt IE 9]>
-        <script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
-        <!--[if lt IE 9]>
-        <script src="{% static 'js/respond.js' %}"></script><![endif]-->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/respond.js' %}"></script><![endif]-->
 
-        <meta name="theme-color" content="#5da73d">
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
-        <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
-        <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+    <meta name="theme-color" content="#5da73d">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
 
-        <meta name="robots" content="index, follow">
-        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-        <meta name="description" content="{% block description %}{% endblock description %}">
-        <meta name="keywords" content="SorenChem, سورن شیمی,{% block keywords %}{% endblock keywords %}">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="keywords" content="SorenChem, سورن شیمی,{% block keywords %}{% endblock keywords %}">
 
-        <link rel="canonical" href="{% block canonical %}{% endblock canonical %}">
+    <link rel="canonical" href="{% block canonical %}{% endblock canonical %}">
+</head>
 
-    </head>
+<body class="home">
+{% render_partial 'header_view' %}
+<main>
+    {% block content %}{% endblock content %}
+</main>
+{% render_partial 'footer_view' %}
 
-    <body class="home">
-    {% render_partial 'header_view' %}
-    <main>
-        {% block content %}{% endblock content %}
-    </main>
-    {% render_partial 'footer_view' %}
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
-    <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-    <!--whatsapp-->
-    <div class="cresta-whatsapp-chat-box onBoth">
-        <svg id="whatsapp-msng-icon" data-name="whatsapp icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-            <path
-                    d="M519 454c4 2 7 10-1 31-6 16-33 29-49 29-96 0-189-113-189-167 0-26 9-39 18-48 8-9 14-10 18-10h12c4 0 9 0 13 10l19 44c5 11-9 25-15 31-3 3-6 7-2 13 25 39 41 51 81 71 6 3 10 1 13-2l19-24c5-6 9-4 13-2zM401 200c-110 0-199 90-199 199 0 68 35 113 35 113l-20 74 76-20s42 32 108 32c110 0 199-89 199-199 0-111-89-199-199-199zm0-40c133 0 239 108 239 239 0 132-108 239-239 239-67 0-114-29-114-29l-127 33 34-124s-32-49-32-119c0-131 108-239 239-239z"
-                    transform="scale(1.2, 1.2), translate(-65 -65)" style="fill:#ffffff"></path>
-        </svg>
-        <svg id="close-icon" data-name="close icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.98 39.99">
-            <path
-                    d="M48.88,11.14a3.87,3.87,0,0,0-5.44,0L30,24.58,16.58,11.14a3.84,3.84,0,1,0-5.44,5.44L24.58,30,11.14,43.45a3.87,3.87,0,0,0,0,5.44,3.84,3.84,0,0,0,5.44,0L30,35.45,43.45,48.88a3.84,3.84,0,0,0,5.44,0,3.87,3.87,0,0,0,0-5.44L35.45,30,48.88,16.58A3.87,3.87,0,0,0,48.88,11.14Z"
-                    transform="translate(-10.02 -10.02)" style="fill:#ffffff"></path>
-        </svg>
-    </div>
-    <div class="cresta-whatsapp-chat-container">
-        <div class="cresta-whatsapp-chat-top-header"><span>Cresta Help Chat</span></div>
-        <div class="cresta-whatsapp-inner">
+<!--whatsapp-->
+<div class="cresta-whatsapp-chat-box onBoth">
+    <svg id="whatsapp-msng-icon" data-name="whatsapp icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+        <path
+                d="M519 454c4 2 7 10-1 31-6 16-33 29-49 29-96 0-189-113-189-167 0-26 9-39 18-48 8-9 14-10 18-10h12c4 0 9 0 13 10l19 44c5 11-9 25-15 31-3 3-6 7-2 13 25 39 41 51 81 71 6 3 10 1 13-2l19-24c5-6 9-4 13-2zM401 200c-110 0-199 90-199 199 0 68 35 113 35 113l-20 74 76-20s42 32 108 32c110 0 199-89 199-199 0-111-89-199-199-199zm0-40c133 0 239 108 239 239 0 132-108 239-239 239-67 0-114-29-114-29l-127 33 34-124s-32-49-32-119c0-131 108-239 239-239z"
+                transform="scale(1.2, 1.2), translate(-65 -65)" style="fill:#ffffff"></path>
+    </svg>
+    <svg id="close-icon" data-name="close icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.98 39.99">
+        <path
+                d="M48.88,11.14a3.87,3.87,0,0,0-5.44,0L30,24.58,16.58,11.14a3.84,3.84,0,1,0-5.44,5.44L24.58,30,11.14,43.45a3.87,3.87,0,0,0,0,5.44,3.84,3.84,0,0,0,5.44,0L30,35.45,43.45,48.88a3.84,3.84,0,0,0,5.44,0,3.87,3.87,0,0,0,0-5.44L35.45,30,48.88,16.58A3.87,3.87,0,0,0,48.88,11.14Z"
+                transform="translate(-10.02 -10.02)" style="fill:#ffffff"></path>
+    </svg>
+</div>
+<div class="cresta-whatsapp-chat-container">
+    <div class="cresta-whatsapp-chat-top-header"><span>Cresta Help Chat</span></div>
+    <div class="cresta-whatsapp-inner">
                 <textarea class="cresta-whatsapp-textarea"
                           placeholder="Hi there! Use this box to send me a message via WhatsApp..."></textarea>
-        </div>
-        <div class="cresta-whatsapp-to-send">
-            <div class="cresta-whatsapp-send">Send via WhatsApp
-                <svg version="1.1" id="whatsapp-msng-icon-send"
-                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="20px" height="12px" viewBox="0 0 14 26" enable-background="new 0 0 14 26"
-                     xml:space="preserve">
+    </div>
+    <div class="cresta-whatsapp-to-send">
+        <div class="cresta-whatsapp-send">Send via WhatsApp
+            <svg version="1.1" id="whatsapp-msng-icon-send"
+                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="20px" height="12px" viewBox="0 0 14 26" enable-background="new 0 0 14 26"
+                 xml:space="preserve">
                         <path
                                 d="M1,0c0.256,0,0.512,0.098,0.707,0.293l12,12c0.391,0.391,0.391,1.023,0,1.414l-12,12c-0.391,0.391-1.023,0.391-1.414,0s-0.391-1.023,0-1.414L11.586,13L0.293,1.707c-0.391-0.391-0.391-1.023,0-1.414C0.488,0.098,0.744,0,1,0z"
                                 style="fill: none; stroke-width:3; stroke:#ffffff"></path>
                     </svg>
-            </div>
         </div>
     </div>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            var mobileDetect = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-                crestaContainer = document.querySelector('.cresta-whatsapp-chat-container'),
-                crestaBox = document.querySelector('.cresta-whatsapp-chat-box'),
-                crestaOverlay = document.querySelector('.cresta-whatsapp-chat-overlay');
-            if (mobileDetect) {
-                crestaContainer.style.display = 'none';
-                crestaBox.addEventListener('click', () => {
-                    window.location = 'whatsapp://send?text=&phone=+989033222110&abid=+989033222110';
-                })
-            } else {
-                if (crestaOverlay) {
-                    [crestaBox, crestaOverlay].forEach(item => {
-                        item.addEventListener('click', () => {
-                            if (crestaBox.classList.contains('open')) {
-                                crestaBox.classList.remove('open');
-                                crestaContainer.classList.remove('open');
-                                crestaOverlay?.classList.remove('open');
-                            } else {
-                                crestaBox.classList.add('open');
-                                crestaContainer.classList.add('open');
-                                crestaOverlay?.classList.add('open');
-                                setTimeout(function () {
-                                    document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-inner textarea.cresta-whatsapp-textarea').focus();
-                                }, 100);
-                            }
-                        })
-                    })
-                } else {
-                    crestaBox.addEventListener('click', () => {
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        var mobileDetect = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+            crestaContainer = document.querySelector('.cresta-whatsapp-chat-container'),
+            crestaBox = document.querySelector('.cresta-whatsapp-chat-box'),
+            crestaOverlay = document.querySelector('.cresta-whatsapp-chat-overlay');
+        if (mobileDetect) {
+            crestaContainer.style.display = 'none';
+            crestaBox.addEventListener('click', () => {
+                window.location = 'whatsapp://send?text=&phone=+989033222110&abid=+989033222110';
+            })
+        } else {
+            if (crestaOverlay) {
+                [crestaBox, crestaOverlay].forEach(item => {
+                    item.addEventListener('click', () => {
                         if (crestaBox.classList.contains('open')) {
                             crestaBox.classList.remove('open');
                             crestaContainer.classList.remove('open');
+                            crestaOverlay?.classList.remove('open');
                         } else {
                             crestaBox.classList.add('open');
                             crestaContainer.classList.add('open');
+                            crestaOverlay?.classList.add('open');
                             setTimeout(function () {
                                 document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-inner textarea.cresta-whatsapp-textarea').focus();
                             }, 100);
                         }
                     })
-                }
-                document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-send').addEventListener('click', () => {
-                    var baseUrl = 'https://web.whatsapp.com/send?phone=+989033222110&text=',
-                        textEncode = encodeURIComponent(document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-textarea').value);
-                    window.open(baseUrl + textEncode, '_blank');
+                })
+            } else {
+                crestaBox.addEventListener('click', () => {
+                    if (crestaBox.classList.contains('open')) {
+                        crestaBox.classList.remove('open');
+                        crestaContainer.classList.remove('open');
+                    } else {
+                        crestaBox.classList.add('open');
+                        crestaContainer.classList.add('open');
+                        setTimeout(function () {
+                            document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-inner textarea.cresta-whatsapp-textarea').focus();
+                        }, 100);
+                    }
                 })
             }
-        })
-    </script>
-    <!--End whatsapp-->
+            document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-send').addEventListener('click', () => {
+                var baseUrl = 'https://web.whatsapp.com/send?phone=+989033222110&text=',
+                    textEncode = encodeURIComponent(document.querySelector('.cresta-whatsapp-chat-container .cresta-whatsapp-textarea').value);
+                window.open(baseUrl + textEncode, '_blank');
+            })
+        }
+    })
+</script>
+<!--End whatsapp-->
 
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.appear.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script src="{% static 'js/revolution.min.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
-    <script src="{% static 'js/owl.js' %}"></script>
-    <script src="{% static 'js/wow.js' %}"></script>
-    <script src="{% static 'js/appear.js' %}"></script>
-    <script src="{% static 'js/isotope.js' %}"></script>
-    <script src="{% static 'js/validation.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script>
-        $(document).ready(function () {
 
-            $('#itemslider').carousel({interval: 3000});
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.appear.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/revolution.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/validation.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/multi-carousel.min.js' %}"></script>
+<!--[if lt IE 10]>
+<script src="{% static 'js/jquery.placeholder.min.js' %}" type="text/javascript"></script>
+<script type="text/javascript">$('input, textarea').placeholder();</script>
+<![endif]-->
 
-            $('.carousel-showmanymoveone .item').each(function () {
-                var itemToClone = $(this);
+{% block javascript %}{% endblock javascript %}
 
-                for (var i = 1; i < 6; i++) {
-                    itemToClone = itemToClone.next();
+</body>
 
-                    if (!itemToClone.length) {
-                        itemToClone = $(this).siblings(':first');
-                    }
-
-                    itemToClone.children(':first-child').clone()
-                        .addClass("cloneditem-" + (i))
-                        .appendTo($(this));
-                }
-            });
-        });
-
-    </script>
-
-    <!--[if lt IE 10]>
-    <script src="{% static 'js/jquery.placeholder.min.js' %}" type="text/javascript"></script>
-    <script type="text/javascript">$('input, textarea').placeholder();</script>
-    <![endif]-->
-
-    {% block javascript %}{% endblock javascript %}
-
-    </body>
-
-    </html>
+</html>
 {% endspaceless %}

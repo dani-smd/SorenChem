@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.shortcuts import resolve_url
-from django.db import connections
 
 
 def index_view(request):
@@ -199,7 +198,6 @@ def product_detail(request, id, url):
         if not cat.parent:
             cat_id = cat.id
             cat_name = cat.name
-            cat_url = cat.url
     qs_chat = ChatProductDetail.objects.filter(product_detail=id, publish=True)
     context = {
         "sidebar": general_info,

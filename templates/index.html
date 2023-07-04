@@ -15,417 +15,407 @@
 
 {% block content %}
 
-    <div class="page-wrapper body_wrapper">
+<div class="page-wrapper body_wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader"></div>
+    <!-- Preloader -->
+    <div class="preloader"></div>
 
-        <!--Main Slider-->
-        <section class="main-slider" data-start-height="600" data-slide-overlay="no">
+    <!--Main Slider-->
+    <section class="main-slider" data-start-height="600" data-slide-overlay="no">
 
-            <div class="tp-banner-container">
-                <div class="tp-banner">
-                    <ul>
-                        {% for banner in mainbanner %}
-                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
-                                data-thumb="{{ banner.image_1.url }}" data-saveperformance="off"
-                                data-title="عنوان اسلاید">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    {% for banner in mainbanner %}
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                        data-thumb="{{ banner.image_1.url }}" data-saveperformance="off"
+                        data-title="{{ banner.title | truncatechars:600 }}">
 
-                                <img src="{{ banner.image_1.url }}" alt="" data-bgposition="center top"
-                                     data-bgfit="cover"
-                                     data-bgrepeat="no-repeat">
+                        <img src="{{ banner.image_1.url }}" alt="" data-bgposition="center top"
+                             data-bgfit="cover"
+                             data-bgrepeat="no-repeat">
 
-                                <!--Slide Overlay-->
-                                <div class="slide-overlay"></div>
+                        <!--Slide Overlay-->
+                        <div class="slide-overlay"></div>
 
-                                <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
-                                     data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
-                                     data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                                     data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                                     data-endeasing="Power4.easeIn">
-                                    <h2>
-                                        {{ banner.title | truncatechars:600 }}
-                                    </h2>
-                                </div>
+                        <div class="tp-caption sft sfb tp-resizeme text-right" data-x="right" data-hoffset="-30"
+                             data-y="center" data-voffset="-85" data-speed="1500" data-start="0"
+                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                             data-endeasing="Power4.easeIn">
+                            <h2>
+                                {{ banner.title | truncatechars:600 }}
+                            </h2>
+                        </div>
 
-                                <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
-                                     data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500"
-                                     data-start="500"
-                                     data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
-                                     data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
-                                     data-endeasing="Power4.easeIn">
-                                    <div class="text">
-                                        {{ banner.text | truncatechars:600 | safe }}
-                                    </div>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <!--Services Section-->
-        <section class="welcome-section">
-            <div class="auto-container">
-                <!--Sec Title-->
-                <div class="sec-title centered">
-                    <h2><span>اسانس ها</span></h2>
-                    <div class="separator"></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-                            <div class="carousel-inner">
-                                {% for essence in essences %}
-                                    {% if forloop.counter == 1 %}
-                                        <div class="item active">
-                                            <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{% url 'product-detail' id=essence.id url=essence.url %}"><img
-                                                        src="{{ essence.image_2.url }}"
-                                                        class="img-responsive center-block"></a>
-                                                <h4 class="text-center">{{ essence.title }}</h4>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    {% if forloop.counter != 1 %}
-                                        <div class="item">
-                                            <div class="col-xs-12 col-sm-6 col-md-2">
-                                                <a href="{% url 'product-detail' id=essence.id url=essence.url %}"><img
-                                                        src="{{ essence.image_2.url }}"
-                                                        class="img-responsive center-block"></a>
-                                                <h4 class="text-center">{{ essence.title }}</h4>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-
-                            <div id="slider-control">
-                                <a class="left carousel-control" style="margin-left: -1.2%;" href="#itemslider"
-                                   data-slide="prev"><img src="{% static 'images/fancybox/right.png' %}" alt="Left"
-                                                          class="img-responsive"></a>
-                                <a class="right carousel-control" style="margin-right: -1.2%;" href="#itemslider"
-                                   data-slide="next"><img src="{% static 'images/fancybox/left.png' %}" alt="Right"
-                                                          class="img-responsive"></a>
+                        <div class="tp-caption sft sfb tp-resizeme text-right text-caption" data-x="right"
+                             data-hoffset="-30" data-y="center" data-voffset="55" data-speed="1500"
+                             data-start="500"
+                             data-easing="easeOutExpo" data-splitin="none" data-splitout="none"
+                             data-elementdelay="0.01" data-endelementdelay="0.3" data-endspeed="1200"
+                             data-endeasing="Power4.easeIn">
+                            <div class="text">
+                                {{ banner.text | truncatechars:600 | safe }}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End Services Section-->
-
-        <section class="featured-area">
-            <div class="container">
-                <!--Title-->
-                <div class="sec-title centered">
-                    <h2>محصولات <span>ما</span></h2>
-                </div>
-                <div class="row featured equal-height">
-                    <!--Start single featured item-->
-                    {% for product_group in products_group %}
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="single-featured-item">
-                                <a href="{% url 'products' id=product_group.id page=1 url=product_group.url%}">
-                                    <div class="icon-holder">
-                                        <div class="icon-bg">
-                                        <span class="{{ product_group.flat_name }}">
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="text-holder">
-                                        <h3>{{ product_group.name }}</h3>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    </li>
                     {% endfor %}
-                    <!--End single featured item-->
-                </div>
-            </div>
-        </section>
-
-        <!--Two Default Section-->
-        <section class="default-section-two">
-            <div class="auto-container">
-
-                <div class="row clearfix">
-
-                    <!--Accordion Column-->
-                    <div class="accordion-block column col-md-6 col-sm-12 col-xs-12">
-                        <!--Title-->
-                        <div class="sec-title">
-                            <h2>سوالات <span>متداول</span></h2>
-                        </div>
-
-                        <!--Accordion Box-->
-                        <ul class="accordion-box">
-                            {% for faq in fas %}
-                                <!--Block-->
-                                {% if forloop.counter == 1 %}
-                                    <li class="accordion block active">
-                                        <div class="acc-btn active">
-                                            <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                            {{ faq.title }}
-                                        </div>
-                                        <div class="acc-content current">
-                                            <div class="content">
-                                                <p style="text-align: justify">{{ faq.answer | truncatechars:800 | safe }}</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                                {% if forloop.counter != 1 %}
-                                    <li class="accordion block active">
-                                        <div class="acc-btn">
-                                            <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
-                                            {{ faq.title }}
-                                        </div>
-                                        <div class="acc-content">
-                                            <div class="content">
-                                                <p style="text-align: justify">{{ faq.answer | truncatechars:800 | safe }}</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                    <div class="about-column column col-md-6 col-sm-12 col-xs-12">
-                        <div class="inner">
-                            <!--Title-->
-                            <div class="sec-title">
-                                <h2>درباره <span>ما</span></h2>
-                            </div>
-
-                            <div class="image-box"><img src="{{ aboutus.image.url }}" alt="ما کسیتیم؟"></div>
-                            <div class="row clearfix">
-                                <!--Text Column-->
-                                <div class="text-column col-md-6 col-sm-6 col-xs-12">
-                                    <h3>ما کیستیم؟</h3>
-                                    <div class="text" style="text-align: justify">{{ aboutus.who_we_are | safe }}
-                                    </div>
-                                    <div class="btn-box"><a href="{% url 'about_us' %}" class="theme-btn btn-style-one">آشنایی
-                                        بیشتر</a></div>
-                                </div>
-                                <!--Text Column-->
-                                <div class="text-column col-md-6 col-sm-6 col-xs-12">
-                                    <h3>ماموریت ما</h3>
-                                    <div class="text"
-                                         style="text-align: justify">{{ aboutus.our_mission | truncatechars:200 | safe }}
-                                    </div>
-                                    <div class="signature text-left"><img
-                                            src="{% static 'images/resource/signature.png' %}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-        <!--End Two Default Section-->
-
-        <div class="tow-column">
-            <div class="auto-container">
-                <!--Title-->
-                <div class="sec-title centered light">
-                    <h2>ویژگی های <span>منحصر به فرد ما</span></h2>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-lg-8 col-md-8 col-sm-12">
-                        <div class="row equal-height">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="service-block">
-                                    <div class="inner-box">
-                                        <!--icon-box-->
-                                        <div class="icon-box">
-                                            <span class="flaticon-tools"></span>
-                                        </div>
-                                        <h3>{{ general_info.feature_title_1 }}</h3>
-                                        <div class="text"
-                                             style="text-align: justify">{{ general_info.feature_text_1 | safe }}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="service-block">
-                                    <div class="inner-box">
-                                        <!--icon-box-->
-                                        <div class="icon-box">
-                                            <span class="flaticon-people-1"></span>
-                                        </div>
-                                        <h3>{{ general_info.feature_title_2 }}</h3>
-                                        <div class="text"
-                                             style="text-align: justify">{{ general_info.feature_text_2 | safe }}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="service-block">
-                                    <div class="inner-box">
-                                        <!--icon-box-->
-                                        <div class="icon-box">
-                                            <span class="flaticon-drawing"></span>
-                                        </div>
-                                        <h3>{{ general_info.feature_title_3 }}</h3>
-                                        <div class="text"
-                                             style="text-align: justify">{{ general_info.feature_text_3 | safe }}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="service-block">
-                                    <div class="inner-box">
-                                        <!--icon-box-->
-                                        <div class="icon-box">
-                                            <span class="flaticon-light-bulb"></span>
-                                        </div>
-                                        <h3>{{ general_info.feature_title_4 }}</h3>
-                                        <div class="text"
-                                             style="text-align: justify">{{ general_info.feature_text_4 | safe }}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div class="content-area">
-                            <h3>{{ general_info.general_feature_title }}</h3>
-                            <p style="text-align: justify">{{ general_info.general_feature_text | truncatechars:100  | safe }}</p>
-
-                            <div class="link"><a href="#" class="theme-btn btn-style-five">بیشتر بخوانید</a></div>
-                        </div>
-                    </div>
-                </div>
-
+                </ul>
             </div>
         </div>
 
-        <!--Gallery Section-->
-        <section class="gallery-section">
-            <div class="auto-container">
-                <!--Title-->
-                <div class="sec-title centered">
-                    <h2>آخرین <span>محصولات ما</span></h2>
+    </section>
+
+    <section class="welcome-section">
+        <div class="auto-container">
+            <div class="sec-title centered">
+                <h2><span>اسانس ها</span></h2>
+                <div class="separator"></div>
+            </div>
+             <div class="multi-carousel" data-mdb-interval="6000" data-mdb-items="6" data-slide-overlay="no">
+                 <div class="d-flex justify-content-center m-2 mb-3 multi-dev">
+                     <button class="carousel-control-prev btn btn-pink btn-floating mx-3" type="button" tabindex="0"
+                             data-mdb-slide="prev">
+                         <i class="fa fa-chevron-right"></i>
+                     </button>
+                     <button class="carousel-control-next btn btn-pink btn-floating mx-3" type="button" tabindex="0"
+                             data-mdb-slide="next">
+                         <i class="fa fa-chevron-left"></i>
+                     </button>
+                 </div>
+                 <div class="multi-carousel-inner">
+                     {% for essence in essences %}
+                     <div class="multi-carousel-item {% if forloop.counter > 1 %}d-none{% endif %}">
+                         <a href="{% url 'product-detail' id=essence.id url=essence.url %}">
+                             <div class="card m-2">
+                                 <img class="card-img-top" src="{{ essence.image_2.url }}"
+                                      alt="{{ essence.title }}"/>
+                                 <div class="card-body">
+                                     <h5 class="card-title">{{ essence.title }}</h5>
+                                 </div>
+                             </div>
+                         </a>
+                     </div>
+                     {% endfor %}
+                 </div>
+             </div>
+        </div>
+    </section>
+    <section class="featured-area">
+        <div class="container">
+            <!--Title-->
+            <div class="sec-title centered">
+                <h2>محصولات <span>ما</span></h2>
+            </div>
+            <div class="row featured equal-height">
+                <!--Start single featured item-->
+                {% for product_group in products_group %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="single-featured-item">
+                        <a href="{% url 'products' id=product_group.id page=1 %}">
+                            <div class="icon-holder">
+                                <div class="icon-bg">
+                                        <span class="{{ product_group.flat_name }}">
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3>{{ product_group.name }}</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <ul class="post-filter list-inline">
-                        <li class="active" data-filter=".default-portfolio-item ">
-                            <span>مشاهده همه</span>
+                {% endfor %}
+                <!--End single featured item-->
+            </div>
+        </div>
+    </section>
+
+    <!--Two Default Section-->
+    <section class="default-section-two">
+        <div class="auto-container">
+
+            <div class="row clearfix">
+
+                <!--Accordion Column-->
+                <div class="accordion-block column col-md-6 col-sm-12 col-xs-12">
+                    <!--Title-->
+                    <div class="sec-title">
+                        <h2>سوالات <span>متداول</span></h2>
+                    </div>
+
+                    <!--Accordion Box-->
+                    <ul class="accordion-box">
+                        {% for faq in fas %}
+                        <!--Block-->
+                        {% if forloop.counter == 1 %}
+                        <li class="accordion block active">
+                            <div class="acc-btn active">
+                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                {{ faq.title }}
+                            </div>
+                            <div class="acc-content current">
+                                <div class="content">
+                                    <p class="txt-align">{{ faq.answer | truncatechars:800 | safe }}</p>
+                                </div>
+                            </div>
                         </li>
-                        <li data-filter=".CI">
-                            <span>آرایشی و بهداشتی</span>
+                        {% endif %}
+                        {% if forloop.counter != 1 %}
+                        <li class="accordion block active">
+                            <div class="acc-btn">
+                                <div class="icon-outer"><span class="icon fa fa-angle-left"></span></div>
+                                {{ faq.title }}
+                            </div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <p class="txt-align">{{ faq.answer | truncatechars:800 | safe }}</p>
+                                </div>
+                            </div>
                         </li>
-                        <li data-filter=".SO">
-                            <span>حلال</span>
-                        </li>
-                        <li data-filter=".FI">
-                            <span>صنایع غذایی</span>
-                        </li>
-                        <li data-filter=".AI">
-                            <span>صنایع کشاورزی</span>
-                        </li>
+                        {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
 
-                <div class="row-15 grid clearfix masonary-layout filter-layout">
-                    <!--Default Portfolio Item-->
-                    {% for product in ALL %}
-                        <div class="default-portfolio-item ALL {{ product.string_column }} col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <a href="{% url 'product-detail' id=product.id url=product.url %}">
-                                    <figure class="effect-bubba">
-                                        <img src="{{ product.image_2.url }}" alt="image">
-                                        <figcaption>
-                                            <div class="content">
-                                                <h2>{{ product.title }}</h2>
-                                                <p>{{ product.description | truncatechars:100 | safe }}</p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
+                <div class="about-column column col-md-6 col-sm-12 col-xs-12">
+                    <div class="inner">
+                        <!--Title-->
+                        <div class="sec-title">
+                            <h2>درباره <span>ما</span></h2>
+                        </div>
+
+                        <div class="image-box"><img src="{{ aboutus.image.url }}" alt="ما کسیتیم؟"></div>
+                        <div class="row clearfix">
+                            <!--Text Column-->
+                            <div class="text-column col-md-6 col-sm-6 col-xs-12">
+                                <h3>ما کیستیم؟</h3>
+                                <div class="text txt-align">{{ aboutus.who_we_are | safe }}
+                                </div>
+                                <div class="btn-box"><a href="{% url 'about_us' %}" class="theme-btn btn-style-one">آشنایی
+                                    بیشتر</a></div>
+                            </div>
+                            <!--Text Column-->
+                            <div class="text-column col-md-6 col-sm-6 col-xs-12">
+                                <h3>ماموریت ما</h3>
+                                <div class="text txt-align">{{ aboutus.our_mission | truncatechars:200 | safe }}
+                                </div>
+                                <div class="signature text-left"><img
+                                        src="{% static 'images/resource/signature.png' %}" alt="signature sorenchem">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!--End Two Default Section-->
+
+    <div class="tow-column">
+        <div class="auto-container">
+            <!--Title-->
+            <div class="sec-title centered light">
+                <h2>ویژگی های <span>منحصر به فرد ما</span></h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <div class="row equal-height">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="service-block">
+                                <div class="inner-box">
+                                    <!--icon-box-->
+                                    <div class="icon-box">
+                                        <span class="flaticon-tools"></span>
+                                    </div>
+                                    <h3>{{ general_info.feature_title_1 }}</h3>
+                                    <div class="text txt-align">{{ general_info.feature_text_1 | safe }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="service-block">
+                                <div class="inner-box">
+                                    <!--icon-box-->
+                                    <div class="icon-box">
+                                        <span class="flaticon-people-1"></span>
+                                    </div>
+                                    <h3>{{ general_info.feature_title_2 }}</h3>
+                                    <div class="text txt-align">{{ general_info.feature_text_2 | safe }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="service-block">
+                                <div class="inner-box">
+                                    <!--icon-box-->
+                                    <div class="icon-box">
+                                        <span class="flaticon-drawing"></span>
+                                    </div>
+                                    <h3>{{ general_info.feature_title_3 }}</h3>
+                                    <div class="text txt-align">{{ general_info.feature_text_3 | safe }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="service-block">
+                                <div class="inner-box">
+                                    <!--icon-box-->
+                                    <div class="icon-box">
+                                        <span class="flaticon-light-bulb"></span>
+                                    </div>
+                                    <h3>{{ general_info.feature_title_4 }}</h3>
+                                    <div class="text txt-align">{{ general_info.feature_text_4 | safe }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="content-area">
+                        <h3>{{ general_info.general_feature_title }}</h3>
+                        <p class="txt-align">{{ general_info.general_feature_text | truncatechars:100 | safe }}</p>
+
+                        <div class="link"><a href="{% url 'about_us' %}" class="theme-btn btn-style-five">بیشتر بخوانید</a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Gallery Section-->
+    <section class="gallery-section">
+        <div class="auto-container">
+            <!--Title-->
+            <div class="sec-title centered">
+                <h2>آخرین <span>محصولات ما</span></h2>
+            </div>
+            <div class="text-center">
+                <ul class="post-filter list-inline">
+                    <li class="active" data-filter=".ALL">
+                        <span>مشاهده همه</span>
+                    </li>
+                    <li data-filter=".CI">
+                        <span>آرایشی و بهداشتی</span>
+                    </li>
+                    <li data-filter=".SO">
+                        <span>حلال</span>
+                    </li>
+                    <li data-filter=".FI">
+                        <span>صنایع غذایی</span>
+                    </li>
+                    <li data-filter=".AI">
+                        <span>صنایع کشاورزی</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row-15 grid clearfix masonary-layout filter-layout">
+                <!--Default Portfolio Item-->
+
+                {% for product in ALL %}
+                <div class="default-portfolio-item ALL {{ product.string_column }} col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <a href="{% url 'product-detail' id=product.id url=product.url %}">
+                            <figure class="effect-bubba">
+                                <img src="{{ product.image_2.url }}" alt="{{ product.title }}">
+                                <figcaption>
+                                    <div class="content">
+                                        <h2>{{ product.title }}</h2>
+                                        <p>{{ product.description | truncatechars:100 | safe }}</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="parallax" style="background-color: black;">
+        <div class="auto-container">
+            <h2>{{ general_info.social_network_description | safe }}</h2>
+            <div class="link">
+                <a href="{{ general_info.facebook }}"><span class="fa fa-facebook"></span></a>
+                <a href="{{ general_info.telegram }}"><span class="fa fa-telegram"></span></a>
+                <a href="{{ general_info.instagram }}"><span class="fa fa-instagram"></span></a>
+                <a href="{{ general_info.linkedin }}"><span class="fa fa-linkedin"></span></a>
+                <a href="{{ general_info.aparat }}">
+                    <svg style="color: white;vertical-align: middle;width: 49px; height: 100px;
+                             margin-top: -1px;" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <title>Aparat</title>
+                        <path d="M12.0014 1.5938C2.7317 1.5906-1.9119 12.7965 4.641 19.3515c2.975 2.976 7.4496 3.8669 11.3374 2.257 3.8877-1.61 6.4228-5.4036 6.4228-9.6116 0-5.7441-4.6555-10.4012-10.3997-10.4031zM6.11 6.783c.5011-2.5982 3.8927-3.2936 5.376-1.1028 1.4834 2.1907-.4216 5.0816-3.02 4.5822-1.6118-.3098-2.6668-1.868-2.356-3.4794zm4.322 8.9882c-.5045 2.5971-3.8965 3.288-5.377 1.0959-1.4807-2.1922.427-5.0807 3.0247-4.5789 1.612.3114 2.6655 1.8714 2.3524 3.483zm1.2605-2.405c-1.1528-.2231-1.4625-1.7273-.4917-2.3877.9708-.6604 2.256.18 2.0401 1.3343-.1347.7198-.8294 1.1924-1.5484 1.0533zm6.197 3.8375c-.501 2.5981-3.8927 3.2935-5.376 1.1028-1.4834-2.1908.4217-5.0817 3.0201-4.5822 1.6117.3097 2.6667 1.8679 2.356 3.4794zm-1.9662-5.5018c-2.5981-.501-3.2935-3.8962-1.1027-5.3795 2.1907-1.4834 5.0816.4216 4.5822 3.02-.3082 1.6132-1.8668 2.6701-3.4795 2.3595zm-2.3348 11.5618l2.2646.611c1.9827.5263 4.0167-.6542 4.5433-2.6368l.639-2.4016a11.3828 11.3828 0 0 1-7.4469 4.4274zM21.232 3.5985l-2.363-.6284a11.3757 11.3757 0 0 1 4.3538 7.619l.6495-2.4578c.5194-1.9804-.6615-4.0076-2.6403-4.5328zM.6713 13.8086l-.5407 2.04c-.5263 1.9826.6542 4.0166 2.6368 4.5432l2.1066.5618a11.3792 11.3792 0 0 1-4.2027-7.145zM10.3583.702L8.1498.1261C6.166-.4024 4.1296.7785 3.603 2.763l-.5512 2.082A11.3757 11.3757 0 0 1 10.3583.702Z"
+                              fill="white"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section gray-bg">
+        <div class="auto-container">
+            <!--Title-->
+            <div class="sec-title centered">
+                <h2>آخرین <span>مقالات</span></h2>
+            </div>
+
+            <div class="row clearfix equal-height">
+                {% for blog in blogs %}
+                <!--News Style One-->
+                <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="inner-box wow fadeInUp animated blog-animated" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="image-box">
+                            <figure class="image"><img src="{{ blog.image_1.url }}" alt="{{ blog.title }}"></figure>
+                            <div class="overlay-box">
+                                <a class="link-box" href="{% url 'blog-detail' id=blog.id url=blog.url %}">
+                                    <span class="fa fa-link"></span>
                                 </a>
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
-
-            </div>
-        </section>
-
-        <section class="parallax" style="background-color: black;">
-            <div class="auto-container">
-                <h2>{{ general_info.social_network_description | safe }}</h2>
-                <div class="link">
-                    <a href="{{ general_info.facebook }}"><span class="fa fa-facebook"></span></a>
-                    <a href="{{ general_info.telegram }}"><span class="fa fa-telegram"></span></a>
-                    <a href="{{ general_info.instagram }}"><span class="fa fa-instagram"></span></a>
-                    <a href="{{ general_info.linkedin }}"><span class="fa fa-linkedin"></span></a>
-                    <a href="{{ general_info.aparat }}">
-                        <svg style="color: white;vertical-align: middle;width: 49px; height: 100px;
-                             margin-top: -1px;" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Aparat</title>
-                            <path d="M12.0014 1.5938C2.7317 1.5906-1.9119 12.7965 4.641 19.3515c2.975 2.976 7.4496 3.8669 11.3374 2.257 3.8877-1.61 6.4228-5.4036 6.4228-9.6116 0-5.7441-4.6555-10.4012-10.3997-10.4031zM6.11 6.783c.5011-2.5982 3.8927-3.2936 5.376-1.1028 1.4834 2.1907-.4216 5.0816-3.02 4.5822-1.6118-.3098-2.6668-1.868-2.356-3.4794zm4.322 8.9882c-.5045 2.5971-3.8965 3.288-5.377 1.0959-1.4807-2.1922.427-5.0807 3.0247-4.5789 1.612.3114 2.6655 1.8714 2.3524 3.483zm1.2605-2.405c-1.1528-.2231-1.4625-1.7273-.4917-2.3877.9708-.6604 2.256.18 2.0401 1.3343-.1347.7198-.8294 1.1924-1.5484 1.0533zm6.197 3.8375c-.501 2.5981-3.8927 3.2935-5.376 1.1028-1.4834-2.1908.4217-5.0817 3.0201-4.5822 1.6117.3097 2.6667 1.8679 2.356 3.4794zm-1.9662-5.5018c-2.5981-.501-3.2935-3.8962-1.1027-5.3795 2.1907-1.4834 5.0816.4216 4.5822 3.02-.3082 1.6132-1.8668 2.6701-3.4795 2.3595zm-2.3348 11.5618l2.2646.611c1.9827.5263 4.0167-.6542 4.5433-2.6368l.639-2.4016a11.3828 11.3828 0 0 1-7.4469 4.4274zM21.232 3.5985l-2.363-.6284a11.3757 11.3757 0 0 1 4.3538 7.619l.6495-2.4578c.5194-1.9804-.6615-4.0076-2.6403-4.5328zM.6713 13.8086l-.5407 2.04c-.5263 1.9826.6542 4.0166 2.6368 4.5432l2.1066.5618a11.3792 11.3792 0 0 1-4.2027-7.145zM10.3583.702L8.1498.1261C6.166-.4024 4.1296.7785 3.603 2.763l-.5512 2.082A11.3757 11.3757 0 0 1 10.3583.702Z"
-                                  fill="white"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="news-section gray-bg">
-            <div class="auto-container">
-                <!--Title-->
-                <div class="sec-title centered">
-                    <h2>آخرین <span>مقالات</span></h2>
-                </div>
-
-                <div class="row clearfix equal-height">
-                    {% for blog in blogs %}
-                        <!--News Style One-->
-                        <div class="news-style-two col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms"
-                                 style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                                <div class="image-box">
-                                    <figure class="image"><img src="{{ blog.image_1.url }}" alt=""></figure>
-                                    <div class="overlay-box"><a class="link-box"
-                                                                href="{% url 'blog-detail' id=blog.id url=blog.url %}"><span
-                                            class="fa fa-link"></span></a></div>
-                                </div>
-                                <div class="lower-box">
-                                    <div class="post-meta">
-                                        <ul class="clearfix">
-                                            <li><a href="{% url 'blog-detail' id=blog.id url=blog.url %}"><span
-                                                    class="fa fa-calendar"></span>{{ blog.created | to_jalali:'%y/%m/%d _ %H:%M' }}
-                                            </a></li>
-                                            <li><a href="{% url 'blog-detail' id=blog.id url=blog.url %}"><span
-                                                    class="fa fa-commenting-o"></span>{{ blog.views }}</a></li>
-                                        </ul>
-                                    </div>
-                                    <h3><a href="{% url 'blog-detail' id=blog.id url=blog.url %}">{{ blog.title }}</a>
-                                    </h3>
-                                    <div class="text"
-                                         style="text-align: justify">{{ blog.text_summary | truncatechars:290 | safe }}</div>
-                                </div>
+                        <div class="lower-box">
+                            <div class="post-meta">
+                                <ul class="clearfix">
+                                    <li>
+                                        <a href="{% url 'blog-detail' id=blog.id url=blog.url %}">
+                                            <span class="fa fa-calendar"></span>
+                                            {{ blog.created | to_jalali:'%y/%m/%d _ %H:%M' }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'blog-detail' id=blog.id url=blog.url %}">
+                                            <span class="fa fa-commenting-o"></span>
+                                            {{ blog.views }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3>
+                                <a href="{% url 'blog-detail' id=blog.id url=blog.url %}">{{ blog.title }}</a>
+                            </h3>
+                            <div class="text" style="text-align: justify">{{ blog.text_summary | truncatechars:290 | safe }}
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-        </section>
-    </div>
-    <!--End pagewrapper-->
-
+        </div>
+    </section>
+</div>
+<!--End pagewrapper-->
 {% endblock content %}

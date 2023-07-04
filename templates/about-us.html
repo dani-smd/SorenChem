@@ -38,7 +38,7 @@
                                 <h2>خوش آمدید به <span>سورن شیمی</span></h2>
                             </div>
                             <div class="text">
-                                <p class="dark-text" style="text-align: justify">{{ aboutus.introduction_text | safe }}</p>
+                                <p class="dark-text txt-align">{{ aboutus.introduction_text | safe }}</p>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                     <span class="icon flaticon-target"></span>
                                 </div>
                                 <h3><a>{{ aboutus.first_feature }}</a></h3>
-                                <div class="text" style="text-align: justify">{{ aboutus.first_feature_text | safe }}
+                                <div class="text txt-align">{{ aboutus.first_feature_text | safe }}
                                 </div>
                             </div>
                         </div>
@@ -64,12 +64,10 @@
                                     <span class="icon flaticon-speedometer"></span>
                                 </div>
                                 <h3><a>{{ aboutus.second_feature }}</a></h3>
-                                <div class="text" style="text-align: justify">{{ aboutus.second_feature_text | safe }}
+                                <div class="text txt-align">{{ aboutus.second_feature_text | safe }}
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -82,7 +80,7 @@
                         <div class="text">ما بهترین شرکت وارد کننده مواد اولیه هستیم!!</div>
                     </div>
                     <div class="column text-left col-md-4 col-sm-12 col-xs-12">
-                        <a href="#" class="theme-btn btn-style-two">ارتباط با ما</a>
+                        <a href="{% url 'contact_us' %}" class="theme-btn btn-style-two">ارتباط با ما</a>
                     </div>
                 </div>
             </div>
@@ -98,7 +96,7 @@
                         <div class="inner-box">
                             {% if aboutus.name_employee_1 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="{{ aboutus.image_employee_1.url }}" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_1.url }}" alt="{{ aboutus.name_employee_1 }}"></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
                                         <li><a href="{{ aboutus.whatsapp_employee_1 }}"><span class="fa fa-whatsapp"></span></a></li>
@@ -120,7 +118,7 @@
                         <div class="inner-box">
                             {% if aboutus.name_employee_2 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="{{ aboutus.image_employee_2.url }}" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_2.url }}" alt="{{ aboutus.name_employee_2 }}"></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
                                         <li><a href="{{ aboutus.whatsapp_employee_2 }}"><span class="fa fa-whatsapp"></span></a></li>
@@ -142,7 +140,7 @@
                         <div class="inner-box">
                             {% if aboutus.name_employee_3 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="{{ aboutus.image_employee_3.url }}" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_3.url }}" alt="{{ aboutus.name_employee_3 }}"></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
                                        <li><a href="{{ aboutus.whatsapp_employee_3 }}"><span class="fa fa-whatsapp"></span></a></li>
@@ -164,7 +162,7 @@
                         <div class="inner-box">
                             {% if aboutus.name_employee_4 != "no" %}
                             <div class="image-box">
-                                <figure class="image"><img src="{{ aboutus.image_employee_4.url }}" alt=""></figure>
+                                <figure class="image"><img src="{{ aboutus.image_employee_4.url }}" alt="{{ aboutus.name_employee_4 }}"></figure>
                                 <div class="overlay-box">
                                     <ul class="social-links">
                                         <li><a href="{{ aboutus.whatsapp_employee_4 }}"><span class="fa fa-whatsapp"></span></a></li>

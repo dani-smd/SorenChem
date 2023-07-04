@@ -138,6 +138,7 @@ class ProductDetail(models.Model):
     show_in_last_product = models.BooleanField(default=False, verbose_name="نمایش در بخش آخرین محصولات")
     created = models.DateTimeField(auto_now_add=True, verbose_name="ساعت و تاریخ ایجاد")
 
+
     def __str__(self) -> str:
         return self.title
 

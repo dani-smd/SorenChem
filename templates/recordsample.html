@@ -8,7 +8,7 @@
                 <h2>درخواست نمونه</h2>
             </div>
 
-            <div class="row clearfix">
+            <div class="row clearfix frmDiv">
 
                 <!--Form Group-->
                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -39,21 +39,47 @@
                     <textarea placeholder="نمونه های درخواستی" name="text"></textarea>
                 </div>
                 <div class="form-group text-left col-md-12 col-sm-12 col-xs-12">
-                    <button type="submit" class="theme-btn btn-style-one">ارسال درخواست</button>
+                    <button type="submit" name="contact-submit" class="theme-btn btn-style-one">ارسال درخواست</button>
                 </div>
             </div>
 
-            {% if message %}
-                <div class="p-3 mt-3 text-center contact-message {% if success %}success-message {% else %} error-message {% endif %}"
-                     id="contact_alert">
-                    <p class="h4">{{ message }}</p>
-                </div>
-            {% endif %}
+            <div class="p-3 mt-3 text-center success-message message hidden"
+                 style="margin-bottom: 50px; border-right:2px solid #5da73d;padding: 10px;border-radius: 10px;background-color: #f7f7f7; color: #549d34;"  >
+                <p class="h4">با تشکر از شما درخواست شما با موفقیت ثبت شد.<br /><br /> به زودی با شما تماس می گیریم.</p>
+            </div>
 
         </div>
-
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 additional-info">
             <img src="{% static 'images/resource/formImage.png' %}" alt=""/>
         </div>
     </div>
 </form>
+
+{% block javascript %}
+
+<script>
+    $(document).ready(function () {
+        // catch the form's submit event
+        $('#contact-form').submit(function () {
+            // create an AJAX call
+            $.ajax({
+                data: $(this).serialize(), // get the form data
+                type: $(this).attr('method'), // GET or POST
+                url: "{% url 'add_record' %}",
+                // on success
+                success: function (response) {
+                    $(".frmDiv").addClass("hidden");
+                    $(".message").removeClass("hidden")
+                },
+                // on error
+                error: function (response) {
+                    // alert the error if any error occured
+                    alert(response.responseJSON.errors);
+                    console.log(response.responseJSON.errors)
+                }
+            });
+            return false;
+        });
+    })
+</script>
+{% endblock javascript %}
